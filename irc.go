@@ -18,13 +18,13 @@ import (
 var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
 
 type connection struct {
-	tcp               net.Conn
-	nickname          string
-	showdown          *protocol.BotConnection
-	loginData         protocol.LoginData
-	nickObtained      bool
-	userObtained      bool
-	closing           bool
+	tcp          net.Conn
+	nickname     string
+	showdown     *protocol.BotConnection
+	loginData    protocol.LoginData
+	nickObtained bool
+	userObtained bool
+	closing      bool
 }
 
 func (c *connection) parseIRCLine(tokens []string) {
