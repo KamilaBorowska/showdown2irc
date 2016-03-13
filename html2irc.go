@@ -137,9 +137,7 @@ func (c htmlConverter) parseStartToken() {
 		}
 		return
 	case "li":
-		{
-			c.WriteString("\n• ")
-		}
+		c.WriteString("\n• ")
 	case "img", "input":
 		return
 	}
