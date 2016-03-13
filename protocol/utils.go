@@ -1,0 +1,88 @@
+package protocol
+
+import (
+	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+	"net/url"
+	"regexp"
+	"strings"
+	"unicode"
+	"unicode/utf8"
+)
+
+// UserID represents a user ID. It's distinct from standard strings to
+// prevent accidentally mistaking usernames with IDs
+type UserID string
+
+// RoomID represents a room ID.
+type RoomID string
+
+// SplitUser given a string with a rank and username gives its rank and name.
+func SplitUser(name string) (auth rune, id string) {
+	auth, size := utf8.DecodeRuneInString(name)
+	return auth, name[size:]
+}
+
+// ToID converts a username to its ID.
+func ToID(name string) UserID {
+	var buffer bytes.Buffer
+	for _, character := range name {
+		character = unicode.ToLower(character)
+		if 'a' <= character && character <= 'z' || '0' <= character && character <= '9' {
+			buffer.WriteRune(character)
+		}
+	}
+	return UserID(buffer.String())
+}
+
+type serverDoesNotExistError struct{}
+
+func (serverDoesNotExistError) Error() string {
+	return "Server does not exist"
+}
+
+var configurationRegex = regexp.MustCompile(`(?m)^var config = (.*);$`)
+
+type configuration struct {
+	Host string
+	Port uint16
+}
+
+func findConfiguration(name string) (*configuration, error) {
+	if !strings.Contains(name, ".") {
+		name += ".psim.us"
+	}
+	escapedName := url.QueryEscape(name)
+	res, err := http.Get("https://play.pokemonshowdown.com/crossdomain.php?host=" + escapedName)
+	if err != nil {
+		return nil, err
+	}
+	contents, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+	matches := configurationRegex.FindSubmatch(contents)
+	if matches == nil {
+		return nil, new(serverDoesNotExistError)
+	}
+	jsonJsonData := matches[1]
+	var jsonData string
+	err = json.Unmarshal(jsonJsonData, &jsonData)
+	if err != nil {
+		return nil, err
+	}
+	var serverConfiguration configuration
+	err = json.Unmarshal([]byte(jsonData), &serverConfiguration)
+	if err != nil {
+		return nil, err
+	}
+	if serverConfiguration.Host == "showdown" {
+		// This is a default server configuration (TODO: read it from js/storage.js) instead
+		serverConfiguration.Host = "sim.psim.us"
+		serverConfiguration.Port = 443
+	}
+	return &serverConfiguration, nil
+}
