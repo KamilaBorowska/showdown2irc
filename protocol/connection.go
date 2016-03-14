@@ -9,23 +9,25 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+type writerMessage struct {
+	messageType int
+	contents []byte
+}
+
 type connection struct {
 	websocket      *websocket.Conn
 	finished       chan struct{}
-	writer         chan string
+	writer         chan writerMessage
 	messageChannel chan string
 }
 
 // Closes a connection with a web socket
 func (c *connection) Close() error {
-	err := c.websocket.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
-	if err != nil {
-		return err
-	}
+	c.writer <- writerMessage{websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, "")}
 
 	select {
 	case <-c.finished:
-	case <-time.After(400 * time.Millisecond):
+	case <-time.After(time.Second):
 	}
 
 	c.websocket.Close()
@@ -34,12 +36,12 @@ func (c *connection) Close() error {
 }
 
 func (c *connection) write(message string) {
-	c.writer <- message
+	c.writer <- writerMessage{websocket.TextMessage, []byte(message)}
 }
 
 func (c *connection) startWriter() {
 	for message := range c.writer {
-		c.websocket.WriteMessage(websocket.TextMessage, []byte(message))
+		c.websocket.WriteMessage(message.messageType, message.contents)
 		time.Sleep(400 * time.Millisecond)
 	}
 }
@@ -83,7 +85,7 @@ func webSocketConnect(config *configuration) (*connection, error) {
 
 	socketConnection := connection{
 		websocket:      websocket,
-		writer:         make(chan string),
+		writer:         make(chan writerMessage),
 		messageChannel: make(chan string),
 		finished:       make(chan struct{}, 1),
 	}
