@@ -12,6 +12,7 @@ type Room struct {
 	UserList      map[UserID]User
 }
 
+// User represents an user name with a rank
 type User struct {
 	Rank rune
 	Name string
