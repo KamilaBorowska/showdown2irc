@@ -1,5 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+
+	"github.com/xfix/showdown2irc/protocol"
+)
+
 var ircCommands = map[string]func(*connection, []string){
 	"CAP": func(c *connection, command []string) {
 		// Not implemented, does nothing
@@ -23,7 +30,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"USERHOST": func(c *connection, command []string) {
 		for _, arg := range command {
-			c.sendGlobal("302", c.nickname, escapeUserWithHost(arg))
+			c.sendNumeric(302, escapeUserWithHost(arg))
 		}
 	},
 	"PING": func(c *connection, command []string) {
@@ -52,7 +59,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"MODE": func(c *connection, command []string) {
 		if len(command) == 1 {
-			c.sendGlobal("352", c.nickname, command[0], "+ntc")
+			c.sendNumeric(352, command[0], "+ntc")
 		}
 	},
 	"QUIT": func(c *connection, command []string) {

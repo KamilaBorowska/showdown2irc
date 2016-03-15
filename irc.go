@@ -8,6 +8,7 @@ import (
 	"log"
 	"net"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -48,6 +49,15 @@ func (c *connection) sendGlobal(parts ...string) {
 	newParts := make([]string, len(parts)+1)
 	newParts[0] = "showdown"
 	copy(newParts[1:], parts)
+	c.send(newParts...)
+}
+
+func (c *connection) sendNumeric(numeric int, parts ...string) {
+	newParts := make([]string, len(parts)+3)
+	newParts[0] = "showdown"
+	newParts[1] = strconv.Itoa(numeric)
+	newParts[2] = c.nickname
+	copy(newParts[3:], parts)
 	c.send(newParts...)
 }
 

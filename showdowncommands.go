@@ -31,7 +31,7 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 		for _, user := range room.UserList {
 			length := buffer.Len()
 			if length > 300 {
-				c.sendGlobal("353", c.nickname, "@", id, buffer.String())
+				c.sendNumeric(353, "@", id, buffer.String())
 				buffer.Reset()
 			} else if length != 0 {
 				buffer.WriteByte(' ')
@@ -42,9 +42,9 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 			buffer.WriteString(escapeUser(user.Name))
 		}
 		if buffer.Len() != 0 {
-			c.sendGlobal("353", c.nickname, "@", id, buffer.String())
+			c.sendNumeric(353, "@", id, buffer.String())
 		}
-		c.sendGlobal("366", c.nickname, id, "End of /NAMES list.")
+		c.sendNumeric(366, id, "End of /NAMES list.")
 	},
 	"c:": func(c *connection, rawMessage string, room *protocol.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
@@ -80,7 +80,7 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 		const endDescription = `</div>`
 		if strings.HasPrefix(rawMessage, beginDescription) && strings.HasSuffix(rawMessage, endDescription) {
 			description := rawMessage[len(beginDescription) : len(rawMessage)-len(endDescription)]
-			c.sendGlobal("332", c.nickname, escapeRoom(room.ID), html.UnescapeString(description))
+			c.sendNumeric(332, escapeRoom(room.ID), html.UnescapeString(description))
 			return
 		}
 		if result := whoisRegexp.FindStringSubmatch(rawMessage); result != nil {
@@ -88,7 +88,7 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 			name := escapeUser(result[2])
 			rooms := result[3]
 
-			c.sendGlobal("311", c.nickname, name, string(protocol.ToID(name)), "showdown", "*", "Global rank: "+rank)
+			c.sendNumeric(311, name, string(protocol.ToID(name)), "showdown", "*", "Global rank: "+rank)
 
 			var result bytes.Buffer
 
@@ -101,9 +101,9 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 				// the last one. While silly, let's go with that.
 				result.WriteByte(' ')
 			}
-			c.sendGlobal("319", c.nickname, name, result.String())
+			c.sendNumeric(319, name, result.String())
 
-			c.sendGlobal("318", c.nickname, name, "End of /WHOIS list")
+			c.sendNumeric(318, name, "End of /WHOIS list")
 			return
 		}
 
