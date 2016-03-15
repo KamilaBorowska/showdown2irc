@@ -36,9 +36,8 @@ type BotConnection struct {
 func (bc *BotConnection) Room(id RoomID) *Room {
 	if roomWithUsers, ok := bc.rooms[id]; ok {
 		return roomWithUsers
-	} else {
-		return &Room{BotConnection: bc, ID: id}
 	}
+	return &Room{BotConnection: bc, ID: id}
 }
 
 func (bc *BotConnection) handleMessage(message string) {
