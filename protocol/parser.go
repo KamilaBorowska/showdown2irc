@@ -19,10 +19,10 @@ type LoginData struct {
 
 // BotConnection represents a websocket communication with a bot
 type BotConnection struct {
-	loginData LoginData
-	rooms     map[RoomID]Room
-	handlers  map[string]func(string, Room)
-	onSuccess chan<- struct{}
+	loginData       LoginData
+	rooms           map[RoomID]Room
+	commandCallback func(command, argument string, room Room)
+	onSuccess       chan<- struct{}
 	*connection
 }
 
@@ -53,13 +53,9 @@ func (bc *BotConnection) handleMessage(message string) {
 		if handler, ok := serverCommandHandlers[command]; ok {
 			handler(argument, bc.GetRoom(roomID))
 		}
-		if handler, ok := bc.handlers[command]; ok {
-			handler(argument, bc.GetRoom(roomID))
-		}
+		bc.commandCallback(command, argument, bc.GetRoom(roomID))
 	} else {
-		if handler, ok := bc.handlers[""]; ok {
-			handler(message, bc.GetRoom(roomID))
-		}
+		bc.commandCallback("", message, bc.GetRoom(roomID))
 	}
 }
 
@@ -98,7 +94,7 @@ func handleConnection(botConnection *BotConnection) {
 
 // ConnectToServer connects to a Showdown server by using its
 // client location or its name.
-func ConnectToServer(loginData LoginData, name string, handlers map[string]func(string, Room)) (*BotConnection, <-chan struct{}, error) {
+func ConnectToServer(loginData LoginData, name string, commandCallback func(command, argument string, room Room)) (*BotConnection, <-chan struct{}, error) {
 	conf, err := findConfiguration(name)
 	if err != nil {
 		return nil, nil, err
@@ -109,11 +105,11 @@ func ConnectToServer(loginData LoginData, name string, handlers map[string]func(
 	}
 	onSuccess := make(chan struct{}, 1)
 	botConnection := &BotConnection{
-		connection: connection,
-		loginData:  loginData,
-		rooms:      make(map[RoomID]Room),
-		handlers:   handlers,
-		onSuccess:  onSuccess,
+		connection:      connection,
+		loginData:       loginData,
+		rooms:           make(map[RoomID]Room),
+		commandCallback: commandCallback,
+		onSuccess:       onSuccess,
 	}
 	go handleConnection(botConnection)
 	return botConnection, onSuccess, nil

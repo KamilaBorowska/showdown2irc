@@ -11,7 +11,7 @@ import (
 
 type writerMessage struct {
 	messageType int
-	contents []byte
+	contents    []byte
 }
 
 type connection struct {
