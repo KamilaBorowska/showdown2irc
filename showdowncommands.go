@@ -48,29 +48,27 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 	},
 	"c:": func(c *connection, rawMessage string, room *protocol.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
-		_, author := protocol.SplitUser(parts[1])
-		escapedAuthor := escapeUser(author)
+		escapedAuthor := escapeUser(protocol.SplitUser(parts[1]).Name)
 		if escapedAuthor != c.nickname {
 			contents := parts[2]
 			c.send(escapedAuthor, "PRIVMSG", escapeRoom(room.ID), contents)
 		}
 	},
 	"L": func(c *connection, rawMessage string, room *protocol.Room) {
-		_, name := protocol.SplitUser(rawMessage)
+		name := protocol.SplitUser(rawMessage).Name
 		c.send(escapeUserWithHost(name), "PART", escapeRoom(room.ID), "")
 	},
 	"J": func(c *connection, rawMessage string, room *protocol.Room) {
-		rank, name := protocol.SplitUser(rawMessage)
-		c.send(escapeUserWithHost(name), "JOIN", escapeRoom(room.ID))
-		if ircRank, ok := rankMap[rank]; ok {
-			c.sendGlobal("MODE", escapeRoom(room.ID), fmt.Sprintf("+%c", ircRank), escapeUser(name))
+		user := protocol.SplitUser(rawMessage)
+		c.send(escapeUserWithHost(user.Name), "JOIN", escapeRoom(room.ID))
+		if ircRank, ok := rankMap[user.Rank]; ok {
+			c.sendGlobal("MODE", escapeRoom(room.ID), fmt.Sprintf("+%c", ircRank), escapeUser(user.Name))
 		}
 	},
 	"pm": func(c *connection, rawMessage string, room *protocol.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
-		_, author := protocol.SplitUser(parts[0])
 		contents := parts[2]
-		escapedAuthor := escapeUser(author)
+		escapedAuthor := escapeUser(protocol.SplitUser(parts[0]).Name)
 		if escapedAuthor != c.nickname {
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}

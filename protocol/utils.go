@@ -19,10 +19,10 @@ type UserID string
 // RoomID represents a room ID.
 type RoomID string
 
-// SplitUser given a string with a rank and username gives its rank and name.
-func SplitUser(name string) (auth rune, id string) {
+// SplitUser given a string with a rank and username provided User object
+func SplitUser(name string) User {
 	auth, size := utf8.DecodeRuneInString(name)
-	return auth, name[size:]
+	return User{auth, name[size:]}
 }
 
 // ToID converts a username to its ID.

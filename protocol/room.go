@@ -32,19 +32,16 @@ func (r *Room) onUserList(userlist string) {
 	r.UserList = map[UserID]User{}
 	users := strings.Split(userlist, ",")
 	for _, user := range users[1:] {
-		auth, name := SplitUser(user)
-		r.UserList[ToID(name)] = User{auth, name}
+		r.UserList[ToID(user)] = SplitUser(user)
 	}
 }
 
 func (r *Room) onJoin(username string) {
-	auth, name := SplitUser(username)
-	r.UserList[ToID(name)] = User{auth, name}
+	r.UserList[ToID(username)] = SplitUser(username)
 }
 
 func (r *Room) onLeave(username string) {
-	_, name := SplitUser(username)
-	delete(r.UserList, ToID(name))
+	delete(r.UserList, ToID(username))
 }
 
 func (r *Room) onRename(username string, oldid UserID) {
