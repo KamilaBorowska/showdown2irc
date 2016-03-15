@@ -155,7 +155,5 @@ func (c htmlConverter) parseStartToken() {
 		defer c.WriteString(fmt.Sprintf("](%s)", *link))
 	}
 
-	if name != "img" {
-		c.parseToken()
-	}
+	c.parseToken()
 }
