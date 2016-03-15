@@ -31,7 +31,7 @@ func (c *connection) parseIRCLine(tokens []string) {
 	if command, ok := ircCommands[commandName]; ok {
 		command(c, tokens[1:])
 	} else if len(tokens) >= 2 && len(tokens[1]) > 0 && tokens[1][0] == '#' {
-		room := c.showdown.GetRoom(protocol.RoomID(tokens[1][1:]))
+		room := c.showdown.Room(protocol.RoomID(tokens[1][1:]))
 		room.SendCommand(commandName, strings.Join(tokens[2:], ""))
 	} else {
 		c.showdown.SendGlobalCommand(commandName, strings.Join(tokens[1:], " "))
@@ -121,7 +121,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"PRIVMSG": func(c *connection, command []string) {
 		if command[0][0] == '#' {
-			room := c.showdown.GetRoom(protocol.RoomID(command[0][1:]))
+			room := c.showdown.Room(protocol.RoomID(command[0][1:]))
 			room.Reply(unescapeUser(command[1]))
 		} else if command[1] != "NickServ" {
 			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s", command[0], command[1]))
@@ -133,7 +133,7 @@ var ircCommands = map[string]func(*connection, []string){
 		}
 	},
 	"PART": func(c *connection, command []string) {
-		room := c.showdown.GetRoom(protocol.RoomID(command[0][1:]))
+		room := c.showdown.Room(protocol.RoomID(command[0][1:]))
 		room.SendCommand("part", "")
 	},
 	"MODE": func(c *connection, command []string) {

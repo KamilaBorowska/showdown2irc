@@ -26,7 +26,7 @@ type BotConnection struct {
 	*connection
 }
 
-func (bc *BotConnection) GetRoom(id RoomID) Room {
+func (bc *BotConnection) Room(id RoomID) Room {
 	if roomWithUsers, ok := bc.rooms[id]; ok {
 		return roomWithUsers
 	} else {
@@ -51,11 +51,11 @@ func (bc *BotConnection) handleMessage(message string) {
 		}
 
 		if handler, ok := serverCommandHandlers[command]; ok {
-			handler(argument, bc.GetRoom(roomID))
+			handler(argument, bc.Room(roomID))
 		}
-		bc.commandCallback(command, argument, bc.GetRoom(roomID))
+		bc.commandCallback(command, argument, bc.Room(roomID))
 	} else {
-		bc.commandCallback("", message, bc.GetRoom(roomID))
+		bc.commandCallback("", message, bc.Room(roomID))
 	}
 }
 
