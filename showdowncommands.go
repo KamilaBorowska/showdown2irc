@@ -17,11 +17,11 @@ var whoisRegexp = regexp.MustCompile(
 
 var roomRegexp = regexp.MustCompile(`([^\w\s]?)<a href="/([^"]+)">`)
 
-var showdownCommands = map[string]func(*connection, string, protocol.Room){
-	"": func(c *connection, rawMessage string, room protocol.Room) {
+var showdownCommands = map[string]func(*connection, string, *protocol.Room){
+	"": func(c *connection, rawMessage string, room *protocol.Room) {
 		c.sendGlobal("NOTICE", escapeRoom(room.ID), rawMessage)
 	},
-	"init": func(c *connection, rawMessage string, room protocol.Room) {
+	"init": func(c *connection, rawMessage string, room *protocol.Room) {
 		room.SendCommand("roomdesc", "")
 		id := escapeRoom(room.ID)
 		c.send(c.nickname, "JOIN", id)
@@ -44,7 +44,7 @@ var showdownCommands = map[string]func(*connection, string, protocol.Room){
 		}
 		c.sendGlobal("366", c.nickname, id, "End of /NAMES list.")
 	},
-	"c:": func(c *connection, rawMessage string, room protocol.Room) {
+	"c:": func(c *connection, rawMessage string, room *protocol.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
 		_, author := protocol.SplitUser(parts[1])
 		escapedAuthor := escapeUser(author)
@@ -53,18 +53,18 @@ var showdownCommands = map[string]func(*connection, string, protocol.Room){
 			c.send(escapedAuthor, "PRIVMSG", escapeRoom(room.ID), contents)
 		}
 	},
-	"L": func(c *connection, rawMessage string, room protocol.Room) {
+	"L": func(c *connection, rawMessage string, room *protocol.Room) {
 		_, name := protocol.SplitUser(rawMessage)
 		c.send(escapeUserWithHost(name), "PART", escapeRoom(room.ID), "")
 	},
-	"J": func(c *connection, rawMessage string, room protocol.Room) {
+	"J": func(c *connection, rawMessage string, room *protocol.Room) {
 		rank, name := protocol.SplitUser(rawMessage)
 		c.send(escapeUserWithHost(name), "JOIN", escapeRoom(room.ID))
 		if ircRank, ok := rankMap[rank]; ok {
 			c.sendGlobal("MODE", escapeRoom(room.ID), fmt.Sprintf("+%c", ircRank), escapeUser(name))
 		}
 	},
-	"pm": func(c *connection, rawMessage string, room protocol.Room) {
+	"pm": func(c *connection, rawMessage string, room *protocol.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
 		_, author := protocol.SplitUser(parts[0])
 		contents := parts[2]
@@ -73,7 +73,7 @@ var showdownCommands = map[string]func(*connection, string, protocol.Room){
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}
 	},
-	"raw": func(c *connection, rawMessage string, room protocol.Room) {
+	"raw": func(c *connection, rawMessage string, room *protocol.Room) {
 		const beginDescription = `<div class="infobox">The room description is: `
 		const endDescription = `</div>`
 		if strings.HasPrefix(rawMessage, beginDescription) && strings.HasSuffix(rawMessage, endDescription) {

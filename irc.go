@@ -51,7 +51,7 @@ func (c *connection) sendGlobal(parts ...string) {
 	c.send(newParts...)
 }
 
-func (c *connection) runShowdownCommand(command, argument string, room protocol.Room) {
+func (c *connection) runShowdownCommand(command, argument string, room *protocol.Room) {
 	if callback, ok := showdownCommands[command]; ok {
 		callback(c, argument, room)
 	}

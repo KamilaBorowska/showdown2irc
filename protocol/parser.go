@@ -20,17 +20,17 @@ type LoginData struct {
 // BotConnection represents a websocket communication with a bot
 type BotConnection struct {
 	loginData       LoginData
-	rooms           map[RoomID]Room
-	commandCallback func(command, argument string, room Room)
+	rooms           map[RoomID]*Room
+	commandCallback func(command, argument string, room *Room)
 	onSuccess       chan<- struct{}
 	*connection
 }
 
-func (bc *BotConnection) Room(id RoomID) Room {
+func (bc *BotConnection) Room(id RoomID) *Room {
 	if roomWithUsers, ok := bc.rooms[id]; ok {
 		return roomWithUsers
 	} else {
-		return Room{BotConnection: bc, ID: id}
+		return &Room{BotConnection: bc, ID: id}
 	}
 }
 
@@ -94,7 +94,7 @@ func handleConnection(botConnection *BotConnection) {
 
 // ConnectToServer connects to a Showdown server by using its
 // client location or its name.
-func ConnectToServer(loginData LoginData, name string, commandCallback func(command, argument string, room Room)) (*BotConnection, <-chan struct{}, error) {
+func ConnectToServer(loginData LoginData, name string, commandCallback func(command, argument string, room *Room)) (*BotConnection, <-chan struct{}, error) {
 	conf, err := findConfiguration(name)
 	if err != nil {
 		return nil, nil, err
@@ -107,7 +107,7 @@ func ConnectToServer(loginData LoginData, name string, commandCallback func(comm
 	botConnection := &BotConnection{
 		connection:      connection,
 		loginData:       loginData,
-		rooms:           make(map[RoomID]Room),
+		rooms:           map[RoomID]*Room{},
 		commandCallback: commandCallback,
 		onSuccess:       onSuccess,
 	}
@@ -115,7 +115,7 @@ func ConnectToServer(loginData LoginData, name string, commandCallback func(comm
 	return botConnection, onSuccess, nil
 }
 
-var serverCommandHandlers = map[string]func(string, Room){
+var serverCommandHandlers = map[string]func(string, *Room){
 	"challstr": challStr,
 	"init":     initializeChatRoom,
 	"j":        joinRoom,
@@ -127,7 +127,7 @@ var serverCommandHandlers = map[string]func(string, Room){
 
 const actionURL = "https://play.pokemonshowdown.com/action.php"
 
-func challStr(challenge string, room Room) {
+func challStr(challenge string, room *Room) {
 	botConnection := room.BotConnection
 	loginData := botConnection.loginData
 
@@ -163,7 +163,7 @@ func challStr(challenge string, room Room) {
 	}
 }
 
-func initializeChatRoom(rawMessage string, room Room) {
+func initializeChatRoom(rawMessage string, room *Room) {
 	logs := strings.Split(rawMessage, "\n")
 	for _, message := range logs {
 		titleMessage := "|title|"
@@ -177,15 +177,15 @@ func initializeChatRoom(rawMessage string, room Room) {
 	room.BotConnection.rooms[room.ID] = room
 }
 
-func joinRoom(rawMessage string, room Room) {
+func joinRoom(rawMessage string, room *Room) {
 	room.onJoin(rawMessage)
 }
 
-func leaveRoom(rawMessage string, room Room) {
+func leaveRoom(rawMessage string, room *Room) {
 	room.onLeave(rawMessage)
 }
 
-func renameNick(rawMessage string, room Room) {
+func renameNick(rawMessage string, room *Room) {
 	parts := strings.SplitN(rawMessage, "|", 2)
 	room.onRename(parts[0], UserID(parts[1]))
 }
