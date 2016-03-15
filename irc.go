@@ -86,8 +86,6 @@ func (c *connection) close() {
 	}
 }
 
-var rankMap = map[rune]byte{'~': 'g', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
-
 func escapeUser(name string) string {
 	return strings.Replace(name, " ", "\u00A0", -1)
 }

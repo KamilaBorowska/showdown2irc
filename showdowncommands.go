@@ -10,6 +10,8 @@ import (
 	"github.com/xfix/showdown2irc/protocol"
 )
 
+var rankMap = map[rune]byte{'~': 'g', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
+
 var whoisRegexp = regexp.MustCompile(
 	`<div class="infobox"><strong class="username">` +
 		`<small style="display:none">(.)</small>([^<]+)</strong> ` +
