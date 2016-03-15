@@ -26,6 +26,13 @@ type BotConnection struct {
 	*connection
 }
 
+// Room retrieves a room an user is connected to.
+//
+// If a room doesn't exist, a placeholder room is provided on which
+// operations can be provided, in event you need a room to run command
+// in, but not actually need to be in it.
+//
+// This command doesn't handle room aliases.
 func (bc *BotConnection) Room(id RoomID) *Room {
 	if roomWithUsers, ok := bc.rooms[id]; ok {
 		return roomWithUsers
