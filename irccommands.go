@@ -30,7 +30,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"USERHOST": func(c *connection, command []string) {
 		for _, arg := range command {
-			c.sendNumeric(302, escapeUserWithHost(arg))
+			c.sendNumeric(RplUserhost, escapeUserWithHost(arg))
 		}
 	},
 	"PING": func(c *connection, command []string) {
@@ -59,7 +59,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"MODE": func(c *connection, command []string) {
 		if len(command) == 1 {
-			c.sendNumeric(352, command[0], "+ntc")
+			c.sendNumeric(RplWhoReply, command[0], "+ntc")
 		}
 	},
 	"QUIT": func(c *connection, command []string) {
