@@ -56,28 +56,35 @@ func (bc *BotConnection) Room(id RoomID) *Room {
 	return &Room{BotConnection: bc, ID: id}
 }
 
-func (bc *BotConnection) handleMessage(message string) {
-	log.Println(message)
+func (bc *BotConnection) parseMessage(message string) {
 	var roomID RoomID
 	if message[0] == '>' {
 		parts := strings.SplitN(message[1:], "\n", 2)
 		roomID = RoomID(parts[0])
 		message = parts[1]
 	}
-	if message[0] == '|' {
-		parts := strings.SplitN(message[1:], "|", 2)
-		command := parts[0]
-		var argument string
-		if len(parts) > 1 {
-			argument = parts[1]
-		}
+	for {
+		messages := strings.SplitN(message, "\n", 2)
+		currentMessage := messages[0]
+		if currentMessage[0] == '|' {
+			parts := strings.SplitN(currentMessage[1:], "|", 2)
+			command := parts[0]
+			var argument string
+			if len(parts) > 1 {
+				argument = parts[1]
+			}
 
-		if handler, ok := serverCommandHandlers[command]; ok {
-			handler(argument, bc.Room(roomID))
+			if handler, ok := serverCommandHandlers[command]; ok {
+				handler(argument, bc.Room(roomID))
+			}
+			bc.commandCallback(command, argument, bc.Room(roomID))
+		} else {
+			bc.commandCallback("", currentMessage, bc.Room(roomID))
 		}
-		bc.commandCallback(command, argument, bc.Room(roomID))
-	} else {
-		bc.commandCallback("", message, bc.Room(roomID))
+		if len(messages) != 2 {
+			return
+		}
+		message = messages[1]
 	}
 }
 
@@ -110,7 +117,8 @@ func (bc *BotConnection) say(message string, room RoomID) {
 
 func handleConnection(botConnection *BotConnection) {
 	for message := range botConnection.messageChannel {
-		botConnection.handleMessage(message)
+		log.Println(message)
+		botConnection.parseMessage(message)
 	}
 }
 
@@ -140,6 +148,8 @@ func ConnectToServer(loginData LoginData, name string, commandCallback func(comm
 var serverCommandHandlers = map[string]func(string, *Room){
 	"challstr": challStr,
 	"init":     initializeChatRoom,
+	"title":    setTitle,
+	"users":    setUsers,
 	"j":        joinRoom,
 	"J":        joinRoom,
 	"l":        leaveRoom,
@@ -184,19 +194,16 @@ func challStr(challenge string, room *Room) {
 		botConnection.SendGlobalCommand("join", room)
 	}
 }
-
 func initializeChatRoom(rawMessage string, room *Room) {
-	logs := strings.Split(rawMessage, "\n")
-	for _, message := range logs {
-		titleMessage := "|title|"
-		userListMessage := "|users|"
-		if strings.HasPrefix(message, titleMessage) {
-			room.Title = message[len(titleMessage):]
-		} else if strings.HasPrefix(message, userListMessage) {
-			room.onUserList(message[len(userListMessage):])
-		}
-	}
 	room.BotConnection.rooms[room.ID] = room
+}
+
+func setTitle(rawMessage string, room *Room) {
+	room.Title = rawMessage
+}
+
+func setUsers(rawMessage string, room *Room) {
+	room.onUserList(rawMessage)
 }
 
 func joinRoom(rawMessage string, room *Room) {
