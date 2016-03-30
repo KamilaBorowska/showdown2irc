@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/xfix/showdown2irc/protocol"
+	"github.com/xfix/showdown2irc/showdown"
 )
 
 var ircCommands = map[string]func(*connection, []string){
@@ -67,7 +67,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"PRIVMSG": func(c *connection, command []string) {
 		if command[0][0] == '#' {
-			room := c.showdown.Room(protocol.RoomID(command[0][1:]))
+			room := c.showdown.Room(showdown.RoomID(command[0][1:]))
 			room.Reply(unescapeUser(command[1]))
 		} else if command[1] != "NickServ" {
 			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s", command[0], command[1]))
@@ -79,7 +79,7 @@ var ircCommands = map[string]func(*connection, []string){
 		}
 	},
 	"PART": func(c *connection, command []string) {
-		room := c.showdown.Room(protocol.RoomID(command[0][1:]))
+		room := c.showdown.Room(showdown.RoomID(command[0][1:]))
 		room.SendCommand("part", "")
 	},
 	"MODE": func(c *connection, command []string) {

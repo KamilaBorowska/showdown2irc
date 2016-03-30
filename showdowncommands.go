@@ -23,7 +23,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/xfix/showdown2irc/protocol"
+	"github.com/xfix/showdown2irc/showdown"
 )
 
 var rankMap = map[rune]byte{'~': 'q', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
@@ -35,11 +35,11 @@ var whoisRegexp = regexp.MustCompile(
 
 var roomRegexp = regexp.MustCompile(`([^\w\s]?)<a href="/([^"]+)">`)
 
-var showdownCommands = map[string]func(*connection, string, *protocol.Room){
-	"": func(c *connection, rawMessage string, room *protocol.Room) {
+var showdownCommands = map[string]func(*connection, string, *showdown.Room){
+	"": func(c *connection, rawMessage string, room *showdown.Room) {
 		c.sendGlobal("NOTICE", escapeRoom(room.ID), rawMessage)
 	},
-	"init": func(c *connection, rawMessage string, room *protocol.Room) {
+	"init": func(c *connection, rawMessage string, room *showdown.Room) {
 		room.SendCommand("roomdesc", "")
 		id := escapeRoom(room.ID)
 		c.send(c.nickname, "JOIN", id)
@@ -62,34 +62,34 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 		}
 		c.sendNumeric(RplEndOfNames, id, "End of /NAMES list.")
 	},
-	"c:": func(c *connection, rawMessage string, room *protocol.Room) {
+	"c:": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
-		escapedAuthor := escapeUser(protocol.SplitUser(parts[1]).Name)
+		escapedAuthor := escapeUser(showdown.SplitUser(parts[1]).Name)
 		if escapedAuthor != c.nickname {
 			contents := parts[2]
 			c.send(escapedAuthor, "PRIVMSG", escapeRoom(room.ID), contents)
 		}
 	},
-	"L": func(c *connection, rawMessage string, room *protocol.Room) {
-		name := protocol.SplitUser(rawMessage).Name
+	"L": func(c *connection, rawMessage string, room *showdown.Room) {
+		name := showdown.SplitUser(rawMessage).Name
 		c.send(escapeUserWithHost(name), "PART", escapeRoom(room.ID), "")
 	},
-	"J": func(c *connection, rawMessage string, room *protocol.Room) {
-		user := protocol.SplitUser(rawMessage)
+	"J": func(c *connection, rawMessage string, room *showdown.Room) {
+		user := showdown.SplitUser(rawMessage)
 		c.send(escapeUserWithHost(user.Name), "JOIN", escapeRoom(room.ID))
 		if ircRank, ok := rankMap[user.Rank]; ok {
 			c.sendGlobal("MODE", escapeRoom(room.ID), fmt.Sprintf("+%c", ircRank), escapeUser(user.Name))
 		}
 	},
-	"pm": func(c *connection, rawMessage string, room *protocol.Room) {
+	"pm": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
 		contents := parts[2]
-		escapedAuthor := escapeUser(protocol.SplitUser(parts[0]).Name)
+		escapedAuthor := escapeUser(showdown.SplitUser(parts[0]).Name)
 		if escapedAuthor != c.nickname {
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}
 	},
-	"raw": func(c *connection, rawMessage string, room *protocol.Room) {
+	"raw": func(c *connection, rawMessage string, room *showdown.Room) {
 		const beginDescription = `<div class="infobox">The room description is: `
 		const endDescription = `</div>`
 		if strings.HasPrefix(rawMessage, beginDescription) && strings.HasSuffix(rawMessage, endDescription) {
@@ -102,13 +102,13 @@ var showdownCommands = map[string]func(*connection, string, *protocol.Room){
 			name := escapeUser(result[2])
 			rooms := result[3]
 
-			c.sendNumeric(RplWhoisUser, name, string(protocol.ToID(name)), "showdown", "*", "Global rank: "+rank)
+			c.sendNumeric(RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "*", "Global rank: "+rank)
 
 			var result bytes.Buffer
 
 			for _, room := range roomRegexp.FindAllStringSubmatch(rooms, -1) {
 				rank := room[1]
-				roomName := protocol.RoomID(room[2])
+				roomName := showdown.RoomID(room[2])
 				result.WriteString(rank)
 				result.WriteString(escapeRoom(roomName))
 				// The IRC standard says that the space is after each entry, even

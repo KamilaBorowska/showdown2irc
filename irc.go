@@ -27,7 +27,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/xfix/showdown2irc/protocol"
+	"github.com/xfix/showdown2irc/showdown"
 )
 
 var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
@@ -35,8 +35,8 @@ var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
 type connection struct {
 	tcp          net.Conn
 	nickname     string
-	showdown     *protocol.BotConnection
-	loginData    protocol.LoginData
+	showdown     *showdown.BotConnection
+	loginData    showdown.LoginData
 	nickObtained bool
 	userObtained bool
 	closing      bool
@@ -47,7 +47,7 @@ func (c *connection) parseIRCLine(tokens []string) {
 	if command, ok := ircCommands[commandName]; ok {
 		command(c, tokens[1:])
 	} else if len(tokens) >= 2 && len(tokens[1]) > 0 && tokens[1][0] == '#' {
-		room := c.showdown.Room(protocol.RoomID(tokens[1][1:]))
+		room := c.showdown.Room(showdown.RoomID(tokens[1][1:]))
 		room.SendCommand(commandName, strings.Join(tokens[2:], ""))
 	} else {
 		c.showdown.SendGlobalCommand(commandName, strings.Join(tokens[1:], " "))
@@ -80,14 +80,14 @@ func (c *connection) needMoreParams(command string) {
 	c.sendNumeric(ErrNeedMoreParams, command, "Not enough parameters")
 }
 
-func (c *connection) runShowdownCommand(command, argument string, room *protocol.Room) {
+func (c *connection) runShowdownCommand(command, argument string, room *showdown.Room) {
 	if callback, ok := showdownCommands[command]; ok {
 		callback(c, argument, room)
 	}
 }
 
 func (c *connection) continueConnection() {
-	showdownConnection, connectionSuccess, err := protocol.ConnectToServer(c.loginData, "showdown", c.runShowdownCommand)
+	showdownConnection, connectionSuccess, err := showdown.ConnectToServer(c.loginData, "showdown", c.runShowdownCommand)
 	if err != nil {
 		c.sendGlobal("NOTICE", "#", err.Error())
 		c.close()
@@ -125,10 +125,10 @@ func unescapeUser(name string) string {
 
 // Some IRC clients expect host for an user during room joining operations. This generates a fake one for their purpose
 func escapeUserWithHost(name string) string {
-	return fmt.Sprintf("%s!%s@showdown", escapeUser(name), protocol.ToID(name))
+	return fmt.Sprintf("%s!%s@showdown", escapeUser(name), showdown.ToID(name))
 }
 
-func escapeRoom(room protocol.RoomID) string {
+func escapeRoom(room showdown.RoomID) string {
 	return "#" + string(room)
 }
 
