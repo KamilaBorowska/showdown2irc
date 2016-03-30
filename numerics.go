@@ -46,7 +46,6 @@ const (
 	ErrUmodeUnknownFlag   = 501
 	ErrUsersDoNotMatch    = 502
 
-	RplNone          = 300
 	RplUserhost      = 302
 	RplIson          = 303
 	RplAway          = 301
@@ -102,16 +101,9 @@ const (
 
 	RplStatsLinkInfo = 211
 	RplStatsCommands = 212
-	RplStatsCLine    = 213
-	RplStatsNLine    = 214
-	RplStatsILine    = 215
-	RplStatsKLine    = 216
-	RplStatsYLine    = 218
 	RplEndOfStats    = 219
-	RplStatsLLine    = 241
 	RplStatsUptime   = 242
 	RplStatsOLine    = 243
-	RplStatsHLine    = 244
 	RplUmodeIs       = 221
 	RplLuserClient   = 251
 	RplLuserOp       = 252
