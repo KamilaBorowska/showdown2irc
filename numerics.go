@@ -46,6 +46,11 @@ const (
 	ErrUmodeUnknownFlag   = 501
 	ErrUsersDoNotMatch    = 502
 
+	RplWelcome       = 1
+	RplYourHost      = 2
+	RplCreated       = 3
+	RplMyInfo        = 4
+	RplBounce        = 5
 	RplUserhost      = 302
 	RplIson          = 303
 	RplAway          = 301

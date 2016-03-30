@@ -8,7 +8,6 @@ import (
 	"log"
 	"net"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -55,7 +54,7 @@ func (c *connection) sendGlobal(parts ...string) {
 func (c *connection) sendNumeric(numeric int, parts ...string) {
 	newParts := make([]string, len(parts)+3)
 	newParts[0] = "showdown"
-	newParts[1] = strconv.Itoa(numeric)
+	newParts[1] = fmt.Sprintf("%03d", numeric)
 	newParts[2] = c.nickname
 	copy(newParts[3:], parts)
 	c.send(newParts...)
@@ -78,9 +77,9 @@ func (c *connection) continueConnection() {
 	select {
 	case <-connectionSuccess:
 		c.sendGlobal("NICK", c.nickname)
-		c.sendGlobal("001", c.nickname, "Welcome to Showdown proxy!")
-		c.sendGlobal("005", c.nickname, "PREFIX=(qraohv)~#&@%+")
-		c.sendGlobal("422", c.nickname, "No MoTD here. Go on.")
+		c.sendNumeric(RplWelcome, "Welcome to Showdown proxy!")
+		c.sendNumeric(RplBounce, "PREFIX=(qraohv)~#&@%+")
+		c.sendNumeric(ErrNoMOTD, "No MoTD here. Go on.")
 	case <-time.After(10 * time.Second):
 		c.sendGlobal("NOTICE", "#", "Authentication did not succeed in 10 seconds")
 		c.close()
