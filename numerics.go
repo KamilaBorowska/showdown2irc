@@ -42,7 +42,7 @@ const (
 	ErrNoPrivileges       = 481
 	ErrChanOpPrivIsNeeded = 482
 	ErrCannotKillServer   = 483
-	ErrNoOperaHost        = 491
+	ErrNoOperHost         = 491
 	ErrUmodeUnknownFlag   = 501
 	ErrUsersDoNotMatch    = 502
 

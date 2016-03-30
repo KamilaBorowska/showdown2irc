@@ -28,6 +28,15 @@ var ircCommands = map[string]func(*connection, []string){
 		}
 		c.userObtained = true
 	},
+	"OPER": func(c *connection, command []string) {
+		// The server doesn't support OPER command, so claim that the current
+		// user host doesn't have O-lines, even if that's not a real issue.
+		if len(command) < 2 {
+			c.needMoreParams("OPER")
+		} else {
+			c.sendNumeric(ErrNoOperHost, "No O-lines for your host")
+		}
+	},
 	"USERHOST": func(c *connection, command []string) {
 		for _, arg := range command {
 			c.sendNumeric(RplUserhost, escapeUserWithHost(arg))

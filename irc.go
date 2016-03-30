@@ -60,6 +60,10 @@ func (c *connection) sendNumeric(numeric int, parts ...string) {
 	c.send(newParts...)
 }
 
+func (c *connection) needMoreParams(command string) {
+	c.sendNumeric(ErrNeedMoreParams, command, "Not enough parameters")
+}
+
 func (c *connection) runShowdownCommand(command, argument string, room *protocol.Room) {
 	if callback, ok := showdownCommands[command]; ok {
 		callback(c, argument, room)
