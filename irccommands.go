@@ -28,7 +28,13 @@ var ircCommands = map[string]func(*connection, []string){
 		// Not implemented, does nothing
 	},
 	"PASS": func(c *connection, command []string) {
-		c.loginData.Password = command[0]
+		if len(command) < 1 {
+			c.needMoreParams("PASS")
+		} else if c.userObtained || c.nickObtained {
+			c.sendNumeric(ErrAlreadyRegistered, "Unauthorized command (already registered)")
+		} else {
+			c.loginData.Password = command[0]
+		}
 	},
 	"NICK": func(c *connection, command []string) {
 		if c.userObtained && !c.nickObtained {
