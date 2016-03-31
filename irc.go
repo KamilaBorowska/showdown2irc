@@ -99,7 +99,10 @@ func (c *connection) continueConnection() {
 		c.sendGlobal("NICK", c.nickname)
 		c.sendNumeric(RplWelcome, "Welcome to Showdown proxy!")
 		c.sendNumeric(RplBounce, "PREFIX=(qraohv)~#&@%+")
-		c.sendNumeric(ErrNoMOTD, "No MoTD here. Go on.")
+		c.sendNumeric(RplMOTDStart, "- showdown Message of the day - ")
+		c.sendNumeric(RplMOTD, "- This server is a proxy server for Pokémon Showdown.")
+		c.sendNumeric(RplMOTD, "- For source code, see https://github.com/xfix/showdown2irc.git")
+		c.sendNumeric(RplEndOfMOTD, "End of MOTD command")
 	case <-time.After(10 * time.Second):
 		c.sendGlobal("NOTICE", "#", "Authentication did not succeed in 10 seconds")
 		c.close()
