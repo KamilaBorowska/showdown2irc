@@ -39,7 +39,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	"": func(c *connection, rawMessage string, room *showdown.Room) {
 		c.sendGlobal("NOTICE", escapeRoom(room.ID), rawMessage)
 	},
-	"init": func(c *connection, rawMessage string, room *showdown.Room) {
+	"users": func(c *connection, rawMessage string, room *showdown.Room) {
 		room.SendCommand("roomdesc", "")
 		id := escapeRoom(room.ID)
 		c.send(c.nickname, "JOIN", id)
