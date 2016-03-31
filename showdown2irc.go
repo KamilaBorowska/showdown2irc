@@ -16,6 +16,9 @@
 
 package main
 
+import "log"
+
 func main() {
+	log.Println("showdown2irc was started")
 	listen()
 }
