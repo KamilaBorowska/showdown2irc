@@ -1,2 +1,15 @@
-languages:
-    Go: true
+---
+engines:
+  fixme:
+    enabled: true
+  golint:
+    enabled: true
+  gofmt:
+    enabled: true
+  govet:
+    enabled: true
+  markdownlint:
+    enabled: true
+ratings:
+    paths:
+    - "**.go"
