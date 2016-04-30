@@ -95,8 +95,8 @@ func findConfiguration(name string) (*configuration, error) {
 	if err != nil {
 		return nil, err
 	}
+	// Crossdomain API doesn't provide server information for main server.
 	if serverConfiguration.Host == "showdown" {
-		// This is a default server configuration (TODO: read it from js/storage.js) instead
 		serverConfiguration.Host = "sim.psim.us"
 		serverConfiguration.Port = 443
 	}
