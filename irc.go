@@ -150,7 +150,7 @@ func toIRC(tokens []string) string {
 	var result bytes.Buffer
 	for i, token := range tokens {
 		if spaceTokenFound {
-			panic(errors.New("Tokens found after a token containing a space"))
+			panic(errors.New("tokens found after a token containing a space"))
 		}
 		if i == 0 {
 			result.WriteByte(':')
