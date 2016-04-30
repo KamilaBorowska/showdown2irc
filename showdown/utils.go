@@ -84,9 +84,9 @@ func findConfiguration(name string) (*configuration, error) {
 	if matches == nil {
 		return nil, new(serverDoesNotExistError)
 	}
-	jsonJsonData := matches[1]
+	jsonJSONData := matches[1]
 	var jsonData string
-	err = json.Unmarshal(jsonJsonData, &jsonData)
+	err = json.Unmarshal(jsonJSONData, &jsonData)
 	if err != nil {
 		return nil, err
 	}
