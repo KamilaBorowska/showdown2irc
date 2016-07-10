@@ -27,7 +27,6 @@ import (
 type htmlConverter struct {
 	*bytes.Buffer
 	*html.Tokenizer
-	block        *bool
 	bold, hidden bool
 }
 
@@ -35,7 +34,6 @@ func htmlToIRC(code string) []string {
 	converter := htmlConverter{
 		Buffer:    new(bytes.Buffer),
 		Tokenizer: html.NewTokenizer(strings.NewReader(code)),
-		block:     new(bool),
 	}
 	converter.parseToken()
 	var result []string
@@ -57,9 +55,7 @@ func (c htmlConverter) parseToken() {
 
 		case html.TextToken:
 			if !c.hidden {
-				*c.block = false
-				text := c.Text()
-				c.Write(text)
+				c.Write(c.Text())
 			}
 
 		case html.EndTagToken, html.ErrorToken:
@@ -149,10 +145,7 @@ func (c htmlConverter) parseStartToken() {
 					case "hidden":
 						c.hidden = true
 					case "block", "inline-block":
-						if !*c.block {
-							block = true
-							*c.block = true
-						}
+						block = true
 					}
 				}
 			}
@@ -166,19 +159,13 @@ func (c htmlConverter) parseStartToken() {
 			c.bold = true
 		}
 	case "p", "td", "center", "div", "ol":
-		if !*c.block {
-			block = true
-			*c.block = true
-		}
+		block = true
 	case "h1", "h2", "h3":
 		if !c.bold {
 			bold = true
 			c.bold = true
 		}
-		if !*c.block {
-			block = true
-			*c.block = true
-		}
+		block = true
 	case "br", "hr":
 		c.printNewline()
 		return
