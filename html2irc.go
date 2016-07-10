@@ -68,6 +68,13 @@ func (c htmlConverter) parseToken() {
 	}
 }
 
+func (c htmlConverter) printNewline() {
+	c.WriteByte('\n')
+	if c.bold {
+		c.WriteByte('\x02')
+	}
+}
+
 func (c htmlConverter) parseStartToken() {
 	// This is a really basic HTML rendering engine for purpose of decoding
 	// raw text (such as output from commands).
@@ -173,20 +180,18 @@ func (c htmlConverter) parseStartToken() {
 			*c.block = true
 		}
 	case "br", "hr":
-		c.WriteByte('\n')
-		if c.bold {
-			c.WriteByte('\x02')
-		}
+		c.printNewline()
 		return
 	case "li":
-		c.WriteString("\n• ")
+		c.printNewline()
+		c.WriteString("• ")
 	case "img", "input":
 		return
 	}
 
 	if block {
-		c.WriteByte('\n')
-		defer c.WriteByte('\n')
+		c.printNewline()
+		defer c.printNewline()
 	}
 	if bold {
 		c.WriteByte('\x02')
