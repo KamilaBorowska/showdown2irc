@@ -41,7 +41,7 @@ func htmlToIRC(code string) []string {
 	var result []string
 	for _, line := range strings.Split(converter.String(), "\n") {
 		trimmedLine := strings.TrimSpace(line)
-		if trimmedLine != "" {
+		if !isEmpty(trimmedLine) {
 			result = append(result, trimmedLine)
 		}
 	}
@@ -80,7 +80,7 @@ func (c htmlConverter) printNewline() {
 func (c htmlConverter) chopNewLines() string {
 	bytes := c.Bytes()
 	i := len(bytes) - 1
-	for i >= 0 && (bytes[i] == '\n' || bytes[i] == '\x02') {
+	for i >= 0 && isNewLineCharacter(bytes[i]) {
 		i--
 	}
 	i++
@@ -201,6 +201,7 @@ func (c htmlConverter) parseStartToken() {
 
 	if block {
 		c.printNewline()
+		*c.preventNewLines = true
 		defer c.printNewline()
 	}
 	if bold {
@@ -214,4 +215,17 @@ func (c htmlConverter) parseStartToken() {
 	}
 
 	c.parseToken()
+}
+
+func isNewLineCharacter(b byte) bool {
+	return b == '\n' || b == '\x02'
+}
+
+func isEmpty(line string) bool {
+	for _, char := range []byte(line) {
+		if !isNewLineCharacter(char) {
+			return false
+		}
+	}
+	return true
 }
