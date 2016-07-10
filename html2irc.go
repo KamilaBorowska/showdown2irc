@@ -27,13 +27,15 @@ import (
 type htmlConverter struct {
 	*bytes.Buffer
 	*html.Tokenizer
-	bold, hidden bool
+	preventNewLines *bool
+	bold, hidden    bool
 }
 
 func htmlToIRC(code string) []string {
 	converter := htmlConverter{
-		Buffer:    new(bytes.Buffer),
-		Tokenizer: html.NewTokenizer(strings.NewReader(code)),
+		Buffer:          new(bytes.Buffer),
+		Tokenizer:       html.NewTokenizer(strings.NewReader(code)),
+		preventNewLines: new(bool),
 	}
 	converter.parseToken()
 	var result []string
@@ -55,6 +57,7 @@ func (c htmlConverter) parseToken() {
 
 		case html.TextToken:
 			if !c.hidden {
+				*c.preventNewLines = false
 				c.Write(c.Text())
 			}
 
@@ -65,10 +68,30 @@ func (c htmlConverter) parseToken() {
 }
 
 func (c htmlConverter) printNewline() {
+	if *c.preventNewLines {
+		return
+	}
 	c.WriteByte('\n')
 	if c.bold {
 		c.WriteByte('\x02')
 	}
+}
+
+func (c htmlConverter) chopNewLines() string {
+	bytes := c.Bytes()
+	i := len(bytes) - 1
+	for i >= 0 && (bytes[i] == '\n' || bytes[i] == '\x02') {
+		i--
+	}
+	i++
+	out := string(bytes[i:])
+	c.Truncate(i)
+	return out
+}
+
+func (c htmlConverter) writeLink(link string) {
+	newLines := c.chopNewLines()
+	c.WriteString(fmt.Sprintf("](%s)%s", link, newLines))
 }
 
 func (c htmlConverter) parseStartToken() {
@@ -186,7 +209,8 @@ func (c htmlConverter) parseStartToken() {
 	}
 	if link != nil {
 		c.WriteByte('[')
-		defer c.WriteString(fmt.Sprintf("](%s)", *link))
+		*c.preventNewLines = true
+		defer c.writeLink(*link)
 	}
 
 	c.parseToken()
