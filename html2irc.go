@@ -69,6 +69,32 @@ func (c htmlConverter) parseToken() {
 }
 
 func (c htmlConverter) parseStartToken() {
+	// This is a really basic HTML rendering engine for purpose of decoding
+	// raw text (such as output from commands).
+	//
+	// In CSS, there are two major display categories, inline and block.
+	// If an element is a block element, it means it takes its own line.
+	// For instance, the following HTML code:
+	//
+	//     <div><div>a</div>b<span>c</span><div>d</div></div>e
+	//
+	// Can be rendered as this:
+	//
+	//     a
+	//     bc
+	//     d
+	//     e
+	//
+	// This converter handles block elements by putting newlines on both
+	// of sides of the element. This has side-effect of putting way too
+	// many new lines which are dealt with by removing empty lines on
+	// output.
+	//
+	// Certain elements such as <b> can be represented using IRC special
+	// formatting characters. They are dealt by preserving a state that
+	// is also used by recursive function calls (in order to prevent
+	// input like <b><b>hi</b></b> from returning \x02\x02hi\x02\x02,
+	// which wouldn't be bolded at all.
 	rawName, hasAttrs := c.TagName()
 	name := string(rawName)
 
