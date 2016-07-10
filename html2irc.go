@@ -201,7 +201,6 @@ func (c htmlConverter) parseStartToken() {
 
 	if block {
 		c.printNewline()
-		*c.preventNewLines = true
 		defer c.printNewline()
 	}
 	if bold {
