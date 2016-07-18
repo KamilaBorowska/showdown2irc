@@ -49,7 +49,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 			buffer.WriteString(escapeUser(user.Name))
 		}
 		if buffer.Len() != 0 {
-			c.sendNumeric(RplNamesReply, id, buffer.String())
+			c.sendNumeric(RplNamesReply, '=', id, buffer.String())
 		}
 		c.sendNumeric(RplEndOfNames, id)
 	},
