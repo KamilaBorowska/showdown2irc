@@ -24,6 +24,8 @@ import (
 	"golang.org/x/net/html"
 )
 
+const boldCharacter = "\x02"
+
 type htmlConverter struct {
 	*bytes.Buffer
 	*html.Tokenizer
@@ -45,7 +47,7 @@ func HTMLToIRC(code string) []string {
 	var result []string
 	for _, line := range strings.Split(converter.String(), "\n") {
 		trimmedLine := strings.Replace(
-			strings.TrimRight(strings.TrimSpace(line), "\x02"), "\x02\x02", "", -1)
+			strings.TrimRight(strings.TrimSpace(line), boldCharacter), boldCharacter + boldCharacter, "", -1)
 
 		if !isEmpty(trimmedLine) {
 			result = append(result, trimmedLine)
@@ -79,7 +81,7 @@ func (c htmlConverter) printNewline() {
 	}
 	c.WriteByte('\n')
 	if c.bold {
-		c.WriteByte('\x02')
+		c.WriteByte(boldCharacter[0])
 	}
 }
 
@@ -206,8 +208,8 @@ func (c htmlConverter) parseStartToken() {
 	}
 
 	if bold {
-		c.WriteByte('\x02')
-		defer c.WriteByte('\x02')
+		c.WriteByte(boldCharacter[0])
+		defer c.WriteByte(boldCharacter[0])
 	}
 	if block {
 		c.printNewline()
@@ -223,7 +225,7 @@ func (c htmlConverter) parseStartToken() {
 }
 
 func isNewLineCharacter(b byte) bool {
-	return b == '\n' || b == '\x02'
+	return b == '\n' || b == boldCharacter[0]
 }
 
 func isEmpty(line string) bool {
