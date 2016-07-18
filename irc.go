@@ -67,7 +67,7 @@ func (c *connection) sendGlobal(parts ...string) {
 	c.send(newParts...)
 }
 
-func (c *connection) sendNumeric(numeric int, parts ...string) {
+func (c *connection) sendNumeric(numeric IRCNumeric, parts ...string) {
 	newParts := make([]string, len(parts)+3)
 	newParts[0] = "showdown"
 	newParts[1] = fmt.Sprintf("%03d", numeric)
