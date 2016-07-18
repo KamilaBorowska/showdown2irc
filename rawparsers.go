@@ -22,6 +22,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/xfix/showdown2irc/html2irc"
 	"github.com/xfix/showdown2irc/showdown"
 )
 
@@ -74,7 +75,7 @@ func parseWhois(c *connection, rawMessage string, room *showdown.Room) bool {
 
 func parseGeneric(c *connection, rawMessage string, room *showdown.Room) bool {
 	// When unrecognized, use a generic parser for raw data
-	for _, part := range htmlToIRC(rawMessage) {
+	for _, part := range html2irc.HTMLToIRC(rawMessage) {
 		c.sendGlobal("NOTICE", escapeRoom(room.ID), part)
 	}
 	return true

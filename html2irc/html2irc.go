@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package main
+package html2irc
 
 import (
 	"bytes"
@@ -31,7 +31,11 @@ type htmlConverter struct {
 	bold, hidden    bool
 }
 
-func htmlToIRC(code string) []string {
+// HTMLToIRC converts HTML code into IRC text.
+//
+// IRC text is different to regular text in that it can use IRC formatting
+// sequences such as bold.
+func HTMLToIRC(code string) []string {
 	converter := htmlConverter{
 		Buffer:          new(bytes.Buffer),
 		Tokenizer:       html.NewTokenizer(strings.NewReader(code)),
