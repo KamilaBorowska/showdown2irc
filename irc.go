@@ -130,6 +130,9 @@ func escapeUserWithHost(name string) string {
 }
 
 func escapeRoom(room showdown.RoomID) string {
+	if room == "" {
+		return "#lobby"
+	}
 	return "#" + string(room)
 }
 
