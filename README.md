@@ -1,5 +1,8 @@
 # showdown2irc
 
+[![Build Status](https://travis-ci.org/xfix/showdown2irc.svg?branch=master)](https://travis-ci.org/xfix/showdown2irc)
+[![Code Climate](https://codeclimate.com/github/xfix/showdown2irc/badges/gpa.svg)](https://codeclimate.com/github/xfix/showdown2irc)
+
 This program lets you talk on Showdown servers (currently only supports
 Showdown main) using an IRC client.
 
