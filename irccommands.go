@@ -71,7 +71,7 @@ var ircCommands = map[string]func(*connection, []string){
 	"PING": func(c *connection, command []string) {
 		args := make([]string, len(command)+2)
 		args[0] = "PONG"
-		args[1] = "showdown"
+		args[1] = serverName
 		copy(args[2:], command)
 		c.sendGlobal(args...)
 	},

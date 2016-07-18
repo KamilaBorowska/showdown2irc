@@ -31,6 +31,8 @@ import (
 	"github.com/xfix/showdown2irc/showdown"
 )
 
+const serverName = "showdown"
+
 var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
 
 type connection struct {
@@ -63,14 +65,14 @@ func (c *connection) send(parts ...string) {
 
 func (c *connection) sendGlobal(parts ...string) {
 	newParts := make([]string, len(parts)+1)
-	newParts[0] = "showdown"
+	newParts[0] = serverName
 	copy(newParts[1:], parts)
 	c.send(newParts...)
 }
 
 func (c *connection) sendNumeric(numeric irc.Numeric, parts ...interface{}) {
 	numericString := fmt.Sprintf(numeric.GetMessage(), parts...)
-	result := fmt.Sprintf(":showdown %03d %s %s\r\n", numeric, c.nickname, numericString)
+	result := fmt.Sprintf(":%s %03d %s %s\r\n", serverName, numeric, c.nickname, numericString)
 	log.Print(result)
 	c.tcp.Write([]byte(result))
 }
@@ -86,7 +88,7 @@ func (c *connection) runShowdownCommand(command, argument string, room *showdown
 }
 
 func (c *connection) continueConnection() {
-	showdownConnection, connectionSuccess, err := showdown.ConnectToServer(c.loginData, "showdown", c.runShowdownCommand)
+	showdownConnection, connectionSuccess, err := showdown.ConnectToServer(c.loginData, serverName, c.runShowdownCommand)
 	if err != nil {
 		c.sendGlobal("NOTICE", "#", err.Error())
 		c.close()
@@ -98,7 +100,7 @@ func (c *connection) continueConnection() {
 		c.sendGlobal("NICK", c.nickname)
 		c.sendNumeric(irc.RplWelcome, "Welcome to Showdown proxy!")
 		c.sendNumeric(irc.RplBounce, "PREFIX=(qraohv)~#&@%+")
-		c.sendNumeric(irc.RplMOTDStart, "showdown")
+		c.sendNumeric(irc.RplMOTDStart, serverName)
 		c.sendNumeric(irc.RplMOTD, "This server is a proxy server for Pokémon Showdown.")
 		c.sendNumeric(irc.RplMOTD, "For source code, see https://github.com/xfix/showdown2irc")
 		c.sendNumeric(irc.RplEndOfMOTD)
@@ -127,7 +129,7 @@ func unescapeUser(name string) string {
 
 // Some IRC clients expect host for an user during room joining operations. This generates a fake one for their purpose
 func escapeUserWithHost(name string) string {
-	return fmt.Sprintf("%s!%s@showdown", escapeUser(name), showdown.ToID(name))
+	return fmt.Sprintf("%s!%s@%s", escapeUser(name), showdown.ToID(name), serverName)
 }
 
 func escapeRoom(room showdown.RoomID) string {
