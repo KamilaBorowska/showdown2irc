@@ -21,6 +21,7 @@ var tests = []struct {
 	{"<span style='display: block'>a</span><span>b</span><span style='display: hidden'>c</span><span>d</span>", []string{"a", "bd"}},
 	{"<span style='display; display:;'>a</span>", []string{"a"}},
 	{"<ul><li>a<li>b<li>c</ul>", []string{"• a", "• b", "• c"}},
+	{"yes<h1>Heading</h1>no", []string{"yes", "\x02Heading", "no"}},
 }
 
 func TestHTMLToIRC(t *testing.T) {
