@@ -43,6 +43,9 @@ var ircCommands = map[string]func(*connection, []string){
 		c.nickObtained = true
 	},
 	"USER": func(c *connection, command []string) {
+		if len(command) < 4 {
+			c.needMoreParams("USER")
+		}
 		c.loginData.Nickname = command[3]
 		c.nickname = escapeUser(command[3])
 		if !c.userObtained && c.nickObtained {
