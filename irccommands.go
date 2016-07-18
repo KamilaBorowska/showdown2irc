@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/xfix/showdown2irc/irc"
 	"github.com/xfix/showdown2irc/showdown"
 )
 
@@ -31,7 +32,7 @@ var ircCommands = map[string]func(*connection, []string){
 		if len(command) < 1 {
 			c.needMoreParams("PASS")
 		} else if c.userObtained || c.nickObtained {
-			c.sendNumeric(ErrAlreadyRegistered)
+			c.sendNumeric(irc.ErrAlreadyRegistered)
 		} else {
 			c.loginData.Password = command[0]
 		}
@@ -59,12 +60,12 @@ var ircCommands = map[string]func(*connection, []string){
 		if len(command) < 2 {
 			c.needMoreParams("OPER")
 		} else {
-			c.sendNumeric(ErrNoOperHost)
+			c.sendNumeric(irc.ErrNoOperHost)
 		}
 	},
 	"USERHOST": func(c *connection, command []string) {
 		for _, arg := range command {
-			c.sendNumeric(RplUserhost, escapeUserWithHost(arg))
+			c.sendNumeric(irc.RplUserhost, escapeUserWithHost(arg))
 		}
 	},
 	"PING": func(c *connection, command []string) {
@@ -96,7 +97,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"MODE": func(c *connection, command []string) {
 		if len(command) == 1 {
-			c.sendNumeric(RplChannelModeIs, command[0], "+ntc", "")
+			c.sendNumeric(irc.RplChannelModeIs, command[0], "+ntc", "")
 		}
 	},
 	"QUIT": func(c *connection, command []string) {

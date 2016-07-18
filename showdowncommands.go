@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/xfix/showdown2irc/irc"
 	"github.com/xfix/showdown2irc/showdown"
 )
 
@@ -38,7 +39,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 		for _, user := range room.UserList {
 			length := buffer.Len()
 			if length > 300 {
-				c.sendNumeric(RplNamesReply, '=', id, buffer.String())
+				c.sendNumeric(irc.RplNamesReply, '=', id, buffer.String())
 				buffer.Reset()
 			} else if length != 0 {
 				buffer.WriteByte(' ')
@@ -49,9 +50,9 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 			buffer.WriteString(escapeUser(user.Name))
 		}
 		if buffer.Len() != 0 {
-			c.sendNumeric(RplNamesReply, '=', id, buffer.String())
+			c.sendNumeric(irc.RplNamesReply, '=', id, buffer.String())
 		}
-		c.sendNumeric(RplEndOfNames, id)
+		c.sendNumeric(irc.RplEndOfNames, id)
 	},
 	"c:": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)

@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"github.com/xfix/showdown2irc/html2irc"
+	"github.com/xfix/showdown2irc/irc"
 	"github.com/xfix/showdown2irc/showdown"
 )
 
@@ -34,7 +35,7 @@ func parseTopic(c *connection, rawMessage string, room *showdown.Room) bool {
 	}
 
 	description := rawMessage[len(beginDescription) : len(rawMessage)-len(endDescription)]
-	c.sendNumeric(RplTopic, escapeRoom(room.ID), html.UnescapeString(description))
+	c.sendNumeric(irc.RplTopic, escapeRoom(room.ID), html.UnescapeString(description))
 	return true
 }
 
@@ -54,7 +55,7 @@ func parseWhois(c *connection, rawMessage string, room *showdown.Room) bool {
 	name := escapeUser(whoisMatch[2])
 	rooms := whoisMatch[3]
 
-	c.sendNumeric(RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "Global rank: "+rank)
+	c.sendNumeric(irc.RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "Global rank: "+rank)
 
 	var output bytes.Buffer
 
@@ -67,9 +68,9 @@ func parseWhois(c *connection, rawMessage string, room *showdown.Room) bool {
 		// the last one. While silly, let's go with that.
 		output.WriteByte(' ')
 	}
-	c.sendNumeric(RplWhoisChannels, name, output.String())
+	c.sendNumeric(irc.RplWhoisChannels, name, output.String())
 
-	c.sendNumeric(RplEndOfWhois, name)
+	c.sendNumeric(irc.RplEndOfWhois, name)
 	return true
 }
 

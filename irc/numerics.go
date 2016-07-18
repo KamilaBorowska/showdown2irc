@@ -14,10 +14,14 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package main
+package irc
 
 // Numeric represents reply codes used by IRC protocol
 type Numeric int
+
+func (n Numeric) GetMessage() string {
+	return numericMessages[n]
+}
 
 const (
 	// ErrNoSuchNick states that nick doesn't exist.
