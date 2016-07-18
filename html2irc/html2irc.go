@@ -44,7 +44,9 @@ func HTMLToIRC(code string) []string {
 	converter.parseToken()
 	var result []string
 	for _, line := range strings.Split(converter.String(), "\n") {
-		trimmedLine := strings.TrimSpace(line)
+		trimmedLine := strings.Replace(
+			strings.TrimRight(strings.TrimSpace(line), "\x02"), "\x02\x02", "", -1)
+
 		if !isEmpty(trimmedLine) {
 			result = append(result, trimmedLine)
 		}
@@ -203,13 +205,13 @@ func (c htmlConverter) parseStartToken() {
 		return
 	}
 
-	if block {
-		c.printNewline()
-		defer c.printNewline()
-	}
 	if bold {
 		c.WriteByte('\x02')
 		defer c.WriteByte('\x02')
+	}
+	if block {
+		c.printNewline()
+		defer c.printNewline()
 	}
 	if link != nil {
 		c.WriteByte('[')
