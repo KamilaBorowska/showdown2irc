@@ -15,6 +15,7 @@ var tests = []struct {
 	{"<a href='what'><div>ever</div></a>", []string{"[ever](what)"}},
 	{"<b><a href='what'><div>ever</div></a></b>", []string{"\x02[ever](what)"}},
 	{"a<br><br>b", []string{"a", "b"}},
+	{"<button value='about:blank'>A button!</button>", []string{"[A button!](about:blank)"}},
 }
 
 func TestHTMLToIRC(t *testing.T) {
