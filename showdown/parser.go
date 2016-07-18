@@ -66,7 +66,9 @@ func (bc *BotConnection) parseMessage(message string) {
 	for {
 		messages := strings.SplitN(message, "\n", 2)
 		currentMessage := messages[0]
-		if currentMessage[0] == '|' {
+		if currentMessage == "" {
+			return
+		} else if currentMessage[0] == '|' {
 			parts := strings.SplitN(currentMessage[1:], "|", 2)
 			command := parts[0]
 			var argument string
