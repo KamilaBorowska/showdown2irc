@@ -19,6 +19,7 @@ var tests = []struct {
 	{"<input type='button' value='yay'>", []string{"yay"}},
 	{"<img src='http://example.com' alt='an alt'>", []string{"an alt"}},
 	{"<span style='display: block'>a</span><span>b</span><span style='display: hidden'>c</span><span>d</span>", []string{"a", "bd"}},
+	{"<span style='display; display:;'>a</span>", []string{"a"}},
 }
 
 func TestHTMLToIRC(t *testing.T) {
