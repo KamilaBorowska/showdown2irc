@@ -84,6 +84,9 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"JOIN": func(c *connection, command []string) {
 		for _, room := range strings.Split(command[0], ",") {
+			if showdown.ToID(room) == "" {
+				room = "lobby"
+			}
 			c.showdown.SendGlobalCommand("join", room)
 		}
 	},
