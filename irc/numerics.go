@@ -19,6 +19,9 @@ package irc
 // Numeric represents reply codes used by IRC protocol
 type Numeric int
 
+// Gets the printf string for a given message.
+//
+// Strings come from RFC 1459 standard.
 func (n Numeric) GetMessage() string {
 	return numericMessages[n]
 }
