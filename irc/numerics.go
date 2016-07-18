@@ -31,10 +31,10 @@ const (
 	ErrNoSuchNick Numeric = 401
 
 	// ErrNoSuchServer states that server doesn't exist.
-	ErrNoSuchServer = 402
+	ErrNoSuchServer Numeric = 402
 
 	// ErrNoSuchChannel states that channel/room doesn't exist.
-	ErrNoSuchChannel = 403
+	ErrNoSuchChannel Numeric = 403
 
 	// ErrCannotSendToChan informs an user about failure to send
 	// a message.
@@ -48,15 +48,15 @@ const (
 	// enabled and user doesn't have enough privileges, the user is
 	// banned, or automatic chat filter prevented the message from being
 	// submitted.
-	ErrCannotSendToChan = 404
+	ErrCannotSendToChan Numeric = 404
 
 	// ErrTooManyChannels states that user joined too many channels.
 	//
 	// There is no channel limitation on Showdown
-	ErrTooManyChannels = 405
+	ErrTooManyChannels Numeric = 405
 
 	// ErrWasNoSuchNick sent by WHOWAS says that the user is unknown.
-	ErrWasNoSuchNick = 406
+	ErrWasNoSuchNick Numeric = 406
 
 	// ErrTooManyTargets says that a given string matched too many
 	// targets.
@@ -71,42 +71,42 @@ const (
 	// be "joining a safe channel using the shortname when there are
 	// than one such channel". I don't know what that means, but this
 	// program doesn't support this.
-	ErrTooManyTargets = 407
+	ErrTooManyTargets Numeric = 407
 
 	// ErrNoOrigin says that PING or PONG lack the originator
 	// parameter.
-	ErrNoOrigin = 409
+	ErrNoOrigin Numeric = 409
 
 	// ErrNoRecipient says that recipient parameter was omitted in a
 	// private message.
-	ErrNoRecipient = 411
+	ErrNoRecipient Numeric = 411
 
 	// ErrNoTextToSend says that there was no text specified to send.
-	ErrNoTextToSend = 412
+	ErrNoTextToSend Numeric = 412
 
 	// ErrNoTopLevel is caused by trying to use wildcard PRIVMSG on a
 	// domain without top level domain part.
-	ErrNoTopLevel = 413
+	ErrNoTopLevel Numeric = 413
 
 	// ErrWildTopLevel is caused by trying to use wildcard PRIVMSG on a
 	// domain for which top level domain part is a wildcard (*).
-	ErrWildTopLevel = 414
+	ErrWildTopLevel Numeric = 414
 
 	// ErrUnknownCommand is caused by unrecognized command.
-	ErrUnknownCommand = 421
+	ErrUnknownCommand Numeric = 421
 
 	// ErrNoMOTD says that MOTD file is missing.
-	ErrNoMOTD = 422
+	ErrNoMOTD Numeric = 422
 
 	// ErrNoAdminInfo says that administrator information is not
 	// available.
-	ErrNoAdminInfo = 423
+	ErrNoAdminInfo Numeric = 423
 
 	// ErrFileError is a generic file error message.
-	ErrFileError = 424
+	ErrFileError Numeric = 424
 
 	// ErrNoNicknameGiven is an error caused by not specifying nicknames.
-	ErrNoNicknameGiven = 431
+	ErrNoNicknameGiven Numeric = 431
 
 	// ErrErroneusNickname is an error caused by having a username
 	// that doesn't follow IRC rules for nicknames.
@@ -116,104 +116,104 @@ const (
 	// usernames), showdown2irc uses it for purposes of marking
 	// usernames that were explicitly rejected by server, such as
 	// usernames starting with "Guest".
-	ErrErroneusNickname = 432
+	ErrErroneusNickname Numeric = 432
 
 	// ErrNicknameInUse says that the nickname is already used.
-	ErrNicknameInUse = 433
+	ErrNicknameInUse Numeric = 433
 
 	// ErrNickCollision informs about nickname collision between
 	// multiple servers.
-	ErrNickCollision = 436
+	ErrNickCollision Numeric = 436
 
 	// ErrUserNotInChannel says that an user is not in a channel.
-	ErrUserNotInChannel = 441
+	ErrUserNotInChannel Numeric = 441
 
 	// ErrNotOnChannel is caused by trying to use channel affecting
 	// command while not on server.
-	ErrNotOnChannel = 442
+	ErrNotOnChannel Numeric = 442
 
 	// ErrUserOnChannel is caused by inviting an user into a room in
 	// which an user is already in.
-	ErrUserOnChannel = 443
+	ErrUserOnChannel Numeric = 443
 
 	// ErrNoLogin is message from SUMMON that the administrator is not
 	// logged in.
-	ErrNoLogin = 444
+	ErrNoLogin Numeric = 444
 
 	// ErrSummonDisabled is a message from SUMMON saying that the
 	// command is disabled.
-	ErrSummonDisabled = 445
+	ErrSummonDisabled Numeric = 445
 
 	// ErrUsersDisabled says that USERS is disabled.
-	ErrUsersDisabled = 446
+	ErrUsersDisabled Numeric = 446
 
 	// ErrNotRegistered says that the user is not logged in.
 	//
 	// This message is caused by trying to use an command before
 	// properly authenticating on a server.
-	ErrNotRegistered = 451
+	ErrNotRegistered Numeric = 451
 
 	// ErrNeedMoreParams is a message saying that a command needs more
 	// parameters.
-	ErrNeedMoreParams = 461
+	ErrNeedMoreParams Numeric = 461
 
 	// ErrAlreadyRegistered is caused by trying to log in when already
 	// logged in.
-	ErrAlreadyRegistered = 462
+	ErrAlreadyRegistered Numeric = 462
 
 	// ErrNoPermForHost is a message saying that the server is not
 	// configured to allow connections from current host.
-	ErrNoPermForHost = 463
+	ErrNoPermForHost Numeric = 463
 
 	// ErrPasswdMismatch says the password for an user is incorrect.
 	//
 	// This can be also triggered by not specifying a password.
-	ErrPasswdMismatch = 464
+	ErrPasswdMismatch Numeric = 464
 
 	// ErrYouAreBannedCreep is caused by trying to connect to a server
 	// form which an user is banned.
 	//
 	// In Showdown terms, this means /globalban.
-	ErrYouAreBannedCreep = 465
+	ErrYouAreBannedCreep Numeric = 465
 
 	// ErrKeySet says that channel key was already set.
 	//
 	// Showdown doesn't support channel keys.
-	ErrKeySet = 467
+	ErrKeySet Numeric = 467
 
 	// ErrChannelIsFull says that channel exceeded its limits.
 	//
 	// There are no user limits on Showdown.
-	ErrChannelIsFull = 471
+	ErrChannelIsFull Numeric = 471
 
 	// ErrUnknownMode says that the server doesn't recognize a mode.
 	//
 	// On Showdown, this is also used for modes that technically are
 	// part of IRC RFC, but aren't possible on Showdown.
-	ErrUnknownMode = 472
+	ErrUnknownMode Numeric = 472
 
 	// ErrInviteOnlyChan says the joined channel is invite only.
 	//
 	// This isn't used on Showdown, as failure to join a channel
 	// because it's invite only looks exactly like failure to enter
 	// a channel because it doesn't exist.
-	ErrInviteOnlyChan = 473
+	ErrInviteOnlyChan Numeric = 473
 
 	// ErrBannedFromChan is caused by trying to join a channel from
 	// which an user is banned.
-	ErrBannedFromChan = 474
+	ErrBannedFromChan Numeric = 474
 
 	// ErrBadChannelKey is caused by specifying wrong channel key.
 	//
 	// There are no channel keys on Showdown.
-	ErrBadChannelKey = 475
+	ErrBadChannelKey Numeric = 475
 
 	// ErrNoPrivileges is shown when command requires to be an IRC
 	// operator.
 	//
 	// As showdown2irc doesn't support IRC operator status, all IRC
 	// operator only commands return this.
-	ErrNoPrivileges = 481
+	ErrNoPrivileges Numeric = 481
 
 	// ErrChanOpPrivIsNeeded is shown when a command that requires
 	// operator privileges is used, and user doesn't have these.
@@ -222,97 +222,97 @@ const (
 	// permissions. For example, while an user may be allowed to mute
 	// users, he may not be allowed to roomban. This is also used
 	// in those cases.
-	ErrChanOpPrivIsNeeded = 482
+	ErrChanOpPrivIsNeeded Numeric = 482
 
 	// ErrCannotKillServer is caused by lack of permissions to run
 	// /kill command.
-	ErrCannotKillServer = 483
+	ErrCannotKillServer Numeric = 483
 
 	// ErrNoOperHost is caused by trying to claim IRC operator status,
 	// despite no permissions to do it.
-	ErrNoOperHost = 491
+	ErrNoOperHost Numeric = 491
 
 	// ErrUmodeUnknownFlag is caused by trying to use an unknown user
 	// mode flag.
-	ErrUmodeUnknownFlag = 501
+	ErrUmodeUnknownFlag Numeric = 501
 
 	// ErrUsersDoNotMatch is caused by trying to change flags of other
 	// users.
-	ErrUsersDoNotMatch = 502
+	ErrUsersDoNotMatch Numeric = 502
 
-	RplWelcome       = 1
-	RplYourHost      = 2
-	RplCreated       = 3
-	RplMyInfo        = 4
-	RplBounce        = 5
-	RplUserhost      = 302
-	RplIson          = 303
-	RplAway          = 301
-	RplUnaway        = 305
-	RplNowAway       = 306
-	RplWhoisUser     = 311
-	RplWhoisServer   = 312
-	RplWhoisOperator = 313
-	RplWhoisIdle     = 317
-	RplEndOfWhois    = 318
-	RplWhoisChannels = 319
-	RplWhowasUser    = 314
-	RplEndOfWhowas   = 369
-	RplListStart     = 321
-	RplList          = 322
-	RplListEnd       = 323
-	RplChannelModeIs = 324
-	RplNoTopic       = 331
-	RplTopic         = 332
-	RplInviting      = 341
-	RplSummoning     = 342
-	RplVersion       = 351
-	RplWhoReply      = 352
-	RplEndOfWho      = 315
-	RplNamesReply    = 353
-	RplEndOfNames    = 366
-	RplLinks         = 364
-	RplEndOfLinks    = 365
-	RplBanList       = 367
-	RplEndOfBanList  = 368
-	RplInfo          = 371
-	RplEndOfInfo     = 374
-	RplMOTDStart     = 375
-	RplMOTD          = 372
-	RplEndOfMOTD     = 376
-	RplYouAreOper    = 381
-	RplRehashing     = 382
-	RplTime          = 391
-	RplUsersStart    = 392
-	RplUsers         = 393
-	RplEndOfUsers    = 394
-	RplNoUsers       = 395
+	RplWelcome       Numeric = 1
+	RplYourHost      Numeric = 2
+	RplCreated       Numeric = 3
+	RplMyInfo        Numeric = 4
+	RplBounce        Numeric = 5
+	RplUserhost      Numeric = 302
+	RplIson          Numeric = 303
+	RplAway          Numeric = 301
+	RplUnaway        Numeric = 305
+	RplNowAway       Numeric = 306
+	RplWhoisUser     Numeric = 311
+	RplWhoisServer   Numeric = 312
+	RplWhoisOperator Numeric = 313
+	RplWhoisIdle     Numeric = 317
+	RplEndOfWhois    Numeric = 318
+	RplWhoisChannels Numeric = 319
+	RplWhowasUser    Numeric = 314
+	RplEndOfWhowas   Numeric = 369
+	RplListStart     Numeric = 321
+	RplList          Numeric = 322
+	RplListEnd       Numeric = 323
+	RplChannelModeIs Numeric = 324
+	RplNoTopic       Numeric = 331
+	RplTopic         Numeric = 332
+	RplInviting      Numeric = 341
+	RplSummoning     Numeric = 342
+	RplVersion       Numeric = 351
+	RplWhoReply      Numeric = 352
+	RplEndOfWho      Numeric = 315
+	RplNamesReply    Numeric = 353
+	RplEndOfNames    Numeric = 366
+	RplLinks         Numeric = 364
+	RplEndOfLinks    Numeric = 365
+	RplBanList       Numeric = 367
+	RplEndOfBanList  Numeric = 368
+	RplInfo          Numeric = 371
+	RplEndOfInfo     Numeric = 374
+	RplMOTDStart     Numeric = 375
+	RplMOTD          Numeric = 372
+	RplEndOfMOTD     Numeric = 376
+	RplYouAreOper    Numeric = 381
+	RplRehashing     Numeric = 382
+	RplTime          Numeric = 391
+	RplUsersStart    Numeric = 392
+	RplUsers         Numeric = 393
+	RplEndOfUsers    Numeric = 394
+	RplNoUsers       Numeric = 395
 
-	RplTraceLink       = 200
-	RplTraceConnecting = 201
-	RplTraceHandshake  = 202
-	RplTraceUnknown    = 203
-	RplTraceOperator   = 204
-	RplTraceUser       = 205
-	RplTraceServer     = 206
-	RplTraceNewType    = 208
-	RplTraceLog        = 261
+	RplTraceLink       Numeric = 200
+	RplTraceConnecting Numeric = 201
+	RplTraceHandshake  Numeric = 202
+	RplTraceUnknown    Numeric = 203
+	RplTraceOperator   Numeric = 204
+	RplTraceUser       Numeric = 205
+	RplTraceServer     Numeric = 206
+	RplTraceNewType    Numeric = 208
+	RplTraceLog        Numeric = 261
 
-	RplStatsLinkInfo = 211
-	RplStatsCommands = 212
-	RplEndOfStats    = 219
-	RplStatsUptime   = 242
-	RplStatsOLine    = 243
-	RplUmodeIs       = 221
-	RplLuserClient   = 251
-	RplLuserOp       = 252
-	RplLuserUnknown  = 253
-	RplLuserChannels = 254
-	RplLuserMe       = 255
-	RplAdminMe       = 256
-	RplAdminLoc1     = 257
-	RplAdminLoc2     = 258
-	RplAdminEmail    = 259
+	RplStatsLinkInfo Numeric = 211
+	RplStatsCommands Numeric = 212
+	RplEndOfStats    Numeric = 219
+	RplStatsUptime   Numeric = 242
+	RplStatsOLine    Numeric = 243
+	RplUmodeIs       Numeric = 221
+	RplLuserClient   Numeric = 251
+	RplLuserOp       Numeric = 252
+	RplLuserUnknown  Numeric = 253
+	RplLuserChannels Numeric = 254
+	RplLuserMe       Numeric = 255
+	RplAdminMe       Numeric = 256
+	RplAdminLoc1     Numeric = 257
+	RplAdminLoc2     Numeric = 258
+	RplAdminEmail    Numeric = 259
 )
 
 var numericMessages = map[Numeric]string{
