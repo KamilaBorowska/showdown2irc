@@ -66,21 +66,20 @@ type configuration struct {
 	Port uint16
 }
 
-func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configuration, err error) {
-	matches := configurationRegex.FindSubmatch(crossDomainOutput)
-	if matches == nil {
-		err = new(serverDoesNotExistError)
-		return
+func findConfiguration(name string) (*configuration, error) {
+	if !strings.Contains(name, ".") {
+		name += ".psim.us"
 	}
-	jsonJSONData := matches[1]
-	var jsonData string
-	err = json.Unmarshal(jsonJSONData, &jsonData)
+	serverConfiguration, err := downloadConfiguration(name)
 	if err != nil {
-		return
+		return nil, err
 	}
-	serverConfiguration = new(configuration)
-	err = json.Unmarshal([]byte(jsonData), serverConfiguration)
-	return
+	// Crossdomain API doesn't provide server information for main server.
+	if serverConfiguration.Host == "showdown" {
+		serverConfiguration.Host = "sim.psim.us"
+		serverConfiguration.Port = 443
+	}
+	return serverConfiguration, nil
 }
 
 func downloadConfiguration(server string) (_ *configuration, err error) {
@@ -97,18 +96,19 @@ func downloadConfiguration(server string) (_ *configuration, err error) {
 	return parseConfiguration(contents)
 }
 
-func findConfiguration(name string) (*configuration, error) {
-	if !strings.Contains(name, ".") {
-		name += ".psim.us"
+func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configuration, err error) {
+	matches := configurationRegex.FindSubmatch(crossDomainOutput)
+	if matches == nil {
+		err = new(serverDoesNotExistError)
+		return
 	}
-	serverConfiguration, err := downloadConfiguration(name)
+	jsonJSONData := matches[1]
+	var jsonData string
+	err = json.Unmarshal(jsonJSONData, &jsonData)
 	if err != nil {
-		return nil, err
+		return
 	}
-	// Crossdomain API doesn't provide server information for main server.
-	if serverConfiguration.Host == "showdown" {
-		serverConfiguration.Host = "sim.psim.us"
-		serverConfiguration.Port = 443
-	}
-	return serverConfiguration, nil
+	serverConfiguration = new(configuration)
+	err = json.Unmarshal([]byte(jsonData), serverConfiguration)
+	return
 }
