@@ -37,7 +37,7 @@ func parseWhois(c *connection, rawMessage string, room *showdown.Room) bool {
 	name := escapeUser(whoisMatch[2])
 	rooms := whoisMatch[3]
 
-	c.sendNumeric(RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "*", "Global rank: "+rank)
+	c.sendNumeric(RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "Global rank: "+rank)
 
 	var output bytes.Buffer
 
@@ -52,7 +52,7 @@ func parseWhois(c *connection, rawMessage string, room *showdown.Room) bool {
 	}
 	c.sendNumeric(RplWhoisChannels, name, output.String())
 
-	c.sendNumeric(RplEndOfWhois, name, "End of /WHOIS list")
+	c.sendNumeric(RplEndOfWhois, name)
 	return true
 }
 

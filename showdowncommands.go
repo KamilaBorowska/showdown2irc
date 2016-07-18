@@ -38,7 +38,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 		for _, user := range room.UserList {
 			length := buffer.Len()
 			if length > 300 {
-				c.sendNumeric(RplNamesReply, "@", id, buffer.String())
+				c.sendNumeric(RplNamesReply, '=', id, buffer.String())
 				buffer.Reset()
 			} else if length != 0 {
 				buffer.WriteByte(' ')
@@ -49,9 +49,9 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 			buffer.WriteString(escapeUser(user.Name))
 		}
 		if buffer.Len() != 0 {
-			c.sendNumeric(RplNamesReply, "@", id, buffer.String())
+			c.sendNumeric(RplNamesReply, id, buffer.String())
 		}
-		c.sendNumeric(RplEndOfNames, id, "End of /NAMES list.")
+		c.sendNumeric(RplEndOfNames, id)
 	},
 	"c:": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)

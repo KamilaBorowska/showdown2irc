@@ -31,7 +31,7 @@ var ircCommands = map[string]func(*connection, []string){
 		if len(command) < 1 {
 			c.needMoreParams("PASS")
 		} else if c.userObtained || c.nickObtained {
-			c.sendNumeric(ErrAlreadyRegistered, "Unauthorized command (already registered)")
+			c.sendNumeric(ErrAlreadyRegistered)
 		} else {
 			c.loginData.Password = command[0]
 		}
@@ -56,7 +56,7 @@ var ircCommands = map[string]func(*connection, []string){
 		if len(command) < 2 {
 			c.needMoreParams("OPER")
 		} else {
-			c.sendNumeric(ErrNoOperHost, "No O-lines for your host")
+			c.sendNumeric(ErrNoOperHost)
 		}
 	},
 	"USERHOST": func(c *connection, command []string) {
@@ -90,7 +90,7 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"MODE": func(c *connection, command []string) {
 		if len(command) == 1 {
-			c.sendNumeric(RplWhoReply, command[0], "+ntc")
+			c.sendNumeric(RplChannelModeIs, command[0], "+ntc", "")
 		}
 	},
 	"QUIT": func(c *connection, command []string) {

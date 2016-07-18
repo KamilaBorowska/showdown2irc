@@ -67,17 +67,15 @@ func (c *connection) sendGlobal(parts ...string) {
 	c.send(newParts...)
 }
 
-func (c *connection) sendNumeric(numeric IRCNumeric, parts ...string) {
-	newParts := make([]string, len(parts)+3)
-	newParts[0] = "showdown"
-	newParts[1] = fmt.Sprintf("%03d", numeric)
-	newParts[2] = c.nickname
-	copy(newParts[3:], parts)
-	c.send(newParts...)
+func (c *connection) sendNumeric(numeric IRCNumeric, parts ...interface{}) {
+	numericString := fmt.Sprintf(numericMessages[numeric], parts...)
+	result := fmt.Sprintf(":showdown %03d %s %s\r\n", numeric, c.nickname, numericString)
+	log.Print(result)
+	c.tcp.Write([]byte(result))
 }
 
 func (c *connection) needMoreParams(command string) {
-	c.sendNumeric(ErrNeedMoreParams, command, "Not enough parameters")
+	c.sendNumeric(ErrNeedMoreParams, command)
 }
 
 func (c *connection) runShowdownCommand(command, argument string, room *showdown.Room) {
@@ -99,10 +97,10 @@ func (c *connection) continueConnection() {
 		c.sendGlobal("NICK", c.nickname)
 		c.sendNumeric(RplWelcome, "Welcome to Showdown proxy!")
 		c.sendNumeric(RplBounce, "PREFIX=(qraohv)~#&@%+")
-		c.sendNumeric(RplMOTDStart, "- showdown Message of the day - ")
-		c.sendNumeric(RplMOTD, "- This server is a proxy server for Pokémon Showdown.")
-		c.sendNumeric(RplMOTD, "- For source code, see https://github.com/xfix/showdown2irc")
-		c.sendNumeric(RplEndOfMOTD, "End of MOTD command")
+		c.sendNumeric(RplMOTDStart, "showdown")
+		c.sendNumeric(RplMOTD, "This server is a proxy server for Pokémon Showdown.")
+		c.sendNumeric(RplMOTD, "For source code, see https://github.com/xfix/showdown2irc")
+		c.sendNumeric(RplEndOfMOTD)
 	case <-time.After(10 * time.Second):
 		c.sendGlobal("NOTICE", "#", "Authentication did not succeed in 10 seconds")
 		c.close()

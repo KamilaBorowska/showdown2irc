@@ -354,6 +354,8 @@ var numericMessages = map[IRCNumeric]string{
 	ErrUmodeUnknownFlag:   ":Unknown MODE flag",
 	ErrUsersDoNotMatch:    ":Cant change mode for other users",
 
+	RplWelcome:       ":%s",
+	RplBounce:        "%s",
 	RplUserhost:      ":%s",
 	RplIson:          ":%s",
 	RplAway:          "%s :%s",
@@ -378,7 +380,7 @@ var numericMessages = map[IRCNumeric]string{
 	RplVersion:       "%s.%s %s :%s",
 	RplWhoReply:      "%s %s %s %s %s %c%s :%d %s",
 	RplEndOfWho:      "%s :End of /WHO list",
-	RplNamesReply:    "%s :%s",
+	RplNamesReply:    "%c %s :%s",
 	RplEndOfNames:    "%s :End of /NAMES list",
 	RplLinks:         "%s %s :%d %s",
 	RplEndOfLinks:    "%s :End of /LINKS list",
