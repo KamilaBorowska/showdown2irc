@@ -67,7 +67,7 @@ func (c *connection) sendGlobal(parts ...string) {
 	c.send(newParts...)
 }
 
-func (c *connection) sendNumeric(numeric IRCNumeric, parts ...interface{}) {
+func (c *connection) sendNumeric(numeric Numeric, parts ...interface{}) {
 	numericString := fmt.Sprintf(numericMessages[numeric], parts...)
 	result := fmt.Sprintf(":showdown %03d %s %s\r\n", numeric, c.nickname, numericString)
 	log.Print(result)

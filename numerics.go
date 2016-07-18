@@ -16,12 +16,12 @@
 
 package main
 
-// IRCNumeric represents reply codes used by IRC protocol
-type IRCNumeric int
+// Numeric represents reply codes used by IRC protocol
+type Numeric int
 
 const (
 	// ErrNoSuchNick states that nick doesn't exist.
-	ErrNoSuchNick IRCNumeric = 401
+	ErrNoSuchNick Numeric = 401
 
 	// ErrNoSuchServer states that server doesn't exist.
 	ErrNoSuchServer = 402
@@ -308,7 +308,7 @@ const (
 	RplAdminEmail    = 259
 )
 
-var numericMessages = map[IRCNumeric]string{
+var numericMessages = map[Numeric]string{
 	ErrNoSuchNick:         "%s :No such nick/channel",
 	ErrNoSuchServer:       "%s :No such server",
 	ErrNoSuchChannel:      "%s :No such channel",
