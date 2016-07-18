@@ -2,6 +2,7 @@ package html2irc
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -23,6 +24,7 @@ var tests = []struct {
 	{"<ul><li>a<li>b<li>c</ul>", []string{"• a", "• b", "• c"}},
 	{"yes<h1>Heading</h1>no", []string{"yes", "\x02Heading", "no"}},
 	{"", nil},
+	{strings.Repeat("<div>", 10000), nil},
 }
 
 func TestHTMLToIRC(t *testing.T) {
