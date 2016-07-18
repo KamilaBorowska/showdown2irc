@@ -26,7 +26,7 @@ const (
 	// ErrNoSuchServer states that server doesn't exist.
 	ErrNoSuchServer = 402
 
-	// ErrNoSuchServer states that channel/room doesn't exist.
+	// ErrNoSuchChannel states that channel/room doesn't exist.
 	ErrNoSuchChannel = 403
 
 	// ErrCannotSendToChan informs an user about failure to send
