@@ -97,7 +97,7 @@ func downloadConfiguration(server string) (_ *configuration, err error) {
 }
 
 func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configuration, err error) {
-	matches := configurationRegex.FindSubmatch(crossDomainOutput)
+	matches := configurationRegexp.FindSubmatch(crossDomainOutput)
 	if matches == nil {
 		err = new(serverDoesNotExistError)
 		return
