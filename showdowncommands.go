@@ -19,21 +19,12 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"html"
-	"regexp"
 	"strings"
 
 	"github.com/xfix/showdown2irc/showdown"
 )
 
 var rankMap = map[rune]byte{'~': 'q', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
-
-var whoisRegexp = regexp.MustCompile(
-	`<div class="infobox"><strong class="username">` +
-		`<small style="display:none">(.)</small>([^<]+)</strong> ` +
-		`<br />.*Rooms: (.*)</div>`)
-
-var roomRegexp = regexp.MustCompile(`([^\w\s]?)<a href="/([^"]+)">`)
 
 var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	"": func(c *connection, rawMessage string, room *showdown.Room) {
@@ -90,40 +81,14 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 		}
 	},
 	"raw": func(c *connection, rawMessage string, room *showdown.Room) {
-		const beginDescription = `<div class="infobox">The room description is: `
-		const endDescription = `</div>`
-		if strings.HasPrefix(rawMessage, beginDescription) && strings.HasSuffix(rawMessage, endDescription) {
-			description := rawMessage[len(beginDescription) : len(rawMessage)-len(endDescription)]
-			c.sendNumeric(RplTopic, escapeRoom(room.ID), html.UnescapeString(description))
-			return
-		}
-		if result := whoisRegexp.FindStringSubmatch(rawMessage); result != nil {
-			rank := result[1]
-			name := escapeUser(result[2])
-			rooms := result[3]
-
-			c.sendNumeric(RplWhoisUser, name, string(showdown.ToID(name)), "showdown", "*", "Global rank: "+rank)
-
-			var result bytes.Buffer
-
-			for _, room := range roomRegexp.FindAllStringSubmatch(rooms, -1) {
-				rank := room[1]
-				roomName := showdown.RoomID(room[2])
-				result.WriteString(rank)
-				result.WriteString(escapeRoom(roomName))
-				// The IRC standard says that the space is after each entry, even
-				// the last one. While silly, let's go with that.
-				result.WriteByte(' ')
+		// This works by trying to use each parser on a raw result, hoping
+		// that one will match a pattern. This is done, because some raw
+		// outputs have to be parsed it specific way in order to better
+		// match IRC commands.
+		for _, parser := range rawParsers {
+			if parser(c, rawMessage, room) {
+				return
 			}
-			c.sendNumeric(RplWhoisChannels, name, result.String())
-
-			c.sendNumeric(RplEndOfWhois, name, "End of /WHOIS list")
-			return
-		}
-
-		// When unrecognized, use a generic parser for raw data
-		for _, part := range htmlToIRC(rawMessage) {
-			c.sendGlobal("NOTICE", escapeRoom(room.ID), part)
 		}
 	},
 }
