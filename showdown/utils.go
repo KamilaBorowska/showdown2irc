@@ -59,7 +59,7 @@ func (serverDoesNotExistError) Error() string {
 	return "Server does not exist"
 }
 
-var configurationRegex = regexp.MustCompile(`(?m)^var config = (.*);$`)
+var configurationRegexp = regexp.MustCompile(`(?m)^var config = (.*);$`)
 
 type configuration struct {
 	Host string
