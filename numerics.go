@@ -16,53 +16,222 @@
 
 package main
 
+// IRCNumeric represents reply codes used by IRC protocol
 type IRCNumeric int
 
 const (
-	ErrNoSuchNick         IRCNumeric = 401
-	ErrNoSuchServer                  = 402
-	ErrNoSuchChannel                 = 403
-	ErrCannotSendToChan              = 404
-	ErrTooManyChannels               = 405
-	ErrWasNoSuchNick                 = 406
-	ErrTooManyTargets                = 407
-	ErrNoOrigin                      = 409
-	ErrNoRecipient                   = 411
-	ErrNoTextToSend                  = 412
-	ErrNoTopLevel                    = 413
-	ErrWildTopLevel                  = 414
-	ErrUnknownCommand                = 421
-	ErrNoMOTD                        = 422
-	ErrNoAdminInfo                   = 423
-	ErrFileError                     = 424
-	ErrNoNicknameGiven               = 431
-	ErrErroneusNickname              = 432
-	ErrNicknameInUse                 = 433
-	ErrNickCollision                 = 436
-	ErrUserNotInChannel              = 441
-	ErrNotOnChannel                  = 442
-	ErrUserOnChannel                 = 443
-	ErrNoLogin                       = 444
-	ErrSummonDisabled                = 445
-	ErrUsersDisabled                 = 446
-	ErrNotRegistered                 = 451
-	ErrNeedMoreParams                = 461
-	ErrAlreadyRegistered             = 462
-	ErrNoPermForHost                 = 463
-	ErrPasswdMismatch                = 464
-	ErrYouAreBannedCreep             = 465
-	ErrKeySet                        = 467
-	ErrChannelIsFull                 = 471
-	ErrUnknownMode                   = 472
-	ErrInviteOnlyChan                = 473
-	ErrBannedFromChan                = 474
-	ErrBadChannelKey                 = 475
-	ErrNoPrivileges                  = 481
-	ErrChanOpPrivIsNeeded            = 482
-	ErrCannotKillServer              = 483
-	ErrNoOperHost                    = 491
-	ErrUmodeUnknownFlag              = 501
-	ErrUsersDoNotMatch               = 502
+	// ErrNoSuchNick states that nick doesn't exist.
+	ErrNoSuchNick IRCNumeric = 401
+
+	// ErrNoSuchServer states that server doesn't exist.
+	ErrNoSuchServer = 402
+
+	// ErrNoSuchServer states that channel/room doesn't exist.
+	ErrNoSuchChannel = 403
+
+	// ErrCannotSendToChan informs an user about failure to send
+	// a message.
+	//
+	// There are many situations when this can happen. In IRC, the
+	// message is sent when the user is banned, channel has mode +n and
+	// user is not in a channel, channel is moderated (+m) and user is
+	// not a voice (+v).
+	//
+	// On Showdown however, this can happen when moderated chat is
+	// enabled and user doesn't have enough privileges, the user is
+	// banned, or automatic chat filter prevented the message from being
+	// submitted.
+	ErrCannotSendToChan = 404
+
+	// ErrTooManyChannels states that user joined too many channels.
+	//
+	// There is no channel limitation on Showdown
+	ErrTooManyChannels = 405
+
+	// ErrWasNoSuchNick sent by WHOWAS says that the user is unknown.
+	ErrWasNoSuchNick = 406
+
+	// ErrTooManyTargets says that a given string matched too many
+	// targets.
+	//
+	// Too many targets depends on a particular command. Operators
+	// are allowed to use wildcards and host masks as an argument of
+	// PRIVMSG. This isn't a concern for showdown2irc, because this
+	// program doesn't support existence of operator status.
+	//
+	// JOIN command is allowed to return ErrTooManyTargets when in a
+	// specific situation. The specification calls this situation to
+	// be "joining a safe channel using the shortname when there are
+	// than one such channel". I don't know what that means, but this
+	// program doesn't support this.
+	ErrTooManyTargets = 407
+
+	// ErrNoOrigin says that PING or PONG lack the originator
+	// parameter.
+	ErrNoOrigin = 409
+
+	// ErrNoRecipient says that recipient parameter was omitted in a
+	// private message.
+	ErrNoRecipient = 411
+
+	// ErrNoTextToSend says that there was no text specified to send.
+	ErrNoTextToSend = 412
+
+	// ErrNoTopLevel is caused by trying to use wildcard PRIVMSG on a
+	// domain without top level domain part.
+	ErrNoTopLevel = 413
+
+	// ErrWildTopLevel is caused by trying to use wildcard PRIVMSG on a
+	// domain for which top level domain part is a wildcard (*).
+	ErrWildTopLevel = 414
+
+	// ErrUnknownCommand is caused by unrecognized command.
+	ErrUnknownCommand = 421
+
+	// ErrNoMOTD says that MOTD file is missing.
+	ErrNoMOTD = 422
+
+	// ErrNoAdminInfo says that administrator information is not
+	// available.
+	ErrNoAdminInfo = 423
+
+	// ErrFileError is a generic file error message.
+	ErrFileError = 424
+
+	// ErrNoNicknameGiven is an error caused by not specifying nicknames.
+	ErrNoNicknameGiven = 431
+
+	// ErrErroneusNickname is an error caused by having a username
+	// that doesn't follow IRC rules for nicknames.
+	//
+	// Because that's the only nickname that is about invalid usernames
+	// (other than ErrNoNicknameGiven which is explicitly about empty
+	// usernames), showdown2irc uses it for purposes of marking
+	// usernames that were explicitly rejected by server, such as
+	// usernames starting with "Guest".
+	ErrErroneusNickname = 432
+
+	// ErrNicknameInUse says that the nickname is already used.
+	ErrNicknameInUse = 433
+
+	// ErrNickCollision informs about nickname collision between
+	// multiple servers.
+	ErrNickCollision = 436
+
+	// ErrUserNotInChannel says that an user is not in a channel.
+	ErrUserNotInChannel = 441
+
+	// ErrNotOnChannel is caused by trying to use channel affecting
+	// command while not on server.
+	ErrNotOnChannel = 442
+
+	// ErrUserOnChannel is caused by inviting an user into a room in
+	// which an user is already in.
+	ErrUserOnChannel = 443
+
+	// ErrNoLogin is message from SUMMON that the administrator is not
+	// logged in.
+	ErrNoLogin = 444
+
+	// ErrSummonDisabled is a message from SUMMON saying that the
+	// command is disabled.
+	ErrSummonDisabled = 445
+
+	// ErrUsersDisabled says that USERS is disabled.
+	ErrUsersDisabled = 446
+
+	// ErrNotRegistered says that the user is not logged in.
+	//
+	// This message is caused by trying to use an command before
+	// properly authenticating on a server.
+	ErrNotRegistered = 451
+
+	// ErrNeedMoreParams is a message saying that a command needs more
+	// parameters.
+	ErrNeedMoreParams = 461
+
+	// ErrAlreadyRegistered is caused by trying to log in when already
+	// logged in.
+	ErrAlreadyRegistered = 462
+
+	// ErrNoPermForHost is a message saying that the server is not
+	// configured to allow connections from current host.
+	ErrNoPermForHost = 463
+
+	// ErrPasswdMismatch says the password for an user is incorrect.
+	//
+	// This can be also triggered by not specifying a password.
+	ErrPasswdMismatch = 464
+
+	// ErrYouAreBannedCreep is caused by trying to connect to a server
+	// form which an user is banned.
+	//
+	// In Showdown terms, this means /globalban.
+	ErrYouAreBannedCreep = 465
+
+	// ErrKeySet says that channel key was already set.
+	//
+	// Showdown doesn't support channel keys.
+	ErrKeySet = 467
+
+	// ErrChannelIsFull says that channel exceeded its limits.
+	//
+	// There are no user limits on Showdown.
+	ErrChannelIsFull = 471
+
+	// ErrUnknownMode says that the server doesn't recognize a mode.
+	//
+	// On Showdown, this is also used for modes that technically are
+	// part of IRC RFC, but aren't possible on Showdown.
+	ErrUnknownMode = 472
+
+	// ErrInviteOnlyChan says the joined channel is invite only.
+	//
+	// This isn't used on Showdown, as failure to join a channel
+	// because it's invite only looks exactly like failure to enter
+	// a channel because it doesn't exist.
+	ErrInviteOnlyChan = 473
+
+	// ErrBannedFromChan is caused by trying to join a channel from
+	// which an user is banned.
+	ErrBannedFromChan = 474
+
+	// ErrBadChannelKey is caused by specifying wrong channel key.
+	//
+	// There are no channel keys on Showdown.
+	ErrBadChannelKey = 475
+
+	// ErrNoPrivileges is shown when command requires to be an IRC
+	// operator.
+	//
+	// As showdown2irc doesn't support IRC operator status, all IRC
+	// operator only commands return this.
+	ErrNoPrivileges = 481
+
+	// ErrChanOpPrivIsNeeded is shown when a command that requires
+	// operator privileges is used, and user doesn't have these.
+	//
+	// Showdown has different privileges levels with different
+	// permissions. For example, while an user may be allowed to mute
+	// users, he may not be allowed to roomban. This is also used
+	// in those cases.
+	ErrChanOpPrivIsNeeded = 482
+
+	// ErrCannotKillServer is caused by lack of permissions to run
+	// /kill command.
+	ErrCannotKillServer = 483
+
+	// ErrNoOperHost is caused by trying to claim IRC operator status,
+	// despite no permissions to do it.
+	ErrNoOperHost = 491
+
+	// ErrUmodeUnknownFlag is caused by trying to use an unknown user
+	// mode flag.
+	ErrUmodeUnknownFlag = 501
+
+	// ErrUsersDoNotMatch is caused by trying to change flags of other
+	// users.
+	ErrUsersDoNotMatch = 502
 
 	RplWelcome       = 1
 	RplYourHost      = 2
