@@ -66,32 +66,42 @@ type configuration struct {
 	Port uint16
 }
 
-func findConfiguration(name string) (*configuration, error) {
-	if !strings.Contains(name, ".") {
-		name += ".psim.us"
-	}
-	escapedName := url.QueryEscape(name)
-	res, err := http.Get("https://play.pokemonshowdown.com/crossdomain.php?host=" + escapedName)
-	if err != nil {
-		return nil, err
-	}
-	contents, err := ioutil.ReadAll(res.Body)
-	res.Body.Close()
-	if err != nil {
-		return nil, err
-	}
-	matches := configurationRegex.FindSubmatch(contents)
+func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configuration, err error) {
+	matches := configurationRegex.FindSubmatch(crossDomainOutput)
 	if matches == nil {
-		return nil, new(serverDoesNotExistError)
+		err = new(serverDoesNotExistError)
+		return
 	}
 	jsonJSONData := matches[1]
 	var jsonData string
 	err = json.Unmarshal(jsonJSONData, &jsonData)
 	if err != nil {
-		return nil, err
+		return
 	}
-	var serverConfiguration configuration
-	err = json.Unmarshal([]byte(jsonData), &serverConfiguration)
+	serverConfiguration = new(configuration)
+	err = json.Unmarshal([]byte(jsonData), serverConfiguration)
+	return
+}
+
+func downloadConfiguration(server string) (_ *configuration, err error) {
+	escapedName := url.QueryEscape(server)
+	res, err := http.Get("https://play.pokemonshowdown.com/crossdomain.php?host=" + escapedName)
+	if err != nil {
+		return
+	}
+	contents, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
+	if err != nil {
+		return
+	}
+	return parseConfiguration(contents)
+}
+
+func findConfiguration(name string) (*configuration, error) {
+	if !strings.Contains(name, ".") {
+		name += ".psim.us"
+	}
+	serverConfiguration, err := downloadConfiguration(name)
 	if err != nil {
 		return nil, err
 	}
@@ -100,5 +110,5 @@ func findConfiguration(name string) (*configuration, error) {
 		serverConfiguration.Host = "sim.psim.us"
 		serverConfiguration.Port = 443
 	}
-	return &serverConfiguration, nil
+	return serverConfiguration, nil
 }
