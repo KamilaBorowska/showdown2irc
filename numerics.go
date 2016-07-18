@@ -254,7 +254,7 @@ const (
 	RplListStart     = 321
 	RplList          = 322
 	RplListEnd       = 323
-	RplChannelModes  = 324
+	RplChannelModeIs = 324
 	RplNoTopic       = 331
 	RplTopic         = 332
 	RplInviting      = 341
@@ -275,7 +275,7 @@ const (
 	RplEndOfMOTD     = 376
 	RplYouAreOper    = 381
 	RplRehashing     = 382
-	RplTiem          = 391
+	RplTime          = 391
 	RplUsersStart    = 392
 	RplUsers         = 393
 	RplEndOfUsers    = 394
@@ -307,3 +307,93 @@ const (
 	RplAdminLoc2     = 258
 	RplAdminEmail    = 259
 )
+
+var numericMessages = map[IRCNumeric]string{
+	ErrNoSuchNick:         "%s :No such nick/channel",
+	ErrNoSuchServer:       "%s :No such server",
+	ErrNoSuchChannel:      "%s :No such channel",
+	ErrCannotSendToChan:   "%s :Cannot send to channel",
+	ErrTooManyChannels:    "%s :You have joined too many channels",
+	ErrWasNoSuchNick:      "%s :There was no such nickname",
+	ErrTooManyTargets:     "%s :Duplicate recipients. No message delivered",
+	ErrNoOrigin:           ":No origin specified",
+	ErrNoRecipient:        ":No recipient given (%s)",
+	ErrNoTextToSend:       ":No text to send",
+	ErrNoTopLevel:         "%s :No toplevel domain specified",
+	ErrWildTopLevel:       "%s :Wildcard in toplevel domain",
+	ErrUnknownCommand:     "%s :Unknown command",
+	ErrNoMOTD:             ":MOTD File is missing",
+	ErrNoAdminInfo:        "%s :No administrative info available",
+	ErrFileError:          ":File error doing %s on %s",
+	ErrNoNicknameGiven:    ":No nickname given",
+	ErrErroneusNickname:   "%s :Erroneus nickname",
+	ErrNicknameInUse:      "%s :Nickname is already in use",
+	ErrNickCollision:      "%s :Nickname collision KILL",
+	ErrUserNotInChannel:   "%s %s :They aren't on that channel",
+	ErrNotOnChannel:       "%s :You're not on that channel",
+	ErrUserOnChannel:      "%s %s :is already on channel",
+	ErrNoLogin:            "%s :User not logged in",
+	ErrSummonDisabled:     ":SUMMON has been disabled",
+	ErrUsersDisabled:      ":USERS has been disabled",
+	ErrNotRegistered:      ":You have not registered",
+	ErrNeedMoreParams:     "%s :Not enough parameters",
+	ErrAlreadyRegistered:  ":You may not reregister",
+	ErrNoPermForHost:      ":Your host isn't among the privileged",
+	ErrPasswdMismatch:     ":Password incorrect",
+	ErrYouAreBannedCreep:  ":You are banned from this server",
+	ErrKeySet:             "%s :Channel key already set",
+	ErrChannelIsFull:      "%s :Cannot join channel (+l)",
+	ErrUnknownMode:        "%s :is unknown mode char to me",
+	ErrInviteOnlyChan:     "%s :Cannot join channel (+i)",
+	ErrBannedFromChan:     "%s :Cannot join channel (+b)",
+	ErrBadChannelKey:      "%s :Cannot join channel (+k)",
+	ErrNoPrivileges:       ":Permission Denied- You're not an IRC operator",
+	ErrChanOpPrivIsNeeded: "%s :You're not channel operator",
+	ErrCannotKillServer:   ":You cant kill a server!",
+	ErrNoOperHost:         ":No O-lines for your host",
+	ErrUmodeUnknownFlag:   ":Unknown MODE flag",
+	ErrUsersDoNotMatch:    ":Cant change mode for other users",
+
+	RplUserhost:      ":%s",
+	RplIson:          ":%s",
+	RplAway:          "%s :%s",
+	RplUnaway:        ":You are no longer marked as being away",
+	RplNowAway:       ":You have been marked as being away",
+	RplWhoisUser:     "%s %s %s * :%s",
+	RplWhoisServer:   "%s %s :%s",
+	RplWhoisOperator: "%s :is an IRC operator",
+	RplWhoisIdle:     "%s %d :seconds idle",
+	RplEndOfWhois:    "%s :End of /WHOIS list",
+	RplWhoisChannels: "%s: %s",
+	RplWhowasUser:    "%s %s %s * :%s",
+	RplEndOfWhowas:   "%s :End of WHOWAS",
+	RplListStart:     "Channel :Users  Name",
+	RplList:          "%s %d :%s",
+	RplListEnd:       ":End of /LIST",
+	RplChannelModeIs: "%s %s %s",
+	RplNoTopic:       "%s: No topic is set",
+	RplTopic:         "%s: %s",
+	RplInviting:      "%s %s",
+	RplSummoning:     "%s :Summoning user to IRC",
+	RplVersion:       "%s.%s %s :%s",
+	RplWhoReply:      "%s %s %s %s %s %c%s :%d %s",
+	RplEndOfWho:      "%s :End of /WHO list",
+	RplNamesReply:    "%s :%s",
+	RplEndOfNames:    "%s :End of /NAMES list",
+	RplLinks:         "%s %s :%d %s",
+	RplEndOfLinks:    "%s :End of /LINKS list",
+	RplBanList:       "%s %s",
+	RplEndOfBanList:  "%s :End of channel ban list",
+	RplInfo:          ":%s",
+	RplEndOfInfo:     ":End of /INFO list",
+	RplMOTDStart:     ":- %s Message of the day - ",
+	RplMOTD:          ":- %s",
+	RplEndOfMOTD:     ":End of /MOTD command",
+	RplYouAreOper:    ":You are now an IRC operator",
+	RplRehashing:     "%s :Rehashing",
+	RplTime:          "%s :%s",
+	RplUsersStart:    ":UserID   Terminal  Host",
+	RplUsers:         ":%-8s %-9s %-8s",
+	RplEndOfUsers:    ":End of users",
+	RplNoUsers:       ":Nobody logged in",
+}
