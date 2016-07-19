@@ -76,11 +76,12 @@ var ircCommands = map[string]func(*connection, []string){
 		c.sendGlobal(args...)
 	},
 	"PRIVMSG": func(c *connection, command []string) {
+		message := unescapeUser(command[1])
 		if command[0][0] == '#' {
 			room := c.showdown.Room(showdown.RoomID(command[0][1:]))
-			room.Reply(unescapeUser(command[1]))
+			room.Reply(message)
 		} else if command[1] != "NickServ" {
-			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s", command[0], command[1]))
+			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s", command[0], message))
 		}
 	},
 	"JOIN": func(c *connection, command []string) {
