@@ -77,11 +77,26 @@ var ircCommands = map[string]func(*connection, []string){
 	},
 	"PRIVMSG": func(c *connection, command []string) {
 		message := unescapeUser(command[1])
+		const actionPrefix = "\x01ACTION "
+		const actionSuffix = "\x01"
+		var roomMethod func(*showdown.Room, string)
+		pmCommand := ""
+		if strings.HasPrefix(message, actionPrefix) && strings.HasSuffix(message, actionSuffix) {
+			roomMethod = func(room *showdown.Room, message string) {
+				room.SendCommand("me", message)
+			}
+			message = message[len(actionPrefix) : len(message)-len(actionSuffix)]
+			pmCommand = "/me "
+		} else {
+			roomMethod = func(room *showdown.Room, message string) {
+				room.Reply(message)
+			}
+		}
 		if command[0][0] == '#' {
 			room := c.showdown.Room(showdown.RoomID(command[0][1:]))
-			room.Reply(message)
+			roomMethod(room, message)
 		} else if command[1] != "NickServ" {
-			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s", command[0], message))
+			c.showdown.SendGlobalCommand("pm", fmt.Sprintf("%s,%s%s", command[0], pmCommand, message))
 		}
 	},
 	"JOIN": func(c *connection, command []string) {
