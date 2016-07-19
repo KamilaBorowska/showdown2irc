@@ -47,7 +47,7 @@ func HTMLToIRC(code string) []string {
 	var result []string
 	for _, line := range strings.Split(converter.String(), "\n") {
 		trimmedLine := strings.Replace(
-			strings.TrimRight(strings.TrimSpace(line), boldCharacter), boldCharacter + boldCharacter, "", -1)
+			strings.TrimRight(strings.TrimSpace(line), boldCharacter), boldCharacter+boldCharacter, "", -1)
 
 		if !isEmpty(trimmedLine) {
 			result = append(result, trimmedLine)
