@@ -31,7 +31,7 @@ func TestHTMLToIRC(t *testing.T) {
 	for _, test := range tests {
 		out := HTMLToIRC(test.in)
 		if !reflect.DeepEqual(out, test.out) {
-			t.Errorf("HTMLToIRC(%q) => %q, want %q", test.in, out, test.out)
+			t.Errorf("HTMLToIRC(%#q) => %#q, want %#q", test.in, out, test.out)
 		}
 	}
 }

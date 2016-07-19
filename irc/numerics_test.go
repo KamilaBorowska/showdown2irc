@@ -7,6 +7,6 @@ func TestGetMessage(t *testing.T) {
 	message := input.GetMessage()
 	expected := "%s :No such server"
 	if message != expected {
-		t.Errorf("%q.GetMessage() => %q, want %q", input, message, expected)
+		t.Errorf("%#q.GetMessage() => %#q, want %#q", input, message, expected)
 	}
 }

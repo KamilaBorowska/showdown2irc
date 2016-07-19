@@ -23,6 +23,6 @@ func TestToID(t *testing.T) {
 	result := ToID(message)
 	expect := UserID("thissacompletelyregulart3st1ngnick")
 	if result != expect {
-		t.Errorf("ToId(%q) = %+v, want %+v", message, result, expect)
+		t.Errorf("ToId(%#q) = %#q, want %#q", message, result, expect)
 	}
 }
