@@ -40,13 +40,6 @@ function upperFirst(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-function pad(str, length) {
-	while (str.length < length) {
-		str += ' '
-	}
-	return str
-}
-
 function J(obj) {
 	if (typeof obj !== 'object') {
 		return JSON.stringify(obj)
@@ -142,10 +135,13 @@ function parseMoves(moves) {
 
 function parseAbilities(abilities) {
 	let output = header
-	output += "var abilityDescriptions = map[showdown.UserID]string{\n"
-	const maxLength = Math.max(...abilities.map(({name}) => name.length))
+	output += "var abilities = map[showdown.UserID]*Ability{\n"
 	for (const {name, shortDesc} of abilities) {
-		output += `\t${pad(J(name) + ':', maxLength + 3)} ${J(shortDesc)},\n`
+		output += `\t${J(toId(name))}: {
+\t\tName:        ${J(name)},
+\t\tDescription: ${J(shortDesc)},
+\t},
+`
 	}
 	output += "}\n"
 	return output

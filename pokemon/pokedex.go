@@ -76,6 +76,11 @@ const (
 	Status
 )
 
+type Ability struct {
+	Name        string
+	Description string
+}
+
 func GetPokemon(name showdown.UserID) *Pokemon {
 	return pokemon[name]
 }
@@ -84,6 +89,6 @@ func GetMove(move showdown.UserID) *Move {
 	return moves[move]
 }
 
-func GetAbilityDescription(ability showdown.UserID) string {
-	return abilityDescriptions[ability]
+func GetAbility(ability showdown.UserID) *Ability {
+	return abilities[ability]
 }
