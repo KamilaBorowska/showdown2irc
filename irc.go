@@ -37,7 +37,7 @@ const serverName = "showdown"
 var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
 
 type connection struct {
-	tcp          io.ReadWriteCloser
+	tcp          io.WriteCloser
 	nickname     string
 	showdown     *showdown.BotConnection
 	loginData    showdown.LoginData
