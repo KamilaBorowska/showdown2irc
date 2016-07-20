@@ -16,6 +16,8 @@
 
 package pokemon
 
+import "github.com/xfix/showdown2irc/showdown"
+
 //go:generate node create_definitions
 
 type Pokemon struct {
@@ -74,13 +76,13 @@ const (
 )
 
 func GetPokemon(name showdown.UserID) *Pokemon {
-	return pokedex[name]
+	return pokemon[name]
 }
 
 func GetMove(move showdown.UserID) *Move {
 	return moves[move]
 }
 
-func GetAbilityDescription(ability showdown.UserId) string {
-	return abilities[ability]
+func GetAbilityDescription(ability showdown.UserID) string {
+	return abilityDescriptions[ability]
 }
