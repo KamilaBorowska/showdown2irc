@@ -23,6 +23,7 @@ import "github.com/xfix/showdown2irc/showdown"
 var moves = map[showdown.UserID]*Move{
 	"absorb": {
 		Name:           "Absorb",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      20,
 		Accuracy:       100,
@@ -31,6 +32,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"acid": {
 		Name:           "Acid",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -39,12 +41,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"acidarmor": {
 		Name:           "Acid Armor",
+		Type:           Poison,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Defense by 2.",
 	},
 	"acidspray": {
 		Name:           "Acid Spray",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -53,6 +57,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"acrobatics": {
 		Name:           "Acrobatics",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      55,
 		Accuracy:       100,
@@ -61,12 +66,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"acupressure": {
 		Name:           "Acupressure",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises a random stat of the user or an ally by 2.",
 	},
 	"aerialace": {
 		Name:           "Aerial Ace",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      60,
 		PP:             20,
@@ -74,6 +81,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aeroblast": {
 		Name:           "Aeroblast",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       95,
@@ -82,18 +90,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"afteryou": {
 		Name:           "After You",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "The target makes its move right after the user.",
 	},
 	"agility": {
 		Name:           "Agility",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises the user's Speed by 2.",
 	},
 	"aircutter": {
 		Name:           "Air Cutter",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       95,
@@ -102,6 +113,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"airslash": {
 		Name:           "Air Slash",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      75,
 		Accuracy:       95,
@@ -110,18 +122,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"allyswitch": {
 		Name:           "Ally Switch",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Switches position with the ally on the far side.",
 	},
 	"amnesia": {
 		Name:           "Amnesia",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Sp. Def by 2.",
 	},
 	"ancientpower": {
 		Name:           "Ancient Power",
+		Type:           Rock,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -130,6 +145,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aquajet": {
 		Name:           "Aqua Jet",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -138,12 +154,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aquaring": {
 		Name:           "Aqua Ring",
+		Type:           Water,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "User recovers 1/16 max HP per turn.",
 	},
 	"aquatail": {
 		Name:           "Aqua Tail",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       90,
@@ -152,6 +170,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"armthrust": {
 		Name:           "Arm Thrust",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       100,
@@ -160,24 +179,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aromatherapy": {
 		Name:           "Aromatherapy",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Cures the user's party of all status conditions.",
 	},
 	"aromaticmist": {
 		Name:           "Aromatic Mist",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises an ally's Sp. Def by 1.",
 	},
 	"assist": {
 		Name:           "Assist",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Uses a random move known by a team member.",
 	},
 	"assurance": {
 		Name:           "Assurance",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -186,6 +209,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"astonish": {
 		Name:           "Astonish",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       100,
@@ -194,6 +218,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"attackorder": {
 		Name:           "Attack Order",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -202,6 +227,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"attract": {
 		Name:           "Attract",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -209,6 +235,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aurasphere": {
 		Name:           "Aura Sphere",
+		Type:           Fighting,
 		DamageCategory: Special,
 		BasePower:      80,
 		PP:             20,
@@ -216,6 +243,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"aurorabeam": {
 		Name:           "Aurora Beam",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -224,12 +252,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"autotomize": {
 		Name:           "Autotomize",
+		Type:           Steel,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Raises the user's Speed by 2; user loses 100 kg.",
 	},
 	"avalanche": {
 		Name:           "Avalanche",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -238,6 +268,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"babydolleyes": {
 		Name:           "Baby-Doll Eyes",
+		Type:           Fairy,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             30,
@@ -245,6 +276,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"barrage": {
 		Name:           "Barrage",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       85,
@@ -253,18 +285,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"barrier": {
 		Name:           "Barrier",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Defense by 2.",
 	},
 	"batonpass": {
 		Name:           "Baton Pass",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "User switches, passing stat changes and more.",
 	},
 	"beatup": {
 		Name:           "Beat Up",
+		Type:           Dark,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             10,
@@ -272,6 +307,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"belch": {
 		Name:           "Belch",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       90,
@@ -280,24 +316,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bellydrum": {
 		Name:           "Belly Drum",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User loses 50% max HP. Maximizes Attack.",
 	},
 	"bestow": {
 		Name:           "Bestow",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "User passes its held item to the target.",
 	},
 	"bide": {
 		Name:           "Bide",
+		Type:           Normal,
 		DamageCategory: Physical,
 		PP:             10,
 		Description:    "Waits 2 turns; deals double the damage taken.",
 	},
 	"bind": {
 		Name:           "Bind",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       85,
@@ -306,6 +346,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bite": {
 		Name:           "Bite",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -314,6 +355,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"blastburn": {
 		Name:           "Blast Burn",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       90,
@@ -322,6 +364,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"blazekick": {
 		Name:           "Blaze Kick",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      85,
 		Accuracy:       90,
@@ -330,6 +373,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"blizzard": {
 		Name:           "Blizzard",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       70,
@@ -338,12 +382,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"block": {
 		Name:           "Block",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "The target cannot switch out.",
 	},
 	"blueflare": {
 		Name:           "Blue Flare",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      130,
 		Accuracy:       85,
@@ -352,6 +398,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bodyslam": {
 		Name:           "Body Slam",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      85,
 		Accuracy:       100,
@@ -360,6 +407,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"boltstrike": {
 		Name:           "Bolt Strike",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      130,
 		Accuracy:       85,
@@ -368,6 +416,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"boneclub": {
 		Name:           "Bone Club",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       85,
@@ -376,6 +425,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bonerush": {
 		Name:           "Bone Rush",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       90,
@@ -384,6 +434,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bonemerang": {
 		Name:           "Bonemerang",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       90,
@@ -392,6 +443,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"boomburst": {
 		Name:           "Boomburst",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      140,
 		Accuracy:       100,
@@ -400,6 +452,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bounce": {
 		Name:           "Bounce",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      85,
 		Accuracy:       85,
@@ -408,6 +461,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bravebird": {
 		Name:           "Brave Bird",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -416,6 +470,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"brickbreak": {
 		Name:           "Brick Break",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -424,6 +479,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"brine": {
 		Name:           "Brine",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -432,6 +488,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bubble": {
 		Name:           "Bubble",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -440,6 +497,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bubblebeam": {
 		Name:           "Bubble Beam",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -448,6 +506,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bugbite": {
 		Name:           "Bug Bite",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -456,6 +515,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bugbuzz": {
 		Name:           "Bug Buzz",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -464,12 +524,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bulkup": {
 		Name:           "Bulk Up",
+		Type:           Fighting,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Attack and Defense by 1.",
 	},
 	"bulldoze": {
 		Name:           "Bulldoze",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -478,6 +540,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bulletpunch": {
 		Name:           "Bullet Punch",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -486,6 +549,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"bulletseed": {
 		Name:           "Bullet Seed",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       100,
@@ -494,18 +558,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"calmmind": {
 		Name:           "Calm Mind",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Sp. Atk and Sp. Def by 1.",
 	},
 	"camouflage": {
 		Name:           "Camouflage",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Changes user's type by terrain (default Normal).",
 	},
 	"captivate": {
 		Name:           "Captivate",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -513,18 +580,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"celebrate": {
 		Name:           "Celebrate",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "No competitive use. Or any use.",
 	},
 	"charge": {
 		Name:           "Charge",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Boosts next Electric move and user's Sp. Def by 1.",
 	},
 	"chargebeam": {
 		Name:           "Charge Beam",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       90,
@@ -533,6 +603,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"charm": {
 		Name:           "Charm",
+		Type:           Fairy,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -540,6 +611,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"chatter": {
 		Name:           "Chatter",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -548,6 +620,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"chipaway": {
 		Name:           "Chip Away",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -556,6 +629,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"circlethrow": {
 		Name:           "Circle Throw",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       90,
@@ -564,6 +638,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"clamp": {
 		Name:           "Clamp",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      35,
 		Accuracy:       85,
@@ -572,6 +647,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"clearsmog": {
 		Name:           "Clear Smog",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      50,
 		PP:             15,
@@ -579,6 +655,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"closecombat": {
 		Name:           "Close Combat",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -587,12 +664,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"coil": {
 		Name:           "Coil",
+		Type:           Poison,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises user's Attack, Defense, and accuracy by 1.",
 	},
 	"cometpunch": {
 		Name:           "Comet Punch",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      18,
 		Accuracy:       85,
@@ -601,12 +680,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"confide": {
 		Name:           "Confide",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Lowers the target's Sp. Atk by 1.",
 	},
 	"confuseray": {
 		Name:           "Confuse Ray",
+		Type:           Ghost,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -614,6 +695,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"confusion": {
 		Name:           "Confusion",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -622,6 +704,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"constrict": {
 		Name:           "Constrict",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      10,
 		Accuracy:       100,
@@ -630,36 +713,42 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"conversion": {
 		Name:           "Conversion",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Changes user's type to match its first move.",
 	},
 	"conversion2": {
 		Name:           "Conversion 2",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Changes user's type to resist target's last move.",
 	},
 	"copycat": {
 		Name:           "Copycat",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Uses the last move used in the battle.",
 	},
 	"cosmicpower": {
 		Name:           "Cosmic Power",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Defense and Sp. Def by 1.",
 	},
 	"cottonguard": {
 		Name:           "Cotton Guard",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises the user's Defense by 3.",
 	},
 	"cottonspore": {
 		Name:           "Cotton Spore",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             40,
@@ -667,6 +756,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"counter": {
 		Name:           "Counter",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             20,
@@ -674,6 +764,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"covet": {
 		Name:           "Covet",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -682,6 +773,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"crabhammer": {
 		Name:           "Crabhammer",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       90,
@@ -690,12 +782,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"craftyshield": {
 		Name:           "Crafty Shield",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Protects allies from Status moves this turn.",
 	},
 	"crosschop": {
 		Name:           "Cross Chop",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       80,
@@ -704,6 +798,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"crosspoison": {
 		Name:           "Cross Poison",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -712,6 +807,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"crunch": {
 		Name:           "Crunch",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -720,6 +816,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"crushclaw": {
 		Name:           "Crush Claw",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       95,
@@ -728,6 +825,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"crushgrip": {
 		Name:           "Crush Grip",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             5,
@@ -735,12 +833,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"curse": {
 		Name:           "Curse",
+		Type:           Ghost,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Curses if Ghost, else +1 Atk, +1 Def, -1 Spe.",
 	},
 	"cut": {
 		Name:           "Cut",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       95,
@@ -749,6 +849,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"darkpulse": {
 		Name:           "Dark Pulse",
+		Type:           Dark,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -757,6 +858,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"darkvoid": {
 		Name:           "Dark Void",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       80,
 		PP:             10,
@@ -764,6 +866,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dazzlinggleam": {
 		Name:           "Dazzling Gleam",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -772,36 +875,42 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"defendorder": {
 		Name:           "Defend Order",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises the user's Defense and Sp. Def by 1.",
 	},
 	"defensecurl": {
 		Name:           "Defense Curl",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Raises the user's Defense by 1.",
 	},
 	"defog": {
 		Name:           "Defog",
+		Type:           Flying,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Removes hazards from field. Lowers foe's evasion.",
 	},
 	"destinybond": {
 		Name:           "Destiny Bond",
+		Type:           Ghost,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "If an opponent knocks out the user, it also faints.",
 	},
 	"detect": {
 		Name:           "Detect",
+		Type:           Fighting,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Prevents moves from affecting the user this turn.",
 	},
 	"diamondstorm": {
 		Name:           "Diamond Storm",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       95,
@@ -810,6 +919,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dig": {
 		Name:           "Dig",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -818,6 +928,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"disable": {
 		Name:           "Disable",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -825,6 +936,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"disarmingvoice": {
 		Name:           "Disarming Voice",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      40,
 		PP:             15,
@@ -832,6 +944,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"discharge": {
 		Name:           "Discharge",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -840,6 +953,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dive": {
 		Name:           "Dive",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -848,6 +962,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dizzypunch": {
 		Name:           "Dizzy Punch",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -856,6 +971,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doomdesire": {
 		Name:           "Doom Desire",
+		Type:           Steel,
 		DamageCategory: Special,
 		BasePower:      140,
 		Accuracy:       100,
@@ -864,6 +980,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doubleedge": {
 		Name:           "Double-Edge",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -872,6 +989,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doublehit": {
 		Name:           "Double Hit",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      35,
 		Accuracy:       90,
@@ -880,6 +998,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doublekick": {
 		Name:           "Double Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       100,
@@ -888,6 +1007,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doubleslap": {
 		Name:           "Double Slap",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       85,
@@ -896,12 +1016,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"doubleteam": {
 		Name:           "Double Team",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Raises the user's evasiveness by 1.",
 	},
 	"dracometeor": {
 		Name:           "Draco Meteor",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      130,
 		Accuracy:       90,
@@ -910,6 +1032,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragonascent": {
 		Name:           "Dragon Ascent",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -918,6 +1041,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragonbreath": {
 		Name:           "Dragon Breath",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -926,6 +1050,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragonclaw": {
 		Name:           "Dragon Claw",
+		Type:           Dragon,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -934,12 +1059,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragondance": {
 		Name:           "Dragon Dance",
+		Type:           Dragon,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Attack and Speed by 1.",
 	},
 	"dragonpulse": {
 		Name:           "Dragon Pulse",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      85,
 		Accuracy:       100,
@@ -948,6 +1075,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragonrage": {
 		Name:           "Dragon Rage",
+		Type:           Dragon,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             10,
@@ -955,6 +1083,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragonrush": {
 		Name:           "Dragon Rush",
+		Type:           Dragon,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       75,
@@ -963,6 +1092,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dragontail": {
 		Name:           "Dragon Tail",
+		Type:           Dragon,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       90,
@@ -971,6 +1101,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"drainingkiss": {
 		Name:           "Draining Kiss",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -979,6 +1110,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"drainpunch": {
 		Name:           "Drain Punch",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -987,6 +1119,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dreameater": {
 		Name:           "Dream Eater",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       100,
@@ -995,6 +1128,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"drillpeck": {
 		Name:           "Drill Peck",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1003,6 +1137,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"drillrun": {
 		Name:           "Drill Run",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       95,
@@ -1011,6 +1146,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dualchop": {
 		Name:           "Dual Chop",
+		Type:           Dragon,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       90,
@@ -1019,6 +1155,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"dynamicpunch": {
 		Name:           "Dynamic Punch",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       50,
@@ -1027,6 +1164,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"earthpower": {
 		Name:           "Earth Power",
+		Type:           Ground,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -1035,6 +1173,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"earthquake": {
 		Name:           "Earthquake",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       100,
@@ -1043,6 +1182,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"echoedvoice": {
 		Name:           "Echoed Voice",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1051,6 +1191,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"eerieimpulse": {
 		Name:           "Eerie Impulse",
+		Type:           Electric,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1058,6 +1199,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"eggbomb": {
 		Name:           "Egg Bomb",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       75,
@@ -1066,18 +1208,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"electricterrain": {
 		Name:           "Electric Terrain",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "5 turns. Grounded: +Electric power, can't sleep.",
 	},
 	"electrify": {
 		Name:           "Electrify",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Changes the target's move to Electric this turn.",
 	},
 	"electroball": {
 		Name:           "Electro Ball",
+		Type:           Electric,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             10,
@@ -1085,6 +1230,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"electroweb": {
 		Name:           "Electroweb",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      55,
 		Accuracy:       95,
@@ -1093,6 +1239,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"embargo": {
 		Name:           "Embargo",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1100,6 +1247,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"ember": {
 		Name:           "Ember",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1108,6 +1256,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"encore": {
 		Name:           "Encore",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             5,
@@ -1115,6 +1264,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"endeavor": {
 		Name:           "Endeavor",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             5,
@@ -1122,12 +1272,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"endure": {
 		Name:           "Endure",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "The user survives the next hit with at least 1 HP.",
 	},
 	"energyball": {
 		Name:           "Energy Ball",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -1136,6 +1288,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"entrainment": {
 		Name:           "Entrainment",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1143,6 +1296,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"eruption": {
 		Name:           "Eruption",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       100,
@@ -1151,6 +1305,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"explosion": {
 		Name:           "Explosion",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      250,
 		Accuracy:       100,
@@ -1159,6 +1314,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"extrasensory": {
 		Name:           "Extrasensory",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1167,6 +1323,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"extremespeed": {
 		Name:           "Extreme Speed",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1175,6 +1332,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"facade": {
 		Name:           "Facade",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -1183,6 +1341,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"feintattack": {
 		Name:           "Feint Attack",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      60,
 		PP:             20,
@@ -1190,12 +1349,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fairylock": {
 		Name:           "Fairy Lock",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Prevents all Pokemon from switching next turn.",
 	},
 	"fairywind": {
 		Name:           "Fairy Wind",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1204,6 +1365,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fakeout": {
 		Name:           "Fake Out",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1212,6 +1374,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"faketears": {
 		Name:           "Fake Tears",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -1219,6 +1382,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"falseswipe": {
 		Name:           "False Swipe",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1227,6 +1391,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"featherdance": {
 		Name:           "Feather Dance",
+		Type:           Flying,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1234,6 +1399,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"feint": {
 		Name:           "Feint",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       100,
@@ -1242,6 +1408,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fellstinger": {
 		Name:           "Fell Stinger",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       100,
@@ -1250,6 +1417,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fierydance": {
 		Name:           "Fiery Dance",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1258,6 +1426,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"finalgambit": {
 		Name:           "Final Gambit",
+		Type:           Fighting,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             5,
@@ -1265,6 +1434,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fireblast": {
 		Name:           "Fire Blast",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       85,
@@ -1273,6 +1443,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"firefang": {
 		Name:           "Fire Fang",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       95,
@@ -1281,6 +1452,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"firepledge": {
 		Name:           "Fire Pledge",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1289,6 +1461,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"firepunch": {
 		Name:           "Fire Punch",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -1297,6 +1470,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"firespin": {
 		Name:           "Fire Spin",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      35,
 		Accuracy:       85,
@@ -1305,6 +1479,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fissure": {
 		Name:           "Fissure",
+		Type:           Ground,
 		DamageCategory: Physical,
 		Accuracy:       30,
 		PP:             5,
@@ -1312,6 +1487,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flail": {
 		Name:           "Flail",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             15,
@@ -1319,6 +1495,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flameburst": {
 		Name:           "Flame Burst",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      70,
 		Accuracy:       100,
@@ -1327,6 +1504,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flamecharge": {
 		Name:           "Flame Charge",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -1335,6 +1513,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flamewheel": {
 		Name:           "Flame Wheel",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1343,6 +1522,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flamethrower": {
 		Name:           "Flamethrower",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -1351,6 +1531,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flareblitz": {
 		Name:           "Flare Blitz",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -1359,6 +1540,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flash": {
 		Name:           "Flash",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -1366,6 +1548,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flashcannon": {
 		Name:           "Flash Cannon",
+		Type:           Steel,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1374,6 +1557,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flatter": {
 		Name:           "Flatter",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1381,6 +1565,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fling": {
 		Name:           "Fling",
+		Type:           Dark,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             10,
@@ -1388,12 +1573,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flowershield": {
 		Name:           "Flower Shield",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises Defense by 1 of all active Grass types.",
 	},
 	"fly": {
 		Name:           "Fly",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       95,
@@ -1402,6 +1589,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"flyingpress": {
 		Name:           "Flying Press",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       95,
@@ -1410,6 +1598,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"focusblast": {
 		Name:           "Focus Blast",
+		Type:           Fighting,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       70,
@@ -1418,12 +1607,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"focusenergy": {
 		Name:           "Focus Energy",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises the user's critical hit ratio by 2.",
 	},
 	"focuspunch": {
 		Name:           "Focus Punch",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      150,
 		Accuracy:       100,
@@ -1432,12 +1623,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"followme": {
 		Name:           "Follow Me",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "The foes' moves target the user on the turn used.",
 	},
 	"forcepalm": {
 		Name:           "Force Palm",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1446,12 +1639,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"foresight": {
 		Name:           "Foresight",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Fighting, Normal hit Ghost. Evasiveness ignored.",
 	},
 	"forestscurse": {
 		Name:           "Forest's Curse",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -1459,6 +1654,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"foulplay": {
 		Name:           "Foul Play",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      95,
 		Accuracy:       100,
@@ -1467,6 +1663,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"freezedry": {
 		Name:           "Freeze-Dry",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      70,
 		Accuracy:       100,
@@ -1475,6 +1672,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"freezeshock": {
 		Name:           "Freeze Shock",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      140,
 		Accuracy:       90,
@@ -1483,6 +1681,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"frenzyplant": {
 		Name:           "Frenzy Plant",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       90,
@@ -1491,6 +1690,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"frostbreath": {
 		Name:           "Frost Breath",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       90,
@@ -1499,6 +1699,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"frustration": {
 		Name:           "Frustration",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             20,
@@ -1506,6 +1707,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"furyattack": {
 		Name:           "Fury Attack",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       85,
@@ -1514,6 +1716,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"furycutter": {
 		Name:           "Fury Cutter",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       95,
@@ -1522,6 +1725,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"furyswipes": {
 		Name:           "Fury Swipes",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      18,
 		Accuracy:       80,
@@ -1530,6 +1734,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fusionbolt": {
 		Name:           "Fusion Bolt",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       100,
@@ -1538,6 +1743,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"fusionflare": {
 		Name:           "Fusion Flare",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       100,
@@ -1546,6 +1752,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"futuresight": {
 		Name:           "Future Sight",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       100,
@@ -1554,6 +1761,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"gastroacid": {
 		Name:           "Gastro Acid",
+		Type:           Poison,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -1561,6 +1769,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"geargrind": {
 		Name:           "Gear Grind",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       85,
@@ -1569,12 +1778,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"geomancy": {
 		Name:           "Geomancy",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Charges, then raises SpA, SpD, Spe by 2 turn 2.",
 	},
 	"gigadrain": {
 		Name:           "Giga Drain",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      75,
 		Accuracy:       100,
@@ -1583,6 +1794,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"gigaimpact": {
 		Name:           "Giga Impact",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      150,
 		Accuracy:       90,
@@ -1591,6 +1803,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"glaciate": {
 		Name:           "Glaciate",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       95,
@@ -1599,6 +1812,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"glare": {
 		Name:           "Glare",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             30,
@@ -1606,6 +1820,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"grassknot": {
 		Name:           "Grass Knot",
+		Type:           Grass,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             20,
@@ -1613,6 +1828,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"grasspledge": {
 		Name:           "Grass Pledge",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -1621,6 +1837,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"grasswhistle": {
 		Name:           "Grass Whistle",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       55,
 		PP:             15,
@@ -1628,18 +1845,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"grassyterrain": {
 		Name:           "Grassy Terrain",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "5 turns. Grounded: +Grass power,+1/16 max HP.",
 	},
 	"gravity": {
 		Name:           "Gravity",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "For 5 turns, negates all Ground immunities.",
 	},
 	"growl": {
 		Name:           "Growl",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             40,
@@ -1647,30 +1867,35 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"growth": {
 		Name:           "Growth",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises user's Attack and Sp. Atk by 1; 2 in Sun.",
 	},
 	"grudge": {
 		Name:           "Grudge",
+		Type:           Ghost,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "If the user faints, the attack used loses all its PP.",
 	},
 	"guardsplit": {
 		Name:           "Guard Split",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Averages Defense and Sp. Def stats with target.",
 	},
 	"guardswap": {
 		Name:           "Guard Swap",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Swaps Defense and Sp. Def changes with target.",
 	},
 	"guillotine": {
 		Name:           "Guillotine",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       30,
 		PP:             5,
@@ -1678,6 +1903,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"gunkshot": {
 		Name:           "Gunk Shot",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       80,
@@ -1686,6 +1912,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"gust": {
 		Name:           "Gust",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1694,6 +1921,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"gyroball": {
 		Name:           "Gyro Ball",
+		Type:           Steel,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             5,
@@ -1701,12 +1929,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hail": {
 		Name:           "Hail",
+		Type:           Ice,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "For 5 turns, hail crashes down.",
 	},
 	"hammerarm": {
 		Name:           "Hammer Arm",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       90,
@@ -1715,24 +1945,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"happyhour": {
 		Name:           "Happy Hour",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "No competitive use.",
 	},
 	"harden": {
 		Name:           "Harden",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises the user's Defense by 1.",
 	},
 	"haze": {
 		Name:           "Haze",
+		Type:           Ice,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Eliminates all stat changes.",
 	},
 	"headcharge": {
 		Name:           "Head Charge",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -1741,6 +1975,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"headsmash": {
 		Name:           "Head Smash",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      150,
 		Accuracy:       80,
@@ -1749,6 +1984,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"headbutt": {
 		Name:           "Headbutt",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -1757,12 +1993,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"healbell": {
 		Name:           "Heal Bell",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Cures the user's party of all status conditions.",
 	},
 	"healblock": {
 		Name:           "Heal Block",
+		Type:           Psychic,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -1770,24 +2008,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"healorder": {
 		Name:           "Heal Order",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user by 50% of its max HP.",
 	},
 	"healpulse": {
 		Name:           "Heal Pulse",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the target by 50% of its max HP.",
 	},
 	"healingwish": {
 		Name:           "Healing Wish",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User faints. Replacement is fully healed.",
 	},
 	"heartstamp": {
 		Name:           "Heart Stamp",
+		Type:           Psychic,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1796,12 +2038,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"heartswap": {
 		Name:           "Heart Swap",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Swaps all stat changes with target.",
 	},
 	"heatcrash": {
 		Name:           "Heat Crash",
+		Type:           Fire,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             10,
@@ -1809,6 +2053,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"heatwave": {
 		Name:           "Heat Wave",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      95,
 		Accuracy:       90,
@@ -1817,6 +2062,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"heavyslam": {
 		Name:           "Heavy Slam",
+		Type:           Steel,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             10,
@@ -1824,12 +2070,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"helpinghand": {
 		Name:           "Helping Hand",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "One adjacent ally's move power is 1.5x this turn.",
 	},
 	"hex": {
 		Name:           "Hex",
+		Type:           Ghost,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -1838,6 +2086,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpower": {
 		Name:           "Hidden Power",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1846,6 +2095,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerbug": {
 		Name:           "Hidden Power Bug",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1854,6 +2104,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerdark": {
 		Name:           "Hidden Power Dark",
+		Type:           Dark,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1862,6 +2113,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerdragon": {
 		Name:           "Hidden Power Dragon",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1870,6 +2122,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerelectric": {
 		Name:           "Hidden Power Electric",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1878,6 +2131,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerfighting": {
 		Name:           "Hidden Power Fighting",
+		Type:           Fighting,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1886,6 +2140,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerfire": {
 		Name:           "Hidden Power Fire",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1894,6 +2149,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerflying": {
 		Name:           "Hidden Power Flying",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1902,6 +2158,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerghost": {
 		Name:           "Hidden Power Ghost",
+		Type:           Ghost,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1910,6 +2167,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowergrass": {
 		Name:           "Hidden Power Grass",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1918,6 +2176,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerground": {
 		Name:           "Hidden Power Ground",
+		Type:           Ground,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1926,6 +2185,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerice": {
 		Name:           "Hidden Power Ice",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1934,6 +2194,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerpoison": {
 		Name:           "Hidden Power Poison",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1942,6 +2203,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerpsychic": {
 		Name:           "Hidden Power Psychic",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1950,6 +2212,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerrock": {
 		Name:           "Hidden Power Rock",
+		Type:           Rock,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1958,6 +2221,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowersteel": {
 		Name:           "Hidden Power Steel",
+		Type:           Steel,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1966,6 +2230,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hiddenpowerwater": {
 		Name:           "Hidden Power Water",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -1974,6 +2239,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"highjumpkick": {
 		Name:           "High Jump Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      130,
 		Accuracy:       90,
@@ -1982,6 +2248,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"holdback": {
 		Name:           "Hold Back",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -1990,18 +2257,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"holdhands": {
 		Name:           "Hold Hands",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "No competitive use. Or any use.",
 	},
 	"honeclaws": {
 		Name:           "Hone Claws",
+		Type:           Dark,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Raises the user's Attack and accuracy by 1.",
 	},
 	"hornattack": {
 		Name:           "Horn Attack",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -2010,6 +2280,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"horndrill": {
 		Name:           "Horn Drill",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       30,
 		PP:             5,
@@ -2017,6 +2288,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hornleech": {
 		Name:           "Horn Leech",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -2025,12 +2297,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"howl": {
 		Name:           "Howl",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Raises the user's Attack by 1.",
 	},
 	"hurricane": {
 		Name:           "Hurricane",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       70,
@@ -2039,6 +2313,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hydrocannon": {
 		Name:           "Hydro Cannon",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       90,
@@ -2047,6 +2322,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hydropump": {
 		Name:           "Hydro Pump",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       80,
@@ -2055,6 +2331,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hyperbeam": {
 		Name:           "Hyper Beam",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       90,
@@ -2063,6 +2340,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hyperfang": {
 		Name:           "Hyper Fang",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       90,
@@ -2071,6 +2349,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hyperspacefury": {
 		Name:           "Hyperspace Fury",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      100,
 		PP:             5,
@@ -2078,6 +2357,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hyperspacehole": {
 		Name:           "Hyperspace Hole",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      80,
 		PP:             5,
@@ -2085,6 +2365,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hypervoice": {
 		Name:           "Hyper Voice",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2093,6 +2374,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"hypnosis": {
 		Name:           "Hypnosis",
+		Type:           Psychic,
 		DamageCategory: Status,
 		Accuracy:       60,
 		PP:             20,
@@ -2100,6 +2382,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"iceball": {
 		Name:           "Ice Ball",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       90,
@@ -2108,6 +2391,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"icebeam": {
 		Name:           "Ice Beam",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2116,6 +2400,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"iceburn": {
 		Name:           "Ice Burn",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      140,
 		Accuracy:       90,
@@ -2124,6 +2409,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"icefang": {
 		Name:           "Ice Fang",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       95,
@@ -2132,6 +2418,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"icepunch": {
 		Name:           "Ice Punch",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -2140,6 +2427,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"iceshard": {
 		Name:           "Ice Shard",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -2148,6 +2436,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"iciclecrash": {
 		Name:           "Icicle Crash",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      85,
 		Accuracy:       90,
@@ -2156,6 +2445,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"iciclespear": {
 		Name:           "Icicle Spear",
+		Type:           Ice,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       100,
@@ -2164,6 +2454,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"icywind": {
 		Name:           "Icy Wind",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      55,
 		Accuracy:       95,
@@ -2172,12 +2463,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"imprison": {
 		Name:           "Imprison",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "No foe can use any move known by the user.",
 	},
 	"incinerate": {
 		Name:           "Incinerate",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -2186,6 +2479,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"inferno": {
 		Name:           "Inferno",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       50,
@@ -2194,6 +2488,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"infestation": {
 		Name:           "Infestation",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      20,
 		Accuracy:       100,
@@ -2202,24 +2497,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"ingrain": {
 		Name:           "Ingrain",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "User recovers 1/16 max HP per turn. Traps user.",
 	},
 	"iondeluge": {
 		Name:           "Ion Deluge",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             25,
 		Description:    "Normal moves become Electric type this turn.",
 	},
 	"irondefense": {
 		Name:           "Iron Defense",
+		Type:           Steel,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Raises the user's Defense by 2.",
 	},
 	"ironhead": {
 		Name:           "Iron Head",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -2228,6 +2527,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"irontail": {
 		Name:           "Iron Tail",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       75,
@@ -2236,6 +2536,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"judgment": {
 		Name:           "Judgment",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       100,
@@ -2244,6 +2545,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"jumpkick": {
 		Name:           "Jump Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       95,
@@ -2252,6 +2554,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"karatechop": {
 		Name:           "Karate Chop",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -2260,6 +2563,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"kinesis": {
 		Name:           "Kinesis",
+		Type:           Psychic,
 		DamageCategory: Status,
 		Accuracy:       80,
 		PP:             15,
@@ -2267,12 +2571,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"kingsshield": {
 		Name:           "King's Shield",
+		Type:           Steel,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Protects from attacks. Contact: lowers Atk by 2.",
 	},
 	"knockoff": {
 		Name:           "Knock Off",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -2281,6 +2587,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"landswrath": {
 		Name:           "Land's Wrath",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2289,6 +2596,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lastresort": {
 		Name:           "Last Resort",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      140,
 		Accuracy:       100,
@@ -2297,6 +2605,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lavaplume": {
 		Name:           "Lava Plume",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -2305,6 +2614,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leafblade": {
 		Name:           "Leaf Blade",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2313,6 +2623,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leafstorm": {
 		Name:           "Leaf Storm",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      130,
 		Accuracy:       90,
@@ -2321,6 +2632,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leaftornado": {
 		Name:           "Leaf Tornado",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       90,
@@ -2329,6 +2641,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leechlife": {
 		Name:           "Leech Life",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      20,
 		Accuracy:       100,
@@ -2337,6 +2650,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leechseed": {
 		Name:           "Leech Seed",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       90,
 		PP:             10,
@@ -2344,6 +2658,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"leer": {
 		Name:           "Leer",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             30,
@@ -2351,6 +2666,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lick": {
 		Name:           "Lick",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       100,
@@ -2359,6 +2675,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lightofruin": {
 		Name:           "Light of Ruin",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      140,
 		Accuracy:       90,
@@ -2367,18 +2684,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lightscreen": {
 		Name:           "Light Screen",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "For 5 turns, special damage to allies is halved.",
 	},
 	"lockon": {
 		Name:           "Lock-On",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "User's next move will not miss the target.",
 	},
 	"lovelykiss": {
 		Name:           "Lovely Kiss",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       75,
 		PP:             10,
@@ -2386,6 +2706,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lowkick": {
 		Name:           "Low Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             20,
@@ -2393,6 +2714,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"lowsweep": {
 		Name:           "Low Sweep",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -2401,18 +2723,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"luckychant": {
 		Name:           "Lucky Chant",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "For 5 turns, shields user's party from critical hits.",
 	},
 	"lunardance": {
 		Name:           "Lunar Dance",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User faints. Replacement is fully healed, with PP.",
 	},
 	"lusterpurge": {
 		Name:           "Luster Purge",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      70,
 		Accuracy:       100,
@@ -2421,6 +2746,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"machpunch": {
 		Name:           "Mach Punch",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -2429,18 +2755,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"magiccoat": {
 		Name:           "Magic Coat",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Bounces back certain non-damaging moves.",
 	},
 	"magicroom": {
 		Name:           "Magic Room",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "For 5 turns, all held items have no effect.",
 	},
 	"magicalleaf": {
 		Name:           "Magical Leaf",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      60,
 		PP:             20,
@@ -2448,6 +2777,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"magmastorm": {
 		Name:           "Magma Storm",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       75,
@@ -2456,6 +2786,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"magnetbomb": {
 		Name:           "Magnet Bomb",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      60,
 		PP:             20,
@@ -2463,18 +2794,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"magneticflux": {
 		Name:           "Magnetic Flux",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises Def, Sp. Def of allies with Plus/Minus by 1.",
 	},
 	"magnetrise": {
 		Name:           "Magnet Rise",
+		Type:           Electric,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "For 5 turns, the user is immune to Ground moves.",
 	},
 	"magnitude": {
 		Name:           "Magnitude",
+		Type:           Ground,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             30,
@@ -2482,30 +2816,35 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"matblock": {
 		Name:           "Mat Block",
+		Type:           Fighting,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Protects allies from attacks. First turn out only.",
 	},
 	"mefirst": {
 		Name:           "Me First",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Copies a foe at 1.5x power. User must be faster.",
 	},
 	"meanlook": {
 		Name:           "Mean Look",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "The target cannot switch out.",
 	},
 	"meditate": {
 		Name:           "Meditate",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Raises the user's Attack by 1.",
 	},
 	"megadrain": {
 		Name:           "Mega Drain",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -2514,6 +2853,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"megakick": {
 		Name:           "Mega Kick",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       75,
@@ -2522,6 +2862,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"megapunch": {
 		Name:           "Mega Punch",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       85,
@@ -2530,6 +2871,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"megahorn": {
 		Name:           "Megahorn",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       85,
@@ -2538,6 +2880,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"memento": {
 		Name:           "Memento",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -2545,6 +2888,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"metalburst": {
 		Name:           "Metal Burst",
+		Type:           Steel,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             10,
@@ -2552,6 +2896,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"metalclaw": {
 		Name:           "Metal Claw",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       95,
@@ -2560,6 +2905,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"metalsound": {
 		Name:           "Metal Sound",
+		Type:           Steel,
 		DamageCategory: Status,
 		Accuracy:       85,
 		PP:             40,
@@ -2567,6 +2913,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"meteormash": {
 		Name:           "Meteor Mash",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       90,
@@ -2575,42 +2922,49 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"metronome": {
 		Name:           "Metronome",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Picks a random move.",
 	},
 	"milkdrink": {
 		Name:           "Milk Drink",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user by 50% of its max HP.",
 	},
 	"mimic": {
 		Name:           "Mimic",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "The last move the target used replaces this one.",
 	},
 	"mindreader": {
 		Name:           "Mind Reader",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "User's next move will not miss the target.",
 	},
 	"minimize": {
 		Name:           "Minimize",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises the user's evasiveness by 2.",
 	},
 	"miracleeye": {
 		Name:           "Miracle Eye",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Psychic hits Dark. Evasiveness ignored.",
 	},
 	"mirrorcoat": {
 		Name:           "Mirror Coat",
+		Type:           Psychic,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             20,
@@ -2618,12 +2972,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mirrormove": {
 		Name:           "Mirror Move",
+		Type:           Flying,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "User uses the target's last used move against it.",
 	},
 	"mirrorshot": {
 		Name:           "Mirror Shot",
+		Type:           Steel,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       85,
@@ -2632,12 +2988,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mist": {
 		Name:           "Mist",
+		Type:           Ice,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "For 5 turns, protects user's party from stat drops.",
 	},
 	"mistball": {
 		Name:           "Mist Ball",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      70,
 		Accuracy:       100,
@@ -2646,12 +3004,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mistyterrain": {
 		Name:           "Misty Terrain",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "5 turns. Can't status,-Dragon power vs grounded.",
 	},
 	"moonblast": {
 		Name:           "Moonblast",
+		Type:           Fairy,
 		DamageCategory: Special,
 		BasePower:      95,
 		Accuracy:       100,
@@ -2660,18 +3020,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"moonlight": {
 		Name:           "Moonlight",
+		Type:           Fairy,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Heals the user by a weather-dependent amount.",
 	},
 	"morningsun": {
 		Name:           "Morning Sun",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Heals the user by a weather-dependent amount.",
 	},
 	"mudslap": {
 		Name:           "Mud-Slap",
+		Type:           Ground,
 		DamageCategory: Special,
 		BasePower:      20,
 		Accuracy:       100,
@@ -2680,6 +3043,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mudbomb": {
 		Name:           "Mud Bomb",
+		Type:           Ground,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       85,
@@ -2688,6 +3052,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mudshot": {
 		Name:           "Mud Shot",
+		Type:           Ground,
 		DamageCategory: Special,
 		BasePower:      55,
 		Accuracy:       95,
@@ -2696,12 +3061,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mudsport": {
 		Name:           "Mud Sport",
+		Type:           Ground,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "For 5 turns, Electric-type attacks have 1/3 power.",
 	},
 	"muddywater": {
 		Name:           "Muddy Water",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       85,
@@ -2710,6 +3077,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"mysticalfire": {
 		Name:           "Mystical Fire",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -2718,12 +3086,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nastyplot": {
 		Name:           "Nasty Plot",
+		Type:           Dark,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Sp. Atk by 2.",
 	},
 	"naturalgift": {
 		Name:           "Natural Gift",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             15,
@@ -2731,12 +3101,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"naturepower": {
 		Name:           "Nature Power",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Attack depends on terrain (default Tri Attack).",
 	},
 	"needlearm": {
 		Name:           "Needle Arm",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -2745,6 +3117,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nightdaze": {
 		Name:           "Night Daze",
+		Type:           Dark,
 		DamageCategory: Special,
 		BasePower:      85,
 		Accuracy:       95,
@@ -2753,6 +3126,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nightshade": {
 		Name:           "Night Shade",
+		Type:           Ghost,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             15,
@@ -2760,6 +3134,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nightslash": {
 		Name:           "Night Slash",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -2768,6 +3143,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nightmare": {
 		Name:           "Nightmare",
+		Type:           Ghost,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -2775,6 +3151,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nobleroar": {
 		Name:           "Noble Roar",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             30,
@@ -2782,6 +3159,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"nuzzle": {
 		Name:           "Nuzzle",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      20,
 		Accuracy:       100,
@@ -2790,6 +3168,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"oblivionwing": {
 		Name:           "Oblivion Wing",
+		Type:           Flying,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -2798,6 +3177,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"octazooka": {
 		Name:           "Octazooka",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       85,
@@ -2806,12 +3186,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"odorsleuth": {
 		Name:           "Odor Sleuth",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Fighting, Normal hit Ghost. Evasiveness ignored.",
 	},
 	"ominouswind": {
 		Name:           "Ominous Wind",
+		Type:           Ghost,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -2820,6 +3202,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"originpulse": {
 		Name:           "Origin Pulse",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       85,
@@ -2828,6 +3211,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"outrage": {
 		Name:           "Outrage",
+		Type:           Dragon,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -2836,6 +3220,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"overheat": {
 		Name:           "Overheat",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      130,
 		Accuracy:       90,
@@ -2844,12 +3229,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"painsplit": {
 		Name:           "Pain Split",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Shares HP of user and target equally.",
 	},
 	"paraboliccharge": {
 		Name:           "Parabolic Charge",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -2858,6 +3245,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"partingshot": {
 		Name:           "Parting Shot",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -2865,6 +3253,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"payday": {
 		Name:           "Pay Day",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -2873,6 +3262,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"payback": {
 		Name:           "Payback",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -2881,6 +3271,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"peck": {
 		Name:           "Peck",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      35,
 		Accuracy:       100,
@@ -2889,12 +3280,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"perishsong": {
 		Name:           "Perish Song",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "All active Pokemon will faint in 3 turns.",
 	},
 	"petalblizzard": {
 		Name:           "Petal Blizzard",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2903,6 +3296,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"petaldance": {
 		Name:           "Petal Dance",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       100,
@@ -2911,6 +3305,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"phantomforce": {
 		Name:           "Phantom Force",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -2919,6 +3314,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"pinmissile": {
 		Name:           "Pin Missile",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       95,
@@ -2927,12 +3323,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"playnice": {
 		Name:           "Play Nice",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Lowers the target's Attack by 1.",
 	},
 	"playrough": {
 		Name:           "Play Rough",
+		Type:           Fairy,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       90,
@@ -2941,6 +3339,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"pluck": {
 		Name:           "Pluck",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -2949,6 +3348,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisonfang": {
 		Name:           "Poison Fang",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -2957,6 +3357,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisongas": {
 		Name:           "Poison Gas",
+		Type:           Poison,
 		DamageCategory: Status,
 		Accuracy:       90,
 		PP:             40,
@@ -2964,6 +3365,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisonjab": {
 		Name:           "Poison Jab",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -2972,6 +3374,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisonpowder": {
 		Name:           "Poison Powder",
+		Type:           Poison,
 		DamageCategory: Status,
 		Accuracy:       75,
 		PP:             35,
@@ -2979,6 +3382,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisonsting": {
 		Name:           "Poison Sting",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       100,
@@ -2987,6 +3391,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"poisontail": {
 		Name:           "Poison Tail",
+		Type:           Poison,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -2995,6 +3400,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"pound": {
 		Name:           "Pound",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3003,6 +3409,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"powder": {
 		Name:           "Powder",
+		Type:           Bug,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -3010,6 +3417,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"powdersnow": {
 		Name:           "Powder Snow",
+		Type:           Ice,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3018,6 +3426,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"powergem": {
 		Name:           "Power Gem",
+		Type:           Rock,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3026,24 +3435,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"powersplit": {
 		Name:           "Power Split",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Averages Attack and Sp. Atk stats with target.",
 	},
 	"powerswap": {
 		Name:           "Power Swap",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Swaps Attack and Sp. Atk stat stages with target.",
 	},
 	"powertrick": {
 		Name:           "Power Trick",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Switches user's Attack and Defense stats.",
 	},
 	"poweruppunch": {
 		Name:           "Power-Up Punch",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3052,6 +3465,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"powerwhip": {
 		Name:           "Power Whip",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       85,
@@ -3060,6 +3474,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"precipiceblades": {
 		Name:           "Precipice Blades",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       85,
@@ -3068,6 +3483,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"present": {
 		Name:           "Present",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       90,
 		PP:             15,
@@ -3075,12 +3491,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"protect": {
 		Name:           "Protect",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Prevents moves from affecting the user this turn.",
 	},
 	"psybeam": {
 		Name:           "Psybeam",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -3089,12 +3507,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psychup": {
 		Name:           "Psych Up",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Copies the target's current stat stages.",
 	},
 	"psychic": {
 		Name:           "Psychic",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -3103,6 +3523,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psychoboost": {
 		Name:           "Psycho Boost",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      140,
 		Accuracy:       90,
@@ -3111,6 +3532,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psychocut": {
 		Name:           "Psycho Cut",
+		Type:           Psychic,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3119,6 +3541,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psychoshift": {
 		Name:           "Psycho Shift",
+		Type:           Psychic,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -3126,6 +3549,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psyshock": {
 		Name:           "Psyshock",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3134,6 +3558,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psystrike": {
 		Name:           "Psystrike",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       100,
@@ -3142,6 +3567,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"psywave": {
 		Name:           "Psywave",
+		Type:           Psychic,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             15,
@@ -3149,6 +3575,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"punishment": {
 		Name:           "Punishment",
+		Type:           Dark,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             5,
@@ -3156,6 +3583,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"pursuit": {
 		Name:           "Pursuit",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3164,6 +3592,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"quash": {
 		Name:           "Quash",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -3171,6 +3600,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"quickattack": {
 		Name:           "Quick Attack",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3179,18 +3609,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"quickguard": {
 		Name:           "Quick Guard",
+		Type:           Fighting,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Protects allies from priority attacks this turn.",
 	},
 	"quiverdance": {
 		Name:           "Quiver Dance",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Sp. Atk, Sp. Def, Speed by 1.",
 	},
 	"rage": {
 		Name:           "Rage",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      20,
 		Accuracy:       100,
@@ -3199,18 +3632,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"ragepowder": {
 		Name:           "Rage Powder",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "The foes' moves target the user on the turn used.",
 	},
 	"raindance": {
 		Name:           "Rain Dance",
+		Type:           Water,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "For 5 turns, heavy rain powers Water moves.",
 	},
 	"rapidspin": {
 		Name:           "Rapid Spin",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      20,
 		Accuracy:       100,
@@ -3219,6 +3655,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"razorleaf": {
 		Name:           "Razor Leaf",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      55,
 		Accuracy:       95,
@@ -3227,6 +3664,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"razorshell": {
 		Name:           "Razor Shell",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       95,
@@ -3235,6 +3673,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"razorwind": {
 		Name:           "Razor Wind",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3243,36 +3682,42 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"recover": {
 		Name:           "Recover",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user by 50% of its max HP.",
 	},
 	"recycle": {
 		Name:           "Recycle",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Restores the item the user last used.",
 	},
 	"reflect": {
 		Name:           "Reflect",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "For 5 turns, physical damage to allies is halved.",
 	},
 	"reflecttype": {
 		Name:           "Reflect Type",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "User becomes the same type as the target.",
 	},
 	"refresh": {
 		Name:           "Refresh",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "User cures its burn, poison, or paralysis.",
 	},
 	"relicsong": {
 		Name:           "Relic Song",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      75,
 		Accuracy:       100,
@@ -3281,12 +3726,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rest": {
 		Name:           "Rest",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User sleeps 2 turns and restores HP and status.",
 	},
 	"retaliate": {
 		Name:           "Retaliate",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3295,6 +3742,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"return": {
 		Name:           "Return",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             20,
@@ -3302,6 +3750,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"revenge": {
 		Name:           "Revenge",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -3310,6 +3759,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"reversal": {
 		Name:           "Reversal",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             15,
@@ -3317,12 +3767,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"roar": {
 		Name:           "Roar",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Forces the target to switch to a random ally.",
 	},
 	"roaroftime": {
 		Name:           "Roar of Time",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       90,
@@ -3331,6 +3783,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rockblast": {
 		Name:           "Rock Blast",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       90,
@@ -3339,6 +3792,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rockclimb": {
 		Name:           "Rock Climb",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       85,
@@ -3347,12 +3801,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rockpolish": {
 		Name:           "Rock Polish",
+		Type:           Rock,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Speed by 2.",
 	},
 	"rockslide": {
 		Name:           "Rock Slide",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       90,
@@ -3361,6 +3817,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rocksmash": {
 		Name:           "Rock Smash",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3369,6 +3826,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rockthrow": {
 		Name:           "Rock Throw",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       90,
@@ -3377,6 +3835,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rocktomb": {
 		Name:           "Rock Tomb",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       95,
@@ -3385,6 +3844,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rockwrecker": {
 		Name:           "Rock Wrecker",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      150,
 		Accuracy:       90,
@@ -3393,12 +3853,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"roleplay": {
 		Name:           "Role Play",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User replaces its Ability with the target's.",
 	},
 	"rollingkick": {
 		Name:           "Rolling Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       85,
@@ -3407,6 +3869,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"rollout": {
 		Name:           "Rollout",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      30,
 		Accuracy:       90,
@@ -3415,18 +3878,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"roost": {
 		Name:           "Roost",
+		Type:           Flying,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals 50% HP. Flying-type removed 'til turn ends.",
 	},
 	"rototiller": {
 		Name:           "Rototiller",
+		Type:           Ground,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises Atk, Sp. Atk of grounded Grass types by 1.",
 	},
 	"round": {
 		Name:           "Round",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -3435,6 +3901,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sacredfire": {
 		Name:           "Sacred Fire",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       95,
@@ -3443,6 +3910,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sacredsword": {
 		Name:           "Sacred Sword",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -3451,12 +3919,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"safeguard": {
 		Name:           "Safeguard",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             25,
 		Description:    "For 5 turns, protects user's party from status.",
 	},
 	"sandattack": {
 		Name:           "Sand Attack",
+		Type:           Ground,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -3464,6 +3934,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sandtomb": {
 		Name:           "Sand Tomb",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      35,
 		Accuracy:       85,
@@ -3472,12 +3943,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sandstorm": {
 		Name:           "Sandstorm",
+		Type:           Rock,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "For 5 turns, a sandstorm rages.",
 	},
 	"scald": {
 		Name:           "Scald",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3486,6 +3959,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"scaryface": {
 		Name:           "Scary Face",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -3493,6 +3967,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"scratch": {
 		Name:           "Scratch",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3501,6 +3976,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"screech": {
 		Name:           "Screech",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       85,
 		PP:             40,
@@ -3508,6 +3984,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"searingshot": {
 		Name:           "Searing Shot",
+		Type:           Fire,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       100,
@@ -3516,6 +3993,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"secretpower": {
 		Name:           "Secret Power",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3524,6 +4002,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"secretsword": {
 		Name:           "Secret Sword",
+		Type:           Fighting,
 		DamageCategory: Special,
 		BasePower:      85,
 		Accuracy:       100,
@@ -3532,6 +4011,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"seedbomb": {
 		Name:           "Seed Bomb",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3540,6 +4020,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"seedflare": {
 		Name:           "Seed Flare",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       85,
@@ -3548,6 +4029,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"seismictoss": {
 		Name:           "Seismic Toss",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		Accuracy:       100,
 		PP:             20,
@@ -3555,6 +4037,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"selfdestruct": {
 		Name:           "Self-Destruct",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      200,
 		Accuracy:       100,
@@ -3563,6 +4046,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowball": {
 		Name:           "Shadow Ball",
+		Type:           Ghost,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3571,6 +4055,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowclaw": {
 		Name:           "Shadow Claw",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3579,6 +4064,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowforce": {
 		Name:           "Shadow Force",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -3587,6 +4073,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowpunch": {
 		Name:           "Shadow Punch",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      60,
 		PP:             20,
@@ -3594,6 +4081,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowsneak": {
 		Name:           "Shadow Sneak",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      40,
 		Accuracy:       100,
@@ -3602,12 +4090,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sharpen": {
 		Name:           "Sharpen",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises the user's Attack by 1.",
 	},
 	"sheercold": {
 		Name:           "Sheer Cold",
+		Type:           Ice,
 		DamageCategory: Special,
 		Accuracy:       30,
 		PP:             5,
@@ -3615,18 +4105,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shellsmash": {
 		Name:           "Shell Smash",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "Lowers Def, SpD by 1; raises Atk, SpA, Spe by 2.",
 	},
 	"shiftgear": {
 		Name:           "Shift Gear",
+		Type:           Steel,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Raises the user's Speed by 2 and Attack by 1.",
 	},
 	"shockwave": {
 		Name:           "Shock Wave",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      60,
 		PP:             20,
@@ -3634,6 +4127,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"signalbeam": {
 		Name:           "Signal Beam",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      75,
 		Accuracy:       100,
@@ -3642,6 +4136,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"silverwind": {
 		Name:           "Silver Wind",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -3650,6 +4145,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"simplebeam": {
 		Name:           "Simple Beam",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -3657,6 +4153,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sing": {
 		Name:           "Sing",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       55,
 		PP:             15,
@@ -3664,18 +4161,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sketch": {
 		Name:           "Sketch",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             1,
 		Description:    "Permanently copies the last move target used.",
 	},
 	"skillswap": {
 		Name:           "Skill Swap",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "The user and the target trade Abilities.",
 	},
 	"skullbash": {
 		Name:           "Skull Bash",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      130,
 		Accuracy:       100,
@@ -3684,6 +4184,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"skyattack": {
 		Name:           "Sky Attack",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      140,
 		Accuracy:       90,
@@ -3692,6 +4193,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"skydrop": {
 		Name:           "Sky Drop",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -3700,6 +4202,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"skyuppercut": {
 		Name:           "Sky Uppercut",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      85,
 		Accuracy:       90,
@@ -3708,12 +4211,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"slackoff": {
 		Name:           "Slack Off",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user by 50% of its max HP.",
 	},
 	"slam": {
 		Name:           "Slam",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       75,
@@ -3722,6 +4227,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"slash": {
 		Name:           "Slash",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3730,6 +4236,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sleeppowder": {
 		Name:           "Sleep Powder",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       75,
 		PP:             15,
@@ -3737,12 +4244,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sleeptalk": {
 		Name:           "Sleep Talk",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User must be asleep. Uses another known move.",
 	},
 	"sludge": {
 		Name:           "Sludge",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -3751,6 +4260,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sludgebomb": {
 		Name:           "Sludge Bomb",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -3759,6 +4269,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sludgewave": {
 		Name:           "Sludge Wave",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      95,
 		Accuracy:       100,
@@ -3767,6 +4278,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"smackdown": {
 		Name:           "Smack Down",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -3775,6 +4287,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"smellingsalts": {
 		Name:           "Smelling Salts",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -3783,6 +4296,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"smog": {
 		Name:           "Smog",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      30,
 		Accuracy:       70,
@@ -3791,6 +4305,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"smokescreen": {
 		Name:           "Smokescreen",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -3798,6 +4313,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"snarl": {
 		Name:           "Snarl",
+		Type:           Dark,
 		DamageCategory: Special,
 		BasePower:      55,
 		Accuracy:       95,
@@ -3806,12 +4322,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"snatch": {
 		Name:           "Snatch",
+		Type:           Dark,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User steals certain support moves to use itself.",
 	},
 	"snore": {
 		Name:           "Snore",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -3820,12 +4338,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spikyshield": {
 		Name:           "Spiky Shield",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Protects from moves. Contact: loses 1/8 max HP.",
 	},
 	"soak": {
 		Name:           "Soak",
+		Type:           Water,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -3833,12 +4353,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"softboiled": {
 		Name:           "Soft-Boiled",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user by 50% of its max HP.",
 	},
 	"solarbeam": {
 		Name:           "Solar Beam",
+		Type:           Grass,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       100,
@@ -3847,6 +4369,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sonicboom": {
 		Name:           "Sonic Boom",
+		Type:           Normal,
 		DamageCategory: Special,
 		Accuracy:       90,
 		PP:             20,
@@ -3854,6 +4377,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spacialrend": {
 		Name:           "Spacial Rend",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      100,
 		Accuracy:       95,
@@ -3862,6 +4386,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spark": {
 		Name:           "Spark",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -3870,12 +4395,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spiderweb": {
 		Name:           "Spider Web",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "The target cannot switch out.",
 	},
 	"spikecannon": {
 		Name:           "Spike Cannon",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      20,
 		Accuracy:       100,
@@ -3884,12 +4411,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spikes": {
 		Name:           "Spikes",
+		Type:           Ground,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Hurts grounded foes on switch-in. Max 3 layers.",
 	},
 	"spitup": {
 		Name:           "Spit Up",
+		Type:           Normal,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             10,
@@ -3897,6 +4426,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"spite": {
 		Name:           "Spite",
+		Type:           Ghost,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -3904,12 +4434,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"splash": {
 		Name:           "Splash",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Does nothing (but we still love it).",
 	},
 	"spore": {
 		Name:           "Spore",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -3917,12 +4449,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stealthrock": {
 		Name:           "Stealth Rock",
+		Type:           Rock,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Hurts foes on switch-in. Factors Rock weakness.",
 	},
 	"steameruption": {
 		Name:           "Steam Eruption",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       95,
@@ -3931,6 +4465,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"steelwing": {
 		Name:           "Steel Wing",
+		Type:           Steel,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       90,
@@ -3939,18 +4474,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stickyweb": {
 		Name:           "Sticky Web",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Lowers Speed of grounded foes by 1 on switch-in.",
 	},
 	"stockpile": {
 		Name:           "Stockpile",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises user's Defense, Sp. Def by 1. Max 3 uses.",
 	},
 	"stomp": {
 		Name:           "Stomp",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -3959,6 +4497,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stoneedge": {
 		Name:           "Stone Edge",
+		Type:           Rock,
 		DamageCategory: Physical,
 		BasePower:      100,
 		Accuracy:       80,
@@ -3967,6 +4506,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"storedpower": {
 		Name:           "Stored Power",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      20,
 		Accuracy:       100,
@@ -3975,6 +4515,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stormthrow": {
 		Name:           "Storm Throw",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -3983,6 +4524,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"steamroller": {
 		Name:           "Steamroller",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       100,
@@ -3991,6 +4533,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"strength": {
 		Name:           "Strength",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -3999,6 +4542,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stringshot": {
 		Name:           "String Shot",
+		Type:           Bug,
 		DamageCategory: Status,
 		Accuracy:       95,
 		PP:             40,
@@ -4006,6 +4550,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"struggle": {
 		Name:           "Struggle",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      50,
 		PP:             1,
@@ -4013,6 +4558,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"strugglebug": {
 		Name:           "Struggle Bug",
+		Type:           Bug,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -4021,6 +4567,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"stunspore": {
 		Name:           "Stun Spore",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       75,
 		PP:             30,
@@ -4028,6 +4575,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"submission": {
 		Name:           "Submission",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       80,
@@ -4036,12 +4584,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"substitute": {
 		Name:           "Substitute",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "User takes 1/4 its max HP to put in a Substitute.",
 	},
 	"suckerpunch": {
 		Name:           "Sucker Punch",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -4050,12 +4600,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sunnyday": {
 		Name:           "Sunny Day",
+		Type:           Fire,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "For 5 turns, intense sunlight powers Fire moves.",
 	},
 	"superfang": {
 		Name:           "Super Fang",
+		Type:           Normal,
 		DamageCategory: Physical,
 		Accuracy:       90,
 		PP:             10,
@@ -4063,6 +4615,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"superpower": {
 		Name:           "Superpower",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4071,6 +4624,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"supersonic": {
 		Name:           "Supersonic",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       55,
 		PP:             20,
@@ -4078,6 +4632,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"surf": {
 		Name:           "Surf",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4086,6 +4641,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"swagger": {
 		Name:           "Swagger",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       90,
 		PP:             15,
@@ -4093,12 +4649,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"swallow": {
 		Name:           "Swallow",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Heals the user based on uses of Stockpile.",
 	},
 	"sweetkiss": {
 		Name:           "Sweet Kiss",
+		Type:           Fairy,
 		DamageCategory: Status,
 		Accuracy:       75,
 		PP:             10,
@@ -4106,6 +4664,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"sweetscent": {
 		Name:           "Sweet Scent",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4113,6 +4672,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"swift": {
 		Name:           "Swift",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      60,
 		PP:             20,
@@ -4120,6 +4680,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"switcheroo": {
 		Name:           "Switcheroo",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -4127,12 +4688,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"swordsdance": {
 		Name:           "Swords Dance",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Attack by 2.",
 	},
 	"synchronoise": {
 		Name:           "Synchronoise",
+		Type:           Psychic,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4141,12 +4704,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"synthesis": {
 		Name:           "Synthesis",
+		Type:           Grass,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "Heals the user by a weather-dependent amount.",
 	},
 	"tackle": {
 		Name:           "Tackle",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      50,
 		Accuracy:       100,
@@ -4155,12 +4720,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"tailglow": {
 		Name:           "Tail Glow",
+		Type:           Bug,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Raises the user's Sp. Atk by 3.",
 	},
 	"tailslap": {
 		Name:           "Tail Slap",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       85,
@@ -4169,6 +4736,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"tailwhip": {
 		Name:           "Tail Whip",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             30,
@@ -4176,12 +4744,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"tailwind": {
 		Name:           "Tailwind",
+		Type:           Flying,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "For 4 turns, allies' Speed is doubled.",
 	},
 	"takedown": {
 		Name:           "Take Down",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       85,
@@ -4190,6 +4760,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"taunt": {
 		Name:           "Taunt",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4197,6 +4768,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"technoblast": {
 		Name:           "Techno Blast",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4205,6 +4777,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"teeterdance": {
 		Name:           "Teeter Dance",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4212,18 +4785,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"telekinesis": {
 		Name:           "Telekinesis",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "For 3 turns, target floats but moves can't miss it.",
 	},
 	"teleport": {
 		Name:           "Teleport",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Flee from wild Pokemon battles.",
 	},
 	"thief": {
 		Name:           "Thief",
+		Type:           Dark,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -4232,6 +4808,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thousandarrows": {
 		Name:           "Thousand Arrows",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4240,6 +4817,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thousandwaves": {
 		Name:           "Thousand Waves",
+		Type:           Ground,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4248,6 +4826,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thrash": {
 		Name:           "Thrash",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4256,6 +4835,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thunder": {
 		Name:           "Thunder",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      110,
 		Accuracy:       70,
@@ -4264,6 +4844,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thunderfang": {
 		Name:           "Thunder Fang",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      65,
 		Accuracy:       95,
@@ -4272,6 +4853,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thunderpunch": {
 		Name:           "Thunder Punch",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      75,
 		Accuracy:       100,
@@ -4280,6 +4862,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thundershock": {
 		Name:           "Thunder Shock",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -4288,6 +4871,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thunderwave": {
 		Name:           "Thunder Wave",
+		Type:           Electric,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4295,6 +4879,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"thunderbolt": {
 		Name:           "Thunderbolt",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4303,6 +4888,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"tickle": {
 		Name:           "Tickle",
+		Type:           Normal,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4310,12 +4896,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"topsyturvy": {
 		Name:           "Topsy-Turvy",
+		Type:           Dark,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Inverts the target's stat stages.",
 	},
 	"torment": {
 		Name:           "Torment",
+		Type:           Dark,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             15,
@@ -4323,6 +4911,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"toxic": {
 		Name:           "Toxic",
+		Type:           Poison,
 		DamageCategory: Status,
 		Accuracy:       90,
 		PP:             10,
@@ -4330,18 +4919,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"toxicspikes": {
 		Name:           "Toxic Spikes",
+		Type:           Poison,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Poisons grounded foes on switch-in. Max 2 layers.",
 	},
 	"transform": {
 		Name:           "Transform",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Copies target's stats, moves, types, and Ability.",
 	},
 	"triattack": {
 		Name:           "Tri Attack",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -4350,6 +4942,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"trick": {
 		Name:           "Trick",
+		Type:           Psychic,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -4357,6 +4950,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"trickortreat": {
 		Name:           "Trick-or-Treat",
+		Type:           Ghost,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4364,12 +4958,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"trickroom": {
 		Name:           "Trick Room",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             5,
 		Description:    "For 5 turns, slower Pokemon move first.",
 	},
 	"triplekick": {
 		Name:           "Triple Kick",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      10,
 		Accuracy:       90,
@@ -4378,12 +4974,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"trumpcard": {
 		Name:           "Trump Card",
+		Type:           Normal,
 		DamageCategory: Special,
 		PP:             5,
 		Description:    "More power the fewer PP this move has left.",
 	},
 	"twineedle": {
 		Name:           "Twineedle",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      25,
 		Accuracy:       100,
@@ -4392,6 +4990,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"twister": {
 		Name:           "Twister",
+		Type:           Dragon,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -4400,6 +4999,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"uturn": {
 		Name:           "U-turn",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -4408,6 +5008,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"uproar": {
 		Name:           "Uproar",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4416,6 +5017,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"vcreate": {
 		Name:           "V-create",
+		Type:           Fire,
 		DamageCategory: Physical,
 		BasePower:      180,
 		Accuracy:       95,
@@ -4424,6 +5026,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"vacuumwave": {
 		Name:           "Vacuum Wave",
+		Type:           Fighting,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -4432,6 +5035,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"venomdrench": {
 		Name:           "Venom Drench",
+		Type:           Poison,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             20,
@@ -4439,6 +5043,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"venoshock": {
 		Name:           "Venoshock",
+		Type:           Poison,
 		DamageCategory: Special,
 		BasePower:      65,
 		Accuracy:       100,
@@ -4447,6 +5052,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"vicegrip": {
 		Name:           "Vice Grip",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      55,
 		Accuracy:       100,
@@ -4455,6 +5061,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"vinewhip": {
 		Name:           "Vine Whip",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      45,
 		Accuracy:       100,
@@ -4463,6 +5070,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"vitalthrow": {
 		Name:           "Vital Throw",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      70,
 		PP:             10,
@@ -4470,6 +5078,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"voltswitch": {
 		Name:           "Volt Switch",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      70,
 		Accuracy:       100,
@@ -4478,6 +5087,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"volttackle": {
 		Name:           "Volt Tackle",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4486,6 +5096,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"wakeupslap": {
 		Name:           "Wake-Up Slap",
+		Type:           Fighting,
 		DamageCategory: Physical,
 		BasePower:      70,
 		Accuracy:       100,
@@ -4494,6 +5105,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"watergun": {
 		Name:           "Water Gun",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      40,
 		Accuracy:       100,
@@ -4502,6 +5114,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"waterpledge": {
 		Name:           "Water Pledge",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      80,
 		Accuracy:       100,
@@ -4510,6 +5123,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"waterpulse": {
 		Name:           "Water Pulse",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      60,
 		Accuracy:       100,
@@ -4518,12 +5132,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"watersport": {
 		Name:           "Water Sport",
+		Type:           Water,
 		DamageCategory: Status,
 		PP:             15,
 		Description:    "For 5 turns, Fire-type attacks have 1/3 power.",
 	},
 	"waterspout": {
 		Name:           "Water Spout",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      150,
 		Accuracy:       100,
@@ -4532,6 +5148,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"waterfall": {
 		Name:           "Waterfall",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -4540,6 +5157,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"watershuriken": {
 		Name:           "Water Shuriken",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       100,
@@ -4548,6 +5166,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"weatherball": {
 		Name:           "Weather Ball",
+		Type:           Normal,
 		DamageCategory: Special,
 		BasePower:      50,
 		Accuracy:       100,
@@ -4556,6 +5175,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"whirlpool": {
 		Name:           "Whirlpool",
+		Type:           Water,
 		DamageCategory: Special,
 		BasePower:      35,
 		Accuracy:       85,
@@ -4564,18 +5184,21 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"whirlwind": {
 		Name:           "Whirlwind",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             20,
 		Description:    "Forces the target to switch to a random ally.",
 	},
 	"wideguard": {
 		Name:           "Wide Guard",
+		Type:           Rock,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Protects allies from multi-target hits this turn.",
 	},
 	"wildcharge": {
 		Name:           "Wild Charge",
+		Type:           Electric,
 		DamageCategory: Physical,
 		BasePower:      90,
 		Accuracy:       100,
@@ -4584,6 +5207,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"willowisp": {
 		Name:           "Will-O-Wisp",
+		Type:           Fire,
 		DamageCategory: Status,
 		Accuracy:       85,
 		PP:             15,
@@ -4591,6 +5215,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"wingattack": {
 		Name:           "Wing Attack",
+		Type:           Flying,
 		DamageCategory: Physical,
 		BasePower:      60,
 		Accuracy:       100,
@@ -4599,24 +5224,28 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"wish": {
 		Name:           "Wish",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Next turn, 50% of the user's max HP is restored.",
 	},
 	"withdraw": {
 		Name:           "Withdraw",
+		Type:           Water,
 		DamageCategory: Status,
 		PP:             40,
 		Description:    "Raises the user's Defense by 1.",
 	},
 	"wonderroom": {
 		Name:           "Wonder Room",
+		Type:           Psychic,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "For 5 turns, all Defense and Sp. Def stats switch.",
 	},
 	"woodhammer": {
 		Name:           "Wood Hammer",
+		Type:           Grass,
 		DamageCategory: Physical,
 		BasePower:      120,
 		Accuracy:       100,
@@ -4625,12 +5254,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"workup": {
 		Name:           "Work Up",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             30,
 		Description:    "Raises the user's Attack and Sp. Atk by 1.",
 	},
 	"worryseed": {
 		Name:           "Worry Seed",
+		Type:           Grass,
 		DamageCategory: Status,
 		Accuracy:       100,
 		PP:             10,
@@ -4638,6 +5269,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"wrap": {
 		Name:           "Wrap",
+		Type:           Normal,
 		DamageCategory: Physical,
 		BasePower:      15,
 		Accuracy:       90,
@@ -4646,6 +5278,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"wringout": {
 		Name:           "Wring Out",
+		Type:           Normal,
 		DamageCategory: Special,
 		Accuracy:       100,
 		PP:             5,
@@ -4653,6 +5286,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"xscissor": {
 		Name:           "X-Scissor",
+		Type:           Bug,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       100,
@@ -4661,12 +5295,14 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"yawn": {
 		Name:           "Yawn",
+		Type:           Normal,
 		DamageCategory: Status,
 		PP:             10,
 		Description:    "Puts the target to sleep after 1 turn.",
 	},
 	"zapcannon": {
 		Name:           "Zap Cannon",
+		Type:           Electric,
 		DamageCategory: Special,
 		BasePower:      120,
 		Accuracy:       50,
@@ -4675,6 +5311,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"zenheadbutt": {
 		Name:           "Zen Headbutt",
+		Type:           Psychic,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       90,
@@ -4683,6 +5320,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"paleowave": {
 		Name:           "Paleo Wave",
+		Type:           Rock,
 		DamageCategory: Special,
 		BasePower:      85,
 		Accuracy:       100,
@@ -4691,6 +5329,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"shadowstrike": {
 		Name:           "Shadow Strike",
+		Type:           Ghost,
 		DamageCategory: Physical,
 		BasePower:      80,
 		Accuracy:       95,
@@ -4699,6 +5338,7 @@ var moves = map[showdown.UserID]*Move{
 	},
 	"magikarpsrevenge": {
 		Name:           "Magikarp's Revenge",
+		Type:           Water,
 		DamageCategory: Physical,
 		BasePower:      120,
 		PP:             10,

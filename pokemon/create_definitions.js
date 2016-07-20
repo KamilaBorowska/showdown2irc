@@ -116,6 +116,7 @@ function parseMoves(moves) {
 	for (const {name, type, category, basePower, accuracy, pp, shortDesc} of moves) {
 		output += `\t${J(toId(name))}: {
 \t\tName:           ${J(name)},
+\t\tType:           ${type},
 \t\tDamageCategory: ${category},
 `
 		if (basePower) {
