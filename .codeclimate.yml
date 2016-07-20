@@ -14,3 +14,6 @@ engines:
 ratings:
   paths:
   - "**.go"
+
+exclude_paths:
+- "pokemon/type_string.go"
