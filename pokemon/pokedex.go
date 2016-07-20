@@ -23,6 +23,7 @@ import "github.com/xfix/showdown2irc/showdown"
 
 type Pokemon struct {
 	Species   string
+	Tier      string
 	Types     []Type
 	Abilities []string
 	BaseStats Stats

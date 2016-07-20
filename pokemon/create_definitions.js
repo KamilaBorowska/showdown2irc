@@ -55,6 +55,7 @@ function J(obj) {
 }
 
 const pokedex = loadFile('pokedex', 'BattlePokedex')
+const formatsData = require(dataDirectory + 'formats-data').BattleFormatsData
 const moves = loadFile('moves', 'BattleMovedex')
 const abilities = loadFile('abilities', 'BattleAbilities')
 
@@ -97,9 +98,10 @@ function convertAbilities(abilities) {
 function parsePokedex(pokedex) {
 	let output = header
 	output += "var pokemon = map[showdown.UserID]*Pokemon{\n"
-	for (const {species, types, abilities, baseStats} of pokedex) {
+	for (const {species, types, abilities, baseStats, baseSpecies} of pokedex) {
 		output += `\t${J(toId(species))}: {
 \t\tSpecies:   ${J(species)},
+\t\tTier:      ${J(formatsData[toId(baseSpecies || species)].tier)},
 \t\tTypes:     []Type{${types.join(", ")}},
 \t\tAbilities: ${convertAbilities(abilities)},
 \t\tBaseStats: Stats${J(baseStats)},
