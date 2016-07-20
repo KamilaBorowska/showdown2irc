@@ -1,12 +1,12 @@
 package irc
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestGetMessage(t *testing.T) {
 	input := ErrNoSuchServer
-	message := input.GetMessage()
-	expected := "%s :No such server"
-	if message != expected {
-		t.Errorf("%#q.GetMessage() => %#q, want %#q", input, message, expected)
-	}
+	assert.Equal(t, input.GetMessage(), "%s :No such server", "%#q.GetMessage()", input)
 }

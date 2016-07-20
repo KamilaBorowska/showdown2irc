@@ -3,6 +3,8 @@ package main
 import (
 	"bytes"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type closeableBuffer struct {
@@ -28,7 +30,5 @@ func TestNeedMoreParams(t *testing.T) {
 	connectionListen(&buffer)
 	out := buffer.String()
 	expected := ":showdown 461 * PASS :Not enough parameters\r\n:showdown QUIT *\r\n"
-	if out != expected {
-		t.Errorf("Testing not enough parameters in PASS, got %#q, want %#q", out, expected)
-	}
+	assert.Equal(t, out, expected, "PASS with not enough arguments")
 }

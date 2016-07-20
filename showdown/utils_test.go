@@ -16,13 +16,15 @@
 
 package showdown
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestToID(t *testing.T) {
 	message := "This !s a completely regular t3st1ng nick!~~"
 	result := ToID(message)
 	expect := UserID("thissacompletelyregulart3st1ngnick")
-	if result != expect {
-		t.Errorf("ToId(%#q) = %#q, want %#q", message, result, expect)
-	}
+	assert.Equal(t, result, expect, "ToID(%#q)", message)
 }

@@ -1,9 +1,10 @@
 package html2irc
 
 import (
-	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 var tests = []struct {
@@ -29,9 +30,6 @@ var tests = []struct {
 
 func TestHTMLToIRC(t *testing.T) {
 	for _, test := range tests {
-		out := HTMLToIRC(test.in)
-		if !reflect.DeepEqual(out, test.out) {
-			t.Errorf("HTMLToIRC(%#q) => %#q, want %#q", test.in, out, test.out)
-		}
+		assert.Equal(t, HTMLToIRC(test.in), test.out, "HTMLToIRC(%#q)", test.in)
 	}
 }
