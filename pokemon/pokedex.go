@@ -19,6 +19,7 @@ package pokemon
 import "github.com/xfix/showdown2irc/showdown"
 
 //go:generate node create_definitions
+//go:generate stringer -type=Type,DamageCategory
 
 type Pokemon struct {
 	Species   string
