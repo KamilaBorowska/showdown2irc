@@ -72,3 +72,15 @@ const (
 	Special
 	Status
 )
+
+func GetPokemon(name showdown.UserID) *Pokemon {
+	return pokedex[name]
+}
+
+func GetMove(move showdown.UserID) *Move {
+	return moves[move]
+}
+
+func GetAbilityDescription(ability showdown.UserId) string {
+	return abilities[ability]
+}
