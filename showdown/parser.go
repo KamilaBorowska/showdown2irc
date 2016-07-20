@@ -131,7 +131,13 @@ func ConnectToServer(loginData LoginData, name string, commandCallback func(comm
 	if err != nil {
 		return nil, nil, err
 	}
-	connection, err := webSocketConnect(conf)
+	return ConnectToKnownServer(loginData, conf, commandCallback)
+}
+
+// ConnectToKnownServer connects to a Showdown server with known
+// configuration.
+func ConnectToKnownServer(loginData LoginData, conf ServerAddress, commandCallback func(command, argument string, room *Room)) (*BotConnection, <-chan struct{}, error) {
+	connection, err := webSocketConnect(&conf)
 	if err != nil {
 		return nil, nil, err
 	}

@@ -84,7 +84,7 @@ func (c *connection) startReader() {
 
 const httpsPort = 443
 
-func webSocketConnect(config *configuration) (*connection, error) {
+func webSocketConnect(config *ServerAddress) (*connection, error) {
 	scheme := "ws"
 	if config.Port == httpsPort {
 		scheme = "wss"

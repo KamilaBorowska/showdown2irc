@@ -61,18 +61,18 @@ func (serverDoesNotExistError) Error() string {
 
 var configurationRegexp = regexp.MustCompile(`(?m)^var config = (.*);$`)
 
-type configuration struct {
+type ServerAddress struct {
 	Host string
 	Port uint16
 }
 
-func findConfiguration(name string) (*configuration, error) {
+func findConfiguration(name string) (ServerAddress, error) {
 	if !strings.Contains(name, ".") {
 		name += ".psim.us"
 	}
 	serverConfiguration, err := downloadConfiguration(name)
 	if err != nil {
-		return nil, err
+		return ServerAddress{}, err
 	}
 	// Crossdomain API doesn't provide server information for main server.
 	if serverConfiguration.Host == "showdown" {
@@ -82,7 +82,7 @@ func findConfiguration(name string) (*configuration, error) {
 	return serverConfiguration, nil
 }
 
-func downloadConfiguration(server string) (_ *configuration, err error) {
+func downloadConfiguration(server string) (_ ServerAddress, err error) {
 	escapedName := url.QueryEscape(server)
 	res, err := http.Get("https://play.pokemonshowdown.com/crossdomain.php?host=" + escapedName)
 	if err != nil {
@@ -96,7 +96,7 @@ func downloadConfiguration(server string) (_ *configuration, err error) {
 	return parseConfiguration(contents)
 }
 
-func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configuration, err error) {
+func parseConfiguration(crossDomainOutput []byte) (serverConfiguration ServerAddress, err error) {
 	matches := configurationRegexp.FindSubmatch(crossDomainOutput)
 	if matches == nil {
 		err = new(serverDoesNotExistError)
@@ -108,7 +108,6 @@ func parseConfiguration(crossDomainOutput []byte) (serverConfiguration *configur
 	if err != nil {
 		return
 	}
-	serverConfiguration = new(configuration)
-	err = json.Unmarshal([]byte(jsonData), serverConfiguration)
+	err = json.Unmarshal([]byte(jsonData), &serverConfiguration)
 	return
 }
