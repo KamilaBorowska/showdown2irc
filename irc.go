@@ -177,7 +177,7 @@ func connectionListen(rawConnection io.ReadWriteCloser) {
 	lines := bufio.NewReader(rawConnection)
 	var c connection
 
-	c = connection{tcp: rawConnection}
+	c = connection{tcp: rawConnection, nickname: "*"}
 	for !c.closing {
 		line, err := lines.ReadString('\n')
 		if err != nil {
