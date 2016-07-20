@@ -172,7 +172,7 @@ func toIRC(tokens []string) string {
 	return result.String()
 }
 
-func connectionListen(rawConnection net.Conn) {
+func connectionListen(rawConnection io.ReadWriteCloser) {
 	defer rawConnection.Close()
 	lines := bufio.NewReader(rawConnection)
 	var c connection
