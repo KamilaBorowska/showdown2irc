@@ -92,6 +92,7 @@ func finishShowdown() {
 
 func TestShowdownServer(t *testing.T) {
 	runShowdown()
+	defer finishShowdown()
 
 	config := ServerAddress{
 		Host: "localhost",
@@ -108,6 +109,4 @@ func TestShowdownServer(t *testing.T) {
 	assert.NoError(t, err, "Showdown client connection failed (may need to wait more?)")
 	assert.Equal(t, <-firstMessage, "updateuser", "First message from server should be updateserver")
 	bc.Close()
-
-	finishShowdown()
 }
