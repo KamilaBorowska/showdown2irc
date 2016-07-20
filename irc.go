@@ -21,6 +21,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"regexp"
@@ -36,7 +37,7 @@ const serverName = "showdown"
 var tokenRegexp = regexp.MustCompile(`:[^\r\n]*|[^\s:]+`)
 
 type connection struct {
-	tcp          net.Conn
+	tcp          io.ReadWriteCloser
 	nickname     string
 	showdown     *showdown.BotConnection
 	loginData    showdown.LoginData
