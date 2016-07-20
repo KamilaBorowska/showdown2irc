@@ -10,6 +10,7 @@ engines:
     enabled: true
   markdownlint:
     enabled: true
+
 ratings:
-    paths:
-    - "**.go"
+  paths:
+  - "**.go"
