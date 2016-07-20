@@ -22,7 +22,6 @@ import (
 	"os"
 	"os/exec"
 	"path"
-	"sync"
 	"testing"
 	"time"
 
@@ -86,24 +85,13 @@ func runShowdown() {
 	}
 }
 
-var once sync.Once
-
-func prepareShowdown() {
-	once.Do(runShowdown)
-}
-
 func finishShowdown() {
 	showdownCommand.Process.Signal(os.Interrupt)
 	showdownCommand.Wait()
 }
 
-func init() {
-	// This can wait until later if needed
-	go prepareShowdown()
-}
-
 func TestShowdownServer(t *testing.T) {
-	prepareShowdown()
+	runShowdown()
 
 	config := ServerAddress{
 		Host: "localhost",
