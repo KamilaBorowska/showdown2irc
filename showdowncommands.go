@@ -27,6 +27,15 @@ import (
 
 var rankMap = map[rune]byte{'~': 'q', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
 
+func meCallback(c *connection, argument string, author string, room *showdown.Room) {
+	c.send(author, "PRIVMSG", escapeRoom(room.ID), fmt.Sprintf("\x01ACTION %s\x01", argument))
+}
+
+var chatMessageCallbacks = map[string]func(*connection, string, string, *showdown.Room) {
+	"me": meCallback,
+	"mee": meCallback,
+}
+
 var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	"": func(c *connection, rawMessage string, room *showdown.Room) {
 		c.sendGlobal("NOTICE", escapeRoom(room.ID), rawMessage)
@@ -57,8 +66,23 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	"c:": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
 		escapedAuthor := escapeUser(showdown.SplitUser(parts[1]).Name)
+		contents := parts[2]
+		if strings.HasPrefix(contents, "//") {
+			// Get rid of one /
+			contents = contents[1:]
+		} else if strings.HasPrefix(contents, "/") {
+			parts := strings.SplitN(contents[1:], " ", 2)
+			command := parts[0]
+			argument := ""
+			if len(parts) == 2 {
+				argument = parts[1]
+			}
+			if callback, ok := chatMessageCallbacks[command]; ok {
+				callback(c, argument, escapedAuthor, room)
+				return
+			}
+		}
 		if escapedAuthor != c.nickname {
-			contents := parts[2]
 			c.send(escapedAuthor, "PRIVMSG", escapeRoom(room.ID), contents)
 		}
 	},
