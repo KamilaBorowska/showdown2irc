@@ -100,7 +100,7 @@ func (c *connection) continueConnection() {
 	case <-connectionSuccess:
 		c.sendGlobal("NICK", c.nickname)
 		c.sendNumeric(irc.RplWelcome, "Welcome to Showdown proxy!")
-		c.sendNumeric(irc.RplBounce, "PREFIX=(qraohv)~#&@%+")
+		c.sendNumeric(irc.RplBounce, "PREFIX=(qraohBv)~#&@%*+")
 		c.sendNumeric(irc.RplMOTDStart, serverName)
 		c.sendNumeric(irc.RplMOTD, "This server is a proxy server for Pokémon Showdown.")
 		c.sendNumeric(irc.RplMOTD, "For source code, see https://github.com/xfix/showdown2irc")

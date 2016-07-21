@@ -25,14 +25,14 @@ import (
 	"github.com/xfix/showdown2irc/showdown"
 )
 
-var rankMap = map[rune]byte{'~': 'q', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '+': 'v'}
+var rankMap = map[rune]byte{'~': 'q', '#': 'r', '&': 'a', '@': 'o', '%': 'h', '*': 'B', '+': 'v'}
 
 func meCallback(c *connection, argument string, author string, room *showdown.Room) {
 	c.send(author, "PRIVMSG", escapeRoom(room.ID), fmt.Sprintf("\x01ACTION %s\x01", argument))
 }
 
-var chatMessageCallbacks = map[string]func(*connection, string, string, *showdown.Room) {
-	"me": meCallback,
+var chatMessageCallbacks = map[string]func(*connection, string, string, *showdown.Room){
+	"me":  meCallback,
 	"mee": meCallback,
 }
 
