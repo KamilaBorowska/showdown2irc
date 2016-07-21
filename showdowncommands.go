@@ -65,7 +65,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	},
 	"c:": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
-		escapedAuthor := escapeUser(showdown.SplitUser(parts[1]).Name)
+		escapedAuthor := escapeUserWithHost(showdown.SplitUser(parts[1]).Name)
 		contents := parts[2]
 		if strings.HasPrefix(contents, "//") {
 			// Get rid of one /
@@ -100,7 +100,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 	"pm": func(c *connection, rawMessage string, room *showdown.Room) {
 		parts := strings.SplitN(rawMessage, "|", 3)
 		contents := parts[2]
-		escapedAuthor := escapeUser(showdown.SplitUser(parts[0]).Name)
+		escapedAuthor := escapeUserWithHost(showdown.SplitUser(parts[0]).Name)
 		if escapedAuthor != c.nickname {
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}
