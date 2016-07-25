@@ -59,6 +59,8 @@ const formatsData = require(dataDirectory + 'formats-data').BattleFormatsData
 const moves = loadFile('moves', 'BattleMovedex')
 const abilities = loadFile('abilities', 'BattleAbilities')
 
+// The following license is not license for this file. Rather, it's
+// license that is automatically inserted into output files.
 const header = `\
 // Copyright (c) 2011-2016 Guangcong Luo and other contributors
 // http://pokemonshowdown.com/
