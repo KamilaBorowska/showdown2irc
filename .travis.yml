@@ -10,8 +10,9 @@ matrix:
   fast_finish: true
 git:
   submodules: false
-before_install: nvm install 4.2
 install:
+- nvm install 4.2
+- go get -t -v ./...
 - go get golang.org/x/tools/cmd/cover
 - go get github.com/mattn/goveralls
 script:
