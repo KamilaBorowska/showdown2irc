@@ -110,3 +110,13 @@ func TestShowdownServer(t *testing.T) {
 	assert.Equal(t, <-firstMessage, "updateuser", "First message from server should be updateserver")
 	bc.Close()
 }
+
+func TestConnectionFailure(t *testing.T) {
+	config := ServerAddress{
+		Host: "showdown.invalid",
+		Port: 404,
+	}
+
+	_, _, err := ConnectToKnownServer(LoginData{}, config, nil)
+	assert.Error(t, err, "Connection did not fail")
+}
