@@ -27,3 +27,8 @@ func TestGetMessage(t *testing.T) {
 	input := showdown.ToID("Bulbasaur")
 	assert.Equal(t, GetPokemon(input).Types, []Type{Grass, Poison}, "GetPokemon(%#q)", input)
 }
+
+func TestTypeStringification(t *testing.T) {
+	input := Normal
+	assert.Equal(t, input.String(), "Normal", "%#q.String()", input)
+}
