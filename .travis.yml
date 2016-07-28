@@ -1,17 +1,24 @@
 language: go
-
 go:
 - 1.4
 - 1.5
 - 1.6
 - tip
-
 matrix:
   allow_failures:
   - go: tip
   fast_finish: true
-
 git:
   submodules: false
-
 before_install: nvm install 4.2
+install:
+- go get golang.org/x/tools/cmd/cover
+- go get github.com/mattn/goveralls
+script:
+- 'echo mode: atomic > coverage.out'
+- go list ./... | xargs -n1 -I{} sh -c 'go test -covermode=atomic -coverprofile=coverage.tmp {} && tail -n +2 coverage.tmp >> coverage.out'
+- rm coverage.tmp
+- goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
+env:
+  global:
+    secure: "pQpeeDlPWk37m5frSJ5Nk9qxirSDTgq9dJih0UxNSSUYoNUtxqfM5ZH1N3TUupga9tK+oUj80LbKXw+UmOpCEMIdExNHRwkKH7KGq8pqEe+CYvihwtrEUXz8wDHeTSedR6FAbpw+1oZ4kZzR94HkIMIZhi6OP2hIKDLabV788SRdSIaT26H4BsAOKhDOnPYHmbGYKQs0aDDui5iLLnwlHlTAXRWqiM8twwUKvifXJuUw9usmwI5zaw7GAYJmR0cGkJf+xmOoxE6ebRUi0siQsof3kajarIjOr+34EReVI5YTdoW8PaDVHgG0dfxLMoKKRwGz45xaJJNoQQ3P12HNAXoWnxsu9L5pOEegyZvZCD2pZ58q4uyW9lEE2Q80/AfbJUMmgjopFoV0lDj9tBod1/tZl3UMSUZhGeJw6QwHUZctUXZxQzMtUKdICpwvL4Kzc/Jdt5S1OAQv+F0WO8eio+o8Ija+13H7kUw0B5tyte5I6yydl31MqB4AghmcPnXhdnskiR1dFRhsobb+MLNQazxViaiEvONHkRq/rafbIuPFNMlRCiiWcnWp4xVYSlDw7IqCSD1SAOCZN7ZMoFC1Oi+wBhS1wXmQeX2h8MndXcovji08zW+uUCrKBMtckJHbgTpgFx97XEP6aUuZGBltfyZ/yTuhox0LXlg1V9+I4kk="
