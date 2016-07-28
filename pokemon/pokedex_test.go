@@ -42,3 +42,8 @@ func TestInvalidTypeStringification(t *testing.T) {
 	input := Type(404)
 	assert.Equal(t, input.String(), "Type(404)", "%#q.String()", input)
 }
+
+func TestInvalidDamageCategoryStringification(t *testing.T) {
+	input := DamageCategory(404)
+	assert.Equal(t, input.String(), "DamageCategory(404)", "%#q.String()", input)
+}
