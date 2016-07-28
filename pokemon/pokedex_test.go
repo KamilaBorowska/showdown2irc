@@ -37,3 +37,8 @@ func TestDamageCategoryStringification(t *testing.T) {
 	input := Physical
 	assert.Equal(t, input.String(), "Physical", "%#q.String()", input)
 }
+
+func TestInvalidTypeStringification(t *testing.T) {
+	input := Type(404)
+	assert.Equal(t, input.String(), "Type(404)", "%#q.String()", input)
+}
