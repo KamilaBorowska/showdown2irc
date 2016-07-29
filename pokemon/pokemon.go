@@ -51,7 +51,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"venusaurmega": {
 		Species:   "Venusaur-Mega",
-		Tier:      "RU",
+		Tier:      "OU",
 		Types:     []Type{Grass, Poison},
 		Abilities: []string{"Thick Fat"},
 		BaseStats: Stats{Hp: 80, Atk: 100, Def: 123, Spa: 122, Spd: 120, Spe: 80},
@@ -79,14 +79,14 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"charizardmegax": {
 		Species:   "Charizard-Mega-X",
-		Tier:      "NU",
+		Tier:      "OU",
 		Types:     []Type{Fire, Dragon},
 		Abilities: []string{"Tough Claws"},
 		BaseStats: Stats{Hp: 78, Atk: 130, Def: 111, Spa: 130, Spd: 85, Spe: 100},
 	},
 	"charizardmegay": {
 		Species:   "Charizard-Mega-Y",
-		Tier:      "NU",
+		Tier:      "OU",
 		Types:     []Type{Fire, Flying},
 		Abilities: []string{"Drought"},
 		BaseStats: Stats{Hp: 78, Atk: 104, Def: 78, Spa: 159, Spd: 115, Spe: 100},
@@ -114,7 +114,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"blastoisemega": {
 		Species:   "Blastoise-Mega",
-		Tier:      "RU",
+		Tier:      "UU",
 		Types:     []Type{Water},
 		Abilities: []string{"Mega Launcher"},
 		BaseStats: Stats{Hp: 79, Atk: 103, Def: 120, Spa: 135, Spd: 115, Spe: 78},
@@ -163,7 +163,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"beedrillmega": {
 		Species:   "Beedrill-Mega",
-		Tier:      "PU",
+		Tier:      "UU",
 		Types:     []Type{Bug, Poison},
 		Abilities: []string{"Adaptability"},
 		BaseStats: Stats{Hp: 65, Atk: 150, Def: 40, Spa: 15, Spd: 80, Spe: 145},
@@ -191,7 +191,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"pidgeotmega": {
 		Species:   "Pidgeot-Mega",
-		Tier:      "PU",
+		Tier:      "BL",
 		Types:     []Type{Normal, Flying},
 		Abilities: []string{"No Guard"},
 		BaseStats: Stats{Hp: 83, Atk: 80, Def: 80, Spa: 135, Spd: 80, Spe: 121},
@@ -247,42 +247,42 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"pikachucosplay": {
 		Species:   "Pikachu-Cosplay",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
 	},
 	"pikachurockstar": {
 		Species:   "Pikachu-Rock-Star",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
 	},
 	"pikachubelle": {
 		Species:   "Pikachu-Belle",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
 	},
 	"pikachupopstar": {
 		Species:   "Pikachu-Pop-Star",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
 	},
 	"pikachuphd": {
 		Species:   "Pikachu-PhD",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
 	},
 	"pikachulibre": {
 		Species:   "Pikachu-Libre",
-		Tier:      "NFE",
+		Tier:      "PU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 35, Atk: 55, Def: 40, Spa: 50, Spd: 50, Spe: 90},
@@ -681,7 +681,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"slowbromega": {
 		Species:   "Slowbro-Mega",
-		Tier:      "OU",
+		Tier:      "(OU)",
 		Types:     []Type{Water, Psychic},
 		Abilities: []string{"Shell Armor"},
 		BaseStats: Stats{Hp: 95, Atk: 75, Def: 180, Spa: 130, Spd: 80, Spe: 30},
@@ -786,7 +786,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"gengarmega": {
 		Species:   "Gengar-Mega",
-		Tier:      "OU",
+		Tier:      "Uber",
 		Types:     []Type{Ghost, Poison},
 		Abilities: []string{"Shadow Tag"},
 		BaseStats: Stats{Hp: 60, Atk: 65, Def: 80, Spa: 170, Spd: 95, Spe: 130},
@@ -940,7 +940,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"kangaskhanmega": {
 		Species:   "Kangaskhan-Mega",
-		Tier:      "NU",
+		Tier:      "Uber",
 		Types:     []Type{Normal},
 		Abilities: []string{"Parental Bond"},
 		BaseStats: Stats{Hp: 105, Atk: 125, Def: 100, Spa: 60, Spd: 100, Spe: 100},
@@ -1031,7 +1031,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"pinsirmega": {
 		Species:   "Pinsir-Mega",
-		Tier:      "NU",
+		Tier:      "OU",
 		Types:     []Type{Bug, Flying},
 		Abilities: []string{"Aerilate"},
 		BaseStats: Stats{Hp: 65, Atk: 155, Def: 120, Spa: 65, Spd: 90, Spe: 105},
@@ -1059,7 +1059,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"gyaradosmega": {
 		Species:   "Gyarados-Mega",
-		Tier:      "UU",
+		Tier:      "BL",
 		Types:     []Type{Water, Dark},
 		Abilities: []string{"Mold Breaker"},
 		BaseStats: Stats{Hp: 95, Atk: 155, Def: 109, Spa: 70, Spd: 130, Spe: 81},
@@ -1150,7 +1150,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"aerodactylmega": {
 		Species:   "Aerodactyl-Mega",
-		Tier:      "RU",
+		Tier:      "UU",
 		Types:     []Type{Rock, Flying},
 		Abilities: []string{"Tough Claws"},
 		BaseStats: Stats{Hp: 80, Atk: 135, Def: 85, Spa: 70, Spd: 95, Spe: 150},
@@ -1381,7 +1381,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"pichuspikyeared": {
 		Species:   "Pichu-Spiky-eared",
-		Tier:      "LC",
+		Tier:      "Illegal",
 		Types:     []Type{Electric},
 		Abilities: []string{"Static"},
 		BaseStats: Stats{Hp: 20, Atk: 40, Def: 15, Spa: 35, Spd: 35, Spe: 60},
@@ -1451,7 +1451,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"ampharosmega": {
 		Species:   "Ampharos-Mega",
-		Tier:      "PU",
+		Tier:      "UU",
 		Types:     []Type{Electric, Dragon},
 		Abilities: []string{"Mold Breaker"},
 		BaseStats: Stats{Hp: 90, Atk: 95, Def: 105, Spa: 165, Spd: 110, Spe: 45},
@@ -1647,7 +1647,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"steelixmega": {
 		Species:   "Steelix-Mega",
-		Tier:      "NU",
+		Tier:      "BL2",
 		Types:     []Type{Steel, Ground},
 		Abilities: []string{"Sand Force"},
 		BaseStats: Stats{Hp: 75, Atk: 125, Def: 230, Spa: 55, Spd: 95, Spe: 30},
@@ -1703,7 +1703,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"heracrossmega": {
 		Species:   "Heracross-Mega",
-		Tier:      "UU",
+		Tier:      "BL",
 		Types:     []Type{Bug, Fighting},
 		Abilities: []string{"Skill Link"},
 		BaseStats: Stats{Hp: 80, Atk: 185, Def: 115, Spa: 40, Spd: 105, Spe: 75},
@@ -1815,7 +1815,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"houndoommega": {
 		Species:   "Houndoom-Mega",
-		Tier:      "RU",
+		Tier:      "BL2",
 		Types:     []Type{Dark, Fire},
 		Abilities: []string{"Solar Power"},
 		BaseStats: Stats{Hp: 75, Atk: 90, Def: 90, Spa: 140, Spd: 90, Spe: 115},
@@ -1955,7 +1955,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"tyranitarmega": {
 		Species:   "Tyranitar-Mega",
-		Tier:      "OU",
+		Tier:      "(OU)",
 		Types:     []Type{Rock, Dark},
 		Abilities: []string{"Sand Stream"},
 		BaseStats: Stats{Hp: 100, Atk: 164, Def: 150, Spa: 95, Spd: 120, Spe: 71},
@@ -2004,7 +2004,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"sceptilemega": {
 		Species:   "Sceptile-Mega",
-		Tier:      "BL3",
+		Tier:      "UU",
 		Types:     []Type{Grass, Dragon},
 		Abilities: []string{"Lightning Rod"},
 		BaseStats: Stats{Hp: 70, Atk: 110, Def: 75, Spa: 145, Spd: 85, Spe: 145},
@@ -2221,7 +2221,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"gardevoirmega": {
 		Species:   "Gardevoir-Mega",
-		Tier:      "UU",
+		Tier:      "OU",
 		Types:     []Type{Psychic, Fairy},
 		Abilities: []string{"Pixilate"},
 		BaseStats: Stats{Hp: 68, Atk: 85, Def: 65, Spa: 165, Spd: 135, Spe: 100},
@@ -2368,7 +2368,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"sableyemega": {
 		Species:   "Sableye-Mega",
-		Tier:      "UU",
+		Tier:      "OU",
 		Types:     []Type{Dark, Ghost},
 		Abilities: []string{"Magic Bounce"},
 		BaseStats: Stats{Hp: 50, Atk: 85, Def: 125, Spa: 85, Spd: 115, Spe: 20},
@@ -2382,7 +2382,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"mawilemega": {
 		Species:   "Mawile-Mega",
-		Tier:      "PU",
+		Tier:      "Uber",
 		Types:     []Type{Steel, Fairy},
 		Abilities: []string{"Huge Power"},
 		BaseStats: Stats{Hp: 50, Atk: 105, Def: 125, Spa: 55, Spd: 95, Spe: 50},
@@ -2410,7 +2410,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"aggronmega": {
 		Species:   "Aggron-Mega",
-		Tier:      "NU",
+		Tier:      "UU",
 		Types:     []Type{Steel},
 		Abilities: []string{"Filter"},
 		BaseStats: Stats{Hp: 70, Atk: 140, Def: 230, Spa: 60, Spd: 80, Spe: 50},
@@ -2431,7 +2431,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"medichammega": {
 		Species:   "Medicham-Mega",
-		Tier:      "RU",
+		Tier:      "OU",
 		Types:     []Type{Fighting, Psychic},
 		Abilities: []string{"Pure Power"},
 		BaseStats: Stats{Hp: 60, Atk: 100, Def: 85, Spa: 80, Spd: 85, Spe: 100},
@@ -2452,7 +2452,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"manectricmega": {
 		Species:   "Manectric-Mega",
-		Tier:      "NU",
+		Tier:      "OU",
 		Types:     []Type{Electric},
 		Abilities: []string{"Intimidate"},
 		BaseStats: Stats{Hp: 70, Atk: 75, Def: 80, Spa: 135, Spd: 80, Spe: 135},
@@ -2522,7 +2522,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"sharpedomega": {
 		Species:   "Sharpedo-Mega",
-		Tier:      "BL2",
+		Tier:      "UU",
 		Types:     []Type{Water, Dark},
 		Abilities: []string{"Strong Jaw"},
 		BaseStats: Stats{Hp: 70, Atk: 140, Def: 70, Spa: 110, Spd: 65, Spe: 105},
@@ -2557,7 +2557,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"cameruptmega": {
 		Species:   "Camerupt-Mega",
-		Tier:      "PU",
+		Tier:      "RU",
 		Types:     []Type{Fire, Ground},
 		Abilities: []string{"Sheer Force"},
 		BaseStats: Stats{Hp: 70, Atk: 120, Def: 100, Spa: 145, Spd: 105, Spe: 20},
@@ -2641,7 +2641,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"altariamega": {
 		Species:   "Altaria-Mega",
-		Tier:      "PU",
+		Tier:      "BL",
 		Types:     []Type{Dragon, Fairy},
 		Abilities: []string{"Pixilate"},
 		BaseStats: Stats{Hp: 75, Atk: 110, Def: 110, Spa: 110, Spd: 105, Spe: 80},
@@ -2809,7 +2809,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"banettemega": {
 		Species:   "Banette-Mega",
-		Tier:      "PU",
+		Tier:      "RU",
 		Types:     []Type{Ghost},
 		Abilities: []string{"Prankster"},
 		BaseStats: Stats{Hp: 64, Atk: 165, Def: 75, Spa: 93, Spd: 83, Spe: 75},
@@ -2851,7 +2851,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"absolmega": {
 		Species:   "Absol-Mega",
-		Tier:      "RU",
+		Tier:      "UU",
 		Types:     []Type{Dark},
 		Abilities: []string{"Magic Bounce"},
 		BaseStats: Stats{Hp: 65, Atk: 150, Def: 60, Spa: 115, Spd: 60, Spe: 115},
@@ -2879,7 +2879,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"glaliemega": {
 		Species:   "Glalie-Mega",
-		Tier:      "PU",
+		Tier:      "RU",
 		Types:     []Type{Ice},
 		Abilities: []string{"Refrigerate"},
 		BaseStats: Stats{Hp: 80, Atk: 120, Def: 80, Spa: 120, Spd: 80, Spe: 100},
@@ -2963,7 +2963,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"salamencemega": {
 		Species:   "Salamence-Mega",
-		Tier:      "BL",
+		Tier:      "Uber",
 		Types:     []Type{Dragon, Flying},
 		Abilities: []string{"Aerilate"},
 		BaseStats: Stats{Hp: 95, Atk: 145, Def: 130, Spa: 120, Spd: 90, Spe: 120},
@@ -2991,7 +2991,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"metagrossmega": {
 		Species:   "Metagross-Mega",
-		Tier:      "UU",
+		Tier:      "OU",
 		Types:     []Type{Steel, Psychic},
 		Abilities: []string{"Tough Claws"},
 		BaseStats: Stats{Hp: 80, Atk: 145, Def: 150, Spa: 105, Spd: 110, Spe: 110},
@@ -3026,7 +3026,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"latiasmega": {
 		Species:   "Latias-Mega",
-		Tier:      "OU",
+		Tier:      "(OU)",
 		Types:     []Type{Dragon, Psychic},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 80, Atk: 100, Def: 120, Spa: 140, Spd: 150, Spe: 110},
@@ -3040,7 +3040,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"latiosmega": {
 		Species:   "Latios-Mega",
-		Tier:      "OU",
+		Tier:      "(OU)",
 		Types:     []Type{Dragon, Psychic},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 80, Atk: 130, Def: 100, Spa: 160, Spd: 120, Spe: 110},
@@ -3082,7 +3082,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"rayquazamega": {
 		Species:   "Rayquaza-Mega",
-		Tier:      "Uber",
+		Tier:      "AG",
 		Types:     []Type{Dragon, Flying},
 		Abilities: []string{"Delta Stream"},
 		BaseStats: Stats{Hp: 105, Atk: 180, Def: 100, Spa: 180, Spd: 100, Spe: 115},
@@ -3439,7 +3439,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"lopunnymega": {
 		Species:   "Lopunny-Mega",
-		Tier:      "PU",
+		Tier:      "OU",
 		Types:     []Type{Normal, Fighting},
 		Abilities: []string{"Scrappy"},
 		BaseStats: Stats{Hp: 65, Atk: 136, Def: 94, Spa: 54, Spd: 96, Spe: 135},
@@ -3565,7 +3565,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"garchompmega": {
 		Species:   "Garchomp-Mega",
-		Tier:      "OU",
+		Tier:      "(OU)",
 		Types:     []Type{Dragon, Ground},
 		Abilities: []string{"Sand Force"},
 		BaseStats: Stats{Hp: 108, Atk: 170, Def: 115, Spa: 120, Spd: 95, Spe: 92},
@@ -3593,7 +3593,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"lucariomega": {
 		Species:   "Lucario-Mega",
-		Tier:      "UU",
+		Tier:      "Uber",
 		Types:     []Type{Fighting, Steel},
 		Abilities: []string{"Adaptability"},
 		BaseStats: Stats{Hp: 70, Atk: 145, Def: 88, Spa: 140, Spd: 70, Spe: 112},
@@ -3684,7 +3684,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"abomasnowmega": {
 		Species:   "Abomasnow-Mega",
-		Tier:      "NU",
+		Tier:      "BL2",
 		Types:     []Type{Grass, Ice},
 		Abilities: []string{"Snow Warning"},
 		BaseStats: Stats{Hp: 90, Atk: 132, Def: 105, Spa: 132, Spd: 105, Spe: 30},
@@ -3796,7 +3796,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"gallademega": {
 		Species:   "Gallade-Mega",
-		Tier:      "RU",
+		Tier:      "BL",
 		Types:     []Type{Psychic, Fighting},
 		Abilities: []string{"Inner Focus"},
 		BaseStats: Stats{Hp: 68, Atk: 165, Def: 95, Spa: 65, Spd: 115, Spe: 110},
@@ -3831,21 +3831,21 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"rotomheat": {
 		Species:   "Rotom-Heat",
-		Tier:      "NU",
+		Tier:      "UU",
 		Types:     []Type{Electric, Fire},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 50, Atk: 65, Def: 107, Spa: 105, Spd: 107, Spe: 86},
 	},
 	"rotomwash": {
 		Species:   "Rotom-Wash",
-		Tier:      "NU",
+		Tier:      "OU",
 		Types:     []Type{Electric, Water},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 50, Atk: 65, Def: 107, Spa: 105, Spd: 107, Spe: 86},
 	},
 	"rotomfrost": {
 		Species:   "Rotom-Frost",
-		Tier:      "NU",
+		Tier:      "PU",
 		Types:     []Type{Electric, Ice},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 50, Atk: 65, Def: 107, Spa: 105, Spd: 107, Spe: 86},
@@ -3859,7 +3859,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"rotommow": {
 		Species:   "Rotom-Mow",
-		Tier:      "NU",
+		Tier:      "RU",
 		Types:     []Type{Electric, Grass},
 		Abilities: []string{"Levitate"},
 		BaseStats: Stats{Hp: 50, Atk: 65, Def: 107, Spa: 105, Spd: 107, Spe: 86},
@@ -3964,7 +3964,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"shayminsky": {
 		Species:   "Shaymin-Sky",
-		Tier:      "UU",
+		Tier:      "Uber",
 		Types:     []Type{Grass, Flying},
 		Abilities: []string{"Serene Grace"},
 		BaseStats: Stats{Hp: 100, Atk: 103, Def: 75, Spa: 120, Spd: 75, Spe: 127},
@@ -4363,7 +4363,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"audinomega": {
 		Species:   "Audino-Mega",
-		Tier:      "PU",
+		Tier:      "NU",
 		Types:     []Type{Normal, Fairy},
 		Abilities: []string{"Healer"},
 		BaseStats: Stats{Hp: 103, Atk: 60, Def: 126, Spa: 80, Spd: 126, Spe: 50},
@@ -5154,7 +5154,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"tornadustherian": {
 		Species:   "Tornadus-Therian",
-		Tier:      "BL2",
+		Tier:      "OU",
 		Types:     []Type{Flying},
 		Abilities: []string{"Regenerator"},
 		BaseStats: Stats{Hp: 79, Atk: 100, Def: 80, Spa: 110, Spd: 90, Spe: 121},
@@ -5168,7 +5168,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"thundurustherian": {
 		Species:   "Thundurus-Therian",
-		Tier:      "OU",
+		Tier:      "BL",
 		Types:     []Type{Electric, Flying},
 		Abilities: []string{"Volt Absorb"},
 		BaseStats: Stats{Hp: 79, Atk: 105, Def: 70, Spa: 145, Spd: 80, Spe: 101},
@@ -5196,7 +5196,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"landorustherian": {
 		Species:   "Landorus-Therian",
-		Tier:      "Uber",
+		Tier:      "OU",
 		Types:     []Type{Ground, Flying},
 		Abilities: []string{"Intimidate"},
 		BaseStats: Stats{Hp: 89, Atk: 145, Def: 90, Spa: 105, Spd: 80, Spe: 91},
@@ -5210,14 +5210,14 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"kyuremblack": {
 		Species:   "Kyurem-Black",
-		Tier:      "BL2",
+		Tier:      "OU",
 		Types:     []Type{Dragon, Ice},
 		Abilities: []string{"Teravolt"},
 		BaseStats: Stats{Hp: 125, Atk: 170, Def: 100, Spa: 120, Spd: 90, Spe: 95},
 	},
 	"kyuremwhite": {
 		Species:   "Kyurem-White",
-		Tier:      "BL2",
+		Tier:      "Uber",
 		Types:     []Type{Dragon, Ice},
 		Abilities: []string{"Turboblaze"},
 		BaseStats: Stats{Hp: 125, Atk: 120, Def: 90, Spa: 170, Spd: 100, Spe: 95},
@@ -5448,7 +5448,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"floetteeternal": {
 		Species:   "Floette-Eternal",
-		Tier:      "NFE",
+		Tier:      "Unreleased",
 		Types:     []Type{Fairy},
 		Abilities: []string{"Flower Veil"},
 		BaseStats: Stats{Hp: 74, Atk: 65, Def: 67, Spa: 125, Spd: 128, Spe: 92},
@@ -5854,7 +5854,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"dianciemega": {
 		Species:   "Diancie-Mega",
-		Tier:      "RU",
+		Tier:      "OU",
 		Types:     []Type{Rock, Fairy},
 		Abilities: []string{"Magic Bounce"},
 		BaseStats: Stats{Hp: 50, Atk: 160, Def: 110, Spa: 160, Spd: 110, Spe: 110},
@@ -5868,7 +5868,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"hoopaunbound": {
 		Species:   "Hoopa-Unbound",
-		Tier:      "RU",
+		Tier:      "Uber",
 		Types:     []Type{Psychic, Dark},
 		Abilities: []string{"Magician"},
 		BaseStats: Stats{Hp: 80, Atk: 160, Def: 60, Spa: 170, Spd: 130, Spe: 80},
@@ -5882,7 +5882,7 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"missingno": {
 		Species:   "Missingno.",
-		Tier:      "",
+		Tier:      "undefined",
 		Types:     []Type{Bird, Normal},
 		Abilities: []string{},
 		BaseStats: Stats{Hp: 33, Atk: 136, Spa: 6, Spd: 6, Spe: 29},

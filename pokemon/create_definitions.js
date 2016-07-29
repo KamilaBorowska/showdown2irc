@@ -105,13 +105,23 @@ function convertAbilities(abilities) {
 	return `[]string{${result.join(", ")}}`
 }
 
+function getTier(toCheck) {
+	for (const pokemon of toCheck) {
+		if (!pokemon) continue
+		const tier = formatsData[toId(pokemon)].tier
+		if (tier) return tier
+		if (pokemon === "Missingno.") return "undefined"
+	}
+	throw new Error(`Untiered Pokemon "${toCheck[0]}" that isn't Missingno.`)
+}
+
 function parsePokedex(pokedex) {
 	let output = header
 	output += "var pokemon = map[showdown.UserID]*Pokemon{\n"
 	for (const {species, types, abilities, baseStats, baseSpecies} of pokedex) {
 		output += `\t${J(toId(species))}: {
 \t\tSpecies:   ${J(species)},
-\t\tTier:      ${J(formatsData[toId(baseSpecies || species)].tier)},
+\t\tTier:      ${J(getTier([species, baseSpecies]))},
 \t\tTypes:     []Type{${types.join(", ")}},
 \t\tAbilities: ${convertAbilities(abilities)},
 \t\tBaseStats: Stats${J(baseStats)},
