@@ -2956,14 +2956,14 @@ var pokemon = map[showdown.UserID]*Pokemon{
 	},
 	"salamence": {
 		Species:   "Salamence",
-		Tier:      "UU",
+		Tier:      "BL",
 		Types:     []Type{Dragon, Flying},
 		Abilities: []string{"Intimidate", Hidden: "Moxie"},
 		BaseStats: Stats{Hp: 95, Atk: 135, Def: 80, Spa: 110, Spd: 80, Spe: 100},
 	},
 	"salamencemega": {
 		Species:   "Salamence-Mega",
-		Tier:      "UU",
+		Tier:      "BL",
 		Types:     []Type{Dragon, Flying},
 		Abilities: []string{"Aerilate"},
 		BaseStats: Stats{Hp: 95, Atk: 145, Def: 130, Spa: 120, Spd: 90, Spe: 120},
