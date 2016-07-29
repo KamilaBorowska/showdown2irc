@@ -47,3 +47,11 @@ func TestInvalidDamageCategoryStringification(t *testing.T) {
 	input := DamageCategory(404)
 	assert.Equal(t, input.String(), "DamageCategory(404)", "%#q.String()", input)
 }
+
+func TestMegaTier(t *testing.T) {
+	// Tiers are subject to change. However, I believe this test may be
+	// useful despite that. In event this mega causes to be Uber, this
+	// mega can be changed
+	input := showdown.ToID("Salamence-Mega")
+	assert.Equal(t, GetPokemon(input).Tier, "Uber", "GetPokemon(%#q).Tier", input)
+}
