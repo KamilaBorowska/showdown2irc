@@ -79,7 +79,7 @@ func runShowdown() {
 		if line == "Test your server at http://localhost:8000\n" {
 			// Apparently this message doesn't mean server can be connected to.
 			// Wait a bit more, perhaps it will accept connections.
-			time.Sleep(time.Second)
+			time.Sleep(2 * time.Second)
 			return
 		}
 	}
