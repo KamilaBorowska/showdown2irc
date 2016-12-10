@@ -104,6 +104,9 @@ var ircCommands = map[string]func(*connection, []string){
 			if showdown.ToID(room) == "" {
 				room = "lobby"
 			}
+			if room[0] == '#' {
+				room = room[1:]
+			}
 			c.showdown.SendGlobalCommand("join", room)
 		}
 	},
