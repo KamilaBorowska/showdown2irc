@@ -170,6 +170,6 @@ function parseAbilities(abilities) {
 	return output
 }
 
-writeFile("pokemon.go", parsePokedex(pokedex))
-writeFile("moves.go", parseMoves(moves))
-writeFile("abilities.go", parseAbilities(abilities))
+writeFile("pokemon.go", parsePokedex(pokedex), () => {})
+writeFile("moves.go", parseMoves(moves), () => {})
+writeFile("abilities.go", parseAbilities(abilities), () => {})
