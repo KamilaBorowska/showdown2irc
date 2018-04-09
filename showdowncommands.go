@@ -105,15 +105,18 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}
 	},
-	"raw": func(c *connection, rawMessage string, room *showdown.Room) {
-		// This works by trying to use each parser on a raw result, hoping
-		// that one will match a pattern. This is done, because some raw
-		// outputs have to be parsed it specific way in order to better
-		// match IRC commands.
-		for _, parser := range rawParsers {
-			if parser(c, rawMessage, room) {
-				return
-			}
+	"raw": htmlCommand,
+	"html": htmlCommand,
+}
+
+func htmlCommand(c *connection, rawMessage string, room *showdown.Room) {
+	// This works by trying to use each parser on a raw result, hoping
+	// that one will match a pattern. This is done, because some raw
+	// outputs have to be parsed it specific way in order to better
+	// match IRC commands.
+	for _, parser := range rawParsers {
+		if parser(c, rawMessage, room) {
+			return
 		}
-	},
+	}
 }
