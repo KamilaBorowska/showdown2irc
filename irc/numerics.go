@@ -381,7 +381,7 @@ var numericMessages = map[Numeric]string{
 	RplListEnd:       ":End of /LIST",
 	RplChannelModeIs: "%s %s %s",
 	RplNoTopic:       "%s: No topic is set",
-	RplTopic:         "%s: %s",
+	RplTopic:         "%s :%s",
 	RplInviting:      "%s %s",
 	RplSummoning:     "%s :Summoning user to IRC",
 	RplVersion:       "%s.%s %s :%s",
