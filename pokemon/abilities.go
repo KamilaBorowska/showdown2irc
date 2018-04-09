@@ -38,7 +38,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"aerilate": {
 		Name:        "Aerilate",
-		Description: "This Pokemon's Normal-type moves become Flying type and have 1.3x power.",
+		Description: "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
 	},
 	"airlock": {
 		Name:        "Air Lock",
@@ -72,9 +72,25 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Bad Dreams",
 		Description: "Causes sleeping adjacent foes to lose 1/8 of their max HP at the end of each turn.",
 	},
+	"battery": {
+		Name:        "Battery",
+		Description: "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
+	},
 	"battlearmor": {
 		Name:        "Battle Armor",
 		Description: "This Pokemon cannot be struck by a critical hit.",
+	},
+	"battlebond": {
+		Name:        "Battle Bond",
+		Description: "After KOing a Pokemon: becomes Ash-Greninja, Water Shuriken: 20 power, hits 3x.",
+	},
+	"beastboost": {
+		Name:        "Beast Boost",
+		Description: "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon.",
+	},
+	"berserk": {
+		Name:        "Berserk",
+		Description: "This Pokemon's Sp. Atk is raised by 1 when it reaches 1/2 or less of its max HP.",
 	},
 	"bigpecks": {
 		Name:        "Big Pecks",
@@ -82,7 +98,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"blaze": {
 		Name:        "Blaze",
-		Description: "When this Pokemon has 1/3 or less of its max HP, its Fire attacks do 1.5x damage.",
+		Description: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Fire attacks.",
 	},
 	"bulletproof": {
 		Name:        "Bulletproof",
@@ -108,6 +124,10 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Color Change",
 		Description: "This Pokemon's type changes to the type of a move it's hit by, unless it has the type.",
 	},
+	"comatose": {
+		Name:        "Comatose",
+		Description: "This Pokemon cannot be statused, and is considered to be asleep.",
+	},
 	"competitive": {
 		Name:        "Competitive",
 		Description: "This Pokemon's Sp. Atk is raised by 2 for each of its stats that is lowered by a foe.",
@@ -120,6 +140,10 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Contrary",
 		Description: "If this Pokemon has a stat stage raised it is lowered instead, and vice versa.",
 	},
+	"corrosion": {
+		Name:        "Corrosion",
+		Description: "This Pokemon can poison or badly poison other Pokemon regardless of their typing.",
+	},
 	"cursedbody": {
 		Name:        "Cursed Body",
 		Description: "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled.",
@@ -130,11 +154,19 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"damp": {
 		Name:        "Damp",
-		Description: "While this Pokemon is active, Self-Destruct, Explosion, and Aftermath have no effect.",
+		Description: "Prevents Explosion/Mind Blown/Self-Destruct/Aftermath while this Pokemon is active.",
+	},
+	"dancer": {
+		Name:        "Dancer",
+		Description: "After another Pokemon uses a dance move, this Pokemon uses the same move.",
 	},
 	"darkaura": {
 		Name:        "Dark Aura",
 		Description: "While this Pokemon is active, a Dark move used by any Pokemon has 1.33x power.",
+	},
+	"dazzling": {
+		Name:        "Dazzling",
+		Description: "While this Pokemon is active, allies are protected from opposing priority moves.",
 	},
 	"defeatist": {
 		Name:        "Defeatist",
@@ -151,6 +183,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"desolateland": {
 		Name:        "Desolate Land",
 		Description: "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
+	},
+	"disguise": {
+		Name:        "Disguise",
+		Description: "If this Pokemon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage.",
 	},
 	"download": {
 		Name:        "Download",
@@ -175,6 +211,14 @@ var abilities = map[showdown.UserID]*Ability{
 	"effectspore": {
 		Name:        "Effect Spore",
 		Description: "30% chance of poison/paralysis/sleep on others making contact with this Pokemon.",
+	},
+	"electricsurge": {
+		Name:        "Electric Surge",
+		Description: "On switch-in, this Pokemon summons Electric Terrain.",
+	},
+	"emergencyexit": {
+		Name:        "Emergency Exit",
+		Description: "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
 	},
 	"fairyaura": {
 		Name:        "Fairy Aura",
@@ -204,6 +248,10 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Flower Veil",
 		Description: "This side's Grass types can't have stats lowered or status inflicted by other Pokemon.",
 	},
+	"fluffy": {
+		Name:        "Fluffy",
+		Description: "This Pokemon takes 1/2 damage from contact moves, 2x damage from Fire moves.",
+	},
 	"forecast": {
 		Name:        "Forecast",
 		Description: "Castform's type changes to the current weather condition's type, except Sandstorm.",
@@ -220,13 +268,21 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Frisk",
 		Description: "On switch-in, this Pokemon identifies the held items of all opposing Pokemon.",
 	},
+	"fullmetalbody": {
+		Name:        "Full Metal Body",
+		Description: "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+	},
 	"furcoat": {
 		Name:        "Fur Coat",
 		Description: "This Pokemon's Defense is doubled.",
 	},
 	"galewings": {
 		Name:        "Gale Wings",
-		Description: "This Pokemon's Flying-type moves have their priority increased by 1.",
+		Description: "If this Pokemon is at full HP, its Flying-type moves have their priority increased by 1.",
+	},
+	"galvanize": {
+		Name:        "Galvanize",
+		Description: "This Pokemon's Normal-type moves become Electric type and have 1.2x power.",
 	},
 	"gluttony": {
 		Name:        "Gluttony",
@@ -239,6 +295,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"grasspelt": {
 		Name:        "Grass Pelt",
 		Description: "If Grassy Terrain is active, this Pokemon's Defense is multiplied by 1.5.",
+	},
+	"grassysurge": {
+		Name:        "Grassy Surge",
+		Description: "On switch-in, this Pokemon summons Grassy Terrain.",
 	},
 	"guts": {
 		Name:        "Guts",
@@ -302,7 +362,11 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"infiltrator": {
 		Name:        "Infiltrator",
-		Description: "Moves ignore substitutes and opposing Reflect, Light Screen, Safeguard, and Mist.",
+		Description: "Moves ignore substitutes and foe's Reflect/Light Screen/Safeguard/Mist/Aurora Veil.",
+	},
+	"innardsout": {
+		Name:        "Innards Out",
+		Description: "If this Pokemon is KOed with a move, that move's user loses an equal amount of HP.",
 	},
 	"innerfocus": {
 		Name:        "Inner Focus",
@@ -360,6 +424,14 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Liquid Ooze",
 		Description: "This Pokemon damages those draining HP from it for as much as they would heal.",
 	},
+	"liquidvoice": {
+		Name:        "Liquid Voice",
+		Description: "This Pokemon's sound-based moves become Water type.",
+	},
+	"longreach": {
+		Name:        "Long Reach",
+		Description: "This Pokemon's attacks do not make contact with the target.",
+	},
 	"magicbounce": {
 		Name:        "Magic Bounce",
 		Description: "This Pokemon blocks certain status moves and bounces them back to the user.",
@@ -388,9 +460,17 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Mega Launcher",
 		Description: "This Pokemon's pulse moves have 1.5x power. Heal Pulse heals 3/4 target's max HP.",
 	},
+	"merciless": {
+		Name:        "Merciless",
+		Description: "This Pokemon's attacks are critical hits if the target is poisoned.",
+	},
 	"minus": {
 		Name:        "Minus",
 		Description: "If an active ally has this Ability or the Ability Plus, this Pokemon's Sp. Atk is 1.5x.",
+	},
+	"mistysurge": {
+		Name:        "Misty Surge",
+		Description: "On switch-in, this Pokemon summons Misty Terrain.",
 	},
 	"moldbreaker": {
 		Name:        "Mold Breaker",
@@ -414,7 +494,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"multitype": {
 		Name:        "Multitype",
-		Description: "If this Pokemon is an Arceus, its type changes to match its held Plate.",
+		Description: "If this Pokemon is an Arceus, its type changes to match its held Plate or Z-Crystal.",
 	},
 	"mummy": {
 		Name:        "Mummy",
@@ -424,13 +504,17 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Natural Cure",
 		Description: "This Pokemon has its major status condition cured when it switches out.",
 	},
+	"neuroforce": {
+		Name:        "Neuroforce",
+		Description: "This Pokemon's attacks that are super effective against the target do 1.2x damage.",
+	},
 	"noguard": {
 		Name:        "No Guard",
 		Description: "Every move used by or against this Pokemon will always hit.",
 	},
 	"normalize": {
 		Name:        "Normalize",
-		Description: "This Pokemon's moves are changed to be Normal type.",
+		Description: "This Pokemon's moves are changed to be Normal type and have 1.2x power.",
 	},
 	"oblivious": {
 		Name:        "Oblivious",
@@ -442,7 +526,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"overgrow": {
 		Name:        "Overgrow",
-		Description: "When this Pokemon has 1/3 or less of its max HP, its Grass attacks do 1.5x damage.",
+		Description: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Grass attacks.",
 	},
 	"owntempo": {
 		Name:        "Own Tempo",
@@ -450,7 +534,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"parentalbond": {
 		Name:        "Parental Bond",
-		Description: "This Pokemon's damaging moves hit twice. The second hit has its damage halved.",
+		Description: "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
 	},
 	"pickup": {
 		Name:        "Pickup",
@@ -462,7 +546,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"pixilate": {
 		Name:        "Pixilate",
-		Description: "This Pokemon's Normal-type moves become Fairy type and have 1.3x power.",
+		Description: "This Pokemon's Normal-type moves become Fairy type and have 1.2x power.",
 	},
 	"plus": {
 		Name:        "Plus",
@@ -480,9 +564,17 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Poison Touch",
 		Description: "This Pokemon's contact moves have a 30% chance of poisoning.",
 	},
+	"powerconstruct": {
+		Name:        "Power Construct",
+		Description: "If Zygarde 10%/50%, changes to Complete if at 1/2 max HP or less at end of turn.",
+	},
+	"powerofalchemy": {
+		Name:        "Power of Alchemy",
+		Description: "This Pokemon copies the Ability of an ally that faints.",
+	},
 	"prankster": {
 		Name:        "Prankster",
-		Description: "This Pokemon's non-damaging moves have their priority increased by 1.",
+		Description: "This Pokemon's Status moves have priority raised by 1, but Dark types are immune.",
 	},
 	"pressure": {
 		Name:        "Pressure",
@@ -492,13 +584,25 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Primordial Sea",
 		Description: "On switch-in, heavy rain begins until this Ability is not active in battle.",
 	},
+	"prismarmor": {
+		Name:        "Prism Armor",
+		Description: "This Pokemon receives 3/4 damage from supereffective attacks.",
+	},
 	"protean": {
 		Name:        "Protean",
 		Description: "This Pokemon's type changes to match the type of the move it is about to use.",
 	},
+	"psychicsurge": {
+		Name:        "Psychic Surge",
+		Description: "On switch-in, this Pokemon summons Psychic Terrain.",
+	},
 	"purepower": {
 		Name:        "Pure Power",
 		Description: "This Pokemon's Attack is doubled.",
+	},
+	"queenlymajesty": {
+		Name:        "Queenly Majesty",
+		Description: "While this Pokemon is active, allies are protected from opposing priority moves.",
 	},
 	"quickfeet": {
 		Name:        "Quick Feet",
@@ -512,13 +616,17 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Rattled",
 		Description: "This Pokemon's Speed is raised 1 stage if hit by a Bug-, Dark-, or Ghost-type attack.",
 	},
+	"receiver": {
+		Name:        "Receiver",
+		Description: "This Pokemon copies the Ability of an ally that faints.",
+	},
 	"reckless": {
 		Name:        "Reckless",
 		Description: "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
 	},
 	"refrigerate": {
 		Name:        "Refrigerate",
-		Description: "This Pokemon's Normal-type moves become Ice type and have 1.3x power.",
+		Description: "This Pokemon's Normal-type moves become Ice type and have 1.2x power.",
 	},
 	"regenerator": {
 		Name:        "Regenerator",
@@ -527,6 +635,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"rivalry": {
 		Name:        "Rivalry",
 		Description: "This Pokemon's attacks do 1.25x on same gender targets; 0.75x on opposite gender.",
+	},
+	"rkssystem": {
+		Name:        "RKS System",
+		Description: "If this Pokemon is a Silvally, its type changes to match its held Memory.",
 	},
 	"rockhead": {
 		Name:        "Rock Head",
@@ -560,6 +672,10 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Sap Sipper",
 		Description: "This Pokemon's Attack is raised 1 stage if hit by a Grass move; Grass immunity.",
 	},
+	"schooling": {
+		Name:        "Schooling",
+		Description: "If user is Wishiwashi, changes to School Form if it has > 1/4 max HP, else Solo Form.",
+	},
 	"scrappy": {
 		Name:        "Scrappy",
 		Description: "This Pokemon can hit Ghost types with Normal- and Fighting-type moves.",
@@ -567,6 +683,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"serenegrace": {
 		Name:        "Serene Grace",
 		Description: "This Pokemon's moves have their secondary effect chance doubled.",
+	},
+	"shadowshield": {
+		Name:        "Shadow Shield",
+		Description: "If this Pokemon is at full HP, damage taken from attacks is halved.",
 	},
 	"shadowtag": {
 		Name:        "Shadow Tag",
@@ -588,9 +708,13 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Shield Dust",
 		Description: "This Pokemon is not affected by the secondary effect of another Pokemon's attack.",
 	},
+	"shieldsdown": {
+		Name:        "Shields Down",
+		Description: "If Minior, switch-in/end of turn it changes to Core at 1/2 max HP or less, else Meteor.",
+	},
 	"simple": {
 		Name:        "Simple",
-		Description: "If this Pokemon's stat stages are raised or lowered, the effect is doubled instead.",
+		Description: "When this Pokemon's stat stages are raised or lowered, the effect is doubled instead.",
 	},
 	"skilllink": {
 		Name:        "Skill Link",
@@ -599,6 +723,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"slowstart": {
 		Name:        "Slow Start",
 		Description: "On switch-in, this Pokemon's Attack and Speed are halved for 5 turns.",
+	},
+	"slushrush": {
+		Name:        "Slush Rush",
+		Description: "If Hail is active, this Pokemon's Speed is doubled.",
 	},
 	"sniper": {
 		Name:        "Sniper",
@@ -620,6 +748,10 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Solid Rock",
 		Description: "This Pokemon receives 3/4 damage from supereffective attacks.",
 	},
+	"soulheart": {
+		Name:        "Soul-Heart",
+		Description: "This Pokemon's Sp. Atk is raised by 1 stage when another Pokemon faints.",
+	},
 	"soundproof": {
 		Name:        "Soundproof",
 		Description: "This Pokemon is immune to sound-based moves, including Heal Bell.",
@@ -628,9 +760,17 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Speed Boost",
 		Description: "This Pokemon's Speed is raised 1 stage at the end of each full turn on the field.",
 	},
+	"stakeout": {
+		Name:        "Stakeout",
+		Description: "This Pokemon's attacking stat is doubled against a target that switched in this turn.",
+	},
 	"stall": {
 		Name:        "Stall",
 		Description: "This Pokemon moves last among Pokemon using the same or greater priority moves.",
+	},
+	"stamina": {
+		Name:        "Stamina",
+		Description: "This Pokemon's Defense is raised by 1 stage after it is damaged by a move.",
 	},
 	"stancechange": {
 		Name:        "Stance Change",
@@ -643,6 +783,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"steadfast": {
 		Name:        "Steadfast",
 		Description: "If this Pokemon flinches, its Speed is raised by 1 stage.",
+	},
+	"steelworker": {
+		Name:        "Steelworker",
+		Description: "This Pokemon's attacking stat is multiplied by 1.5 while using a Steel-type attack.",
 	},
 	"stench": {
 		Name:        "Stench",
@@ -672,9 +816,13 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Super Luck",
 		Description: "This Pokemon's critical hit ratio is raised by 1 stage.",
 	},
+	"surgesurfer": {
+		Name:        "Surge Surfer",
+		Description: "If Electric Terrain is active, this Pokemon's Speed is doubled.",
+	},
 	"swarm": {
 		Name:        "Swarm",
-		Description: "When this Pokemon has 1/3 or less of its max HP, its Bug attacks do 1.5x damage.",
+		Description: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Bug attacks.",
 	},
 	"sweetveil": {
 		Name:        "Sweet Veil",
@@ -695,6 +843,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"tangledfeet": {
 		Name:        "Tangled Feet",
 		Description: "This Pokemon's evasiveness is doubled as long as it is confused.",
+	},
+	"tanglinghair": {
+		Name:        "Tangling Hair",
+		Description: "Pokemon making contact with this Pokemon have their Speed lowered by 1 stage.",
 	},
 	"technician": {
 		Name:        "Technician",
@@ -718,7 +870,7 @@ var abilities = map[showdown.UserID]*Ability{
 	},
 	"torrent": {
 		Name:        "Torrent",
-		Description: "When this Pokemon has 1/3 or less of its max HP, its Water attacks do 1.5x damage.",
+		Description: "At 1/3 or less of its max HP, this Pokemon's attacking stat is 1.5x with Water attacks.",
 	},
 	"toxicboost": {
 		Name:        "Toxic Boost",
@@ -731,6 +883,10 @@ var abilities = map[showdown.UserID]*Ability{
 	"trace": {
 		Name:        "Trace",
 		Description: "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
+	},
+	"triage": {
+		Name:        "Triage",
+		Description: "This Pokemon's healing moves have their priority increased by 3.",
 	},
 	"truant": {
 		Name:        "Truant",
@@ -768,17 +924,29 @@ var abilities = map[showdown.UserID]*Ability{
 		Name:        "Water Absorb",
 		Description: "This Pokemon heals 1/4 of its max HP when hit by Water moves; Water immunity.",
 	},
+	"waterbubble": {
+		Name:        "Water Bubble",
+		Description: "This Pokemon's Water power is 2x; it can't be burned; Fire power against it is halved.",
+	},
+	"watercompaction": {
+		Name:        "Water Compaction",
+		Description: "This Pokemon's Defense is raised 2 stages after it is damaged by a Water-type move.",
+	},
 	"waterveil": {
 		Name:        "Water Veil",
 		Description: "This Pokemon cannot be burned. Gaining this Ability while burned cures it.",
 	},
 	"weakarmor": {
 		Name:        "Weak Armor",
-		Description: "If a physical attack hits this Pokemon, Defense is lowered by 1, Speed is raised by 1.",
+		Description: "If a physical attack hits this Pokemon, Defense is lowered by 1, Speed is raised by 2.",
 	},
 	"whitesmoke": {
 		Name:        "White Smoke",
 		Description: "Prevents other Pokemon from lowering this Pokemon's stat stages.",
+	},
+	"wimpout": {
+		Name:        "Wimp Out",
+		Description: "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
 	},
 	"wonderguard": {
 		Name:        "Wonder Guard",
