@@ -76,7 +76,7 @@ func findConfiguration(name string) (ServerAddress, error) {
 	}
 	// Crossdomain API doesn't provide server information for main server.
 	if serverConfiguration.Host == "showdown" {
-		serverConfiguration.Host = "sim.psim.us"
+		serverConfiguration.Host = "sim2.psim.us"
 		serverConfiguration.Port = 443
 	}
 	return serverConfiguration, nil
