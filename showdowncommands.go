@@ -105,7 +105,7 @@ var showdownCommands = map[string]func(*connection, string, *showdown.Room){
 			c.send(escapedAuthor, "PRIVMSG", escapedAuthor, contents)
 		}
 	},
-	"raw": htmlCommand,
+	"raw":  htmlCommand,
 	"html": htmlCommand,
 }
 
